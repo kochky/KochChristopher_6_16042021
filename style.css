@@ -1,0 +1,365 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
+}
+
+body {
+  width: 90%;
+  font-family: "DM Sans", Verdana, sans-serif;
+  min-width: 385px;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+li {
+  list-style: none;
+}
+
+button {
+  width: 170px;
+  height: 70px;
+  background-color: #901c1c;
+  color: white;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  border: none;
+}
+
+.header__index {
+  position: relative;
+  width: 100%;
+  z-index: 0;
+  height: 200px;
+  display: flex;
+  flex-wrap: wrap;
+  padding-top: 10px;
+}
+@media screen and (max-width: 1405px) {
+  .header__index {
+    flex-direction: column;
+  }
+}
+.header__navbar {
+  width: 60%;
+}
+@media screen and (max-width: 1405px) {
+  .header__navbar {
+    width: 100%;
+  }
+}
+.header__navbar__liste {
+  margin: auto;
+  display: flex;
+  height: 50px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.main__index {
+  position: relative;
+  z-index: 2;
+  top: -200px;
+}
+.main__titre {
+  text-align: right;
+  font-size: 30px;
+  line-height: 50px;
+  margin-left: auto;
+  margin-right: 5px;
+  color: #901c1c;
+  white-space: nowrap;
+}
+@media screen and (max-width: 768px) {
+  .main__titre {
+    font-size: 16px;
+    line-height: 25px;
+  }
+}
+.main__grid {
+  margin-top: 225px;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 10%;
+  row-gap: 75px;
+  justify-content: space-around;
+}
+.name, .main__presentation__photograph__name, .main__grid__photographe__nom {
+  text-align: center;
+  color: #D3573C;
+  font-size: 36px;
+  line-height: 47px;
+}
+
+.location, .main__presentation__photograph__localisation, .main__grid__photographe__localisation {
+  text-align: center;
+  font-size: 13px;
+}
+
+.description, .main__presentation__photograph__description, .main__grid__photographe__description, .main__grid__photographe__prix {
+  text-align: center;
+  font-size: 10px;
+}
+
+.price {
+  text-align: center;
+  font-size: 9px;
+  color: #757575;
+}
+
+.tags, .main__presentation__photograph__tags, .header__navbar__liste__tags, .main__grid__photographe__tags {
+  border: 0.5px solid #C4C4C4;
+  border-radius: 11px;
+  color: #901c1c;
+  font-weight: 500;
+  height: 25px;
+  line-height: 25px;
+  margin-right: 0.5rem;
+  padding: 0 0.5rem;
+  width: min-content;
+}
+
+.photo, .main__presentation__picture__img, .main__grid__photographe__container__photo {
+  background: url("/images/sample photos/Mimi/Portrait_Nora.jpg");
+  background-size: cover;
+  background-size: 150%;
+  background-position: center;
+  width: 165px;
+  height: 165px;
+  border-radius: 165px;
+  margin: auto;
+}
+
+.container_photo, .main__presentation__picture, .main__grid__photographe {
+  width: 265px;
+  height: 185px;
+}
+
+.logo, .header__logo {
+  margin-bottom: 70px;
+  width: 200px;
+  height: 50px;
+  margin-left: 5px;
+}
+@media screen and (max-width: 768px) {
+  .logo, .header__logo {
+    width: 150px;
+    height: 37.5px;
+    margin-bottom: 10px;
+  }
+}
+
+.arrow {
+  margin-left: 20px;
+  transition: all 300ms;
+}
+
+.header {
+  margin-top: 40px;
+}
+
+.main {
+  width: 100%;
+}
+.main__presentation {
+  margin-bottom: 10px;
+  background-color: #FAFAFA;
+  display: flex;
+  justify-content: space-between;
+  height: 315px;
+  align-items: center;
+  padding: 0 5%;
+  position: relative;
+}
+@media screen and (max-width: 768px) {
+  .main__presentation {
+    background-color: white;
+    height: auto;
+    padding: 0;
+  }
+}
+.main__presentation__photograph {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 15px;
+}
+.main__presentation__photograph__button {
+  margin-left: 100px;
+  vertical-align: top;
+}
+@media screen and (max-width: 1024px) {
+  .main__presentation__photograph__button {
+    margin-left: 30px;
+    height: 35px;
+    position: absolute;
+    bottom: 10px;
+    z-index: 99;
+    right: 90px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .main__presentation__photograph__button {
+    position: fixed;
+    bottom: 30px;
+    z-index: 99;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+  }
+}
+.main__presentation__photograph__name {
+  font-size: 64px;
+  line-height: 70px;
+}
+@media screen and (max-width: 768px) {
+  .main__presentation__photograph__name {
+    font-size: 36px;
+  }
+}
+.main__presentation__photograph__localisation {
+  font-size: 24px;
+}
+@media screen and (max-width: 768px) {
+  .main__presentation__photograph__localisation {
+    font-size: 17px;
+  }
+}
+.main__presentation__photograph__description {
+  font-size: 18px;
+}
+@media screen and (max-width: 768px) {
+  .main__presentation__photograph__description {
+    font-size: 13px;
+    white-space: nowrap;
+  }
+}
+@media screen and (max-width: 768px) {
+  .main__presentation__picture__img {
+    width: 100px;
+    height: 100px;
+  }
+}
+.main__photos__sort {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 70px;
+  margin-right: 30px;
+}
+.main__photos__allbutton {
+  position: relative;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 0 10px;
+  width: 170px;
+  border-radius: 0 0 5px 5px;
+}
+.main__photos__allbutton:hover .main__photos__allbutton__button__date {
+  animation: submenu 200ms;
+  animation-fill-mode: forwards;
+}
+.main__photos__allbutton:hover .main__photos__allbutton__button__title {
+  animation: submenu 200ms;
+  animation-fill-mode: forwards;
+  animation-delay: 200ms;
+}
+.main__photos__allbutton:hover .arrow {
+  transform: rotate(-180deg);
+}
+.main__photos__allbutton__button {
+  margin-left: 25px;
+  padding: 0 10px;
+}
+.main__photos__allbutton__button__popular {
+  box-sizing: border-box;
+  position: absolute;
+}
+.main__photos__allbutton__button__date {
+  position: absolute;
+  top: 45px;
+  z-index: 90;
+  height: 70;
+  box-sizing: border-box;
+  border-radius: 0;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  padding-left: 25px;
+  text-align: left;
+  transform-origin: 50% 0%;
+  transform: scaleY(0);
+}
+.main__photos__allbutton__button__title {
+  position: absolute;
+  top: 115px;
+  z-index: 90;
+  box-sizing: border-box;
+  height: 70px;
+  text-align: left;
+  padding-left: 25px;
+  transform-origin: 50% 0%;
+  transform: scaleY(0);
+}
+@keyframes submenu {
+  0% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+.main__photos__article {
+  position: relative;
+  z-index: 1;
+  margin-top: 50px;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 5%;
+  row-gap: 30px;
+  justify-content: space-around;
+}
+.main__photos__article__container__img {
+  background: url("/images/Sample Photos/Mimi/Animals_Rainbow.jpg");
+  width: 350px;
+  height: 300px;
+  border-radius: 5px;
+  background-size: cover;
+}
+.main__photos__article__container__description {
+  display: flex;
+  justify-content: space-between;
+}
+.main__photos__article__container__description__name {
+  font-size: 24px;
+  font-weight: 400;
+}
+.main__photos__article__container__description__like {
+  font-weight: 500;
+  font-size: 24px;
+}
+.main__like-price-button {
+  width: 375px;
+  height: 50px;
+  background-color: #DB8876;
+  padding: 0 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  position: fixed;
+  z-index: 200;
+  bottom: 0;
+  right: 5%;
+}
+.main__like-price-button__number__heart {
+  margin-left: 3px;
+}
+@media screen and (max-width: 768px) {
+  .main__like-price-button {
+    display: none;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
