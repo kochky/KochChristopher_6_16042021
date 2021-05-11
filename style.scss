@@ -44,7 +44,7 @@ a {
     height:200px;
     display:flex;
     flex-wrap: wrap;
-    padding-top:10px;
+    padding-top:40px;
         @media screen and (max-width:1405px) 
         {
             flex-direction: column; 
@@ -75,6 +75,7 @@ a {
 }
 .main { 
     &__index {
+        
     position:relative;
     z-index:2;
     top:-200px;}
@@ -95,11 +96,12 @@ a {
         margin-top:225px;
         display:flex;
         flex-wrap:wrap;
-        column-gap:10%;
+        
         row-gap:75px;
         justify-content: space-around;
        
         &__photographe {
+            ;
            @extend .container_photo;
            margin-bottom:75px;
             &__container {
@@ -116,7 +118,7 @@ a {
                 @extend .location
             } 
             &__description {
-                @extend  .description;
+                @extend  .price;
             } 
             &__prix {
                 @extend .description
@@ -136,16 +138,21 @@ a {
 .location  {
     text-align: center;
     font-size:13px;
+    color:$color-primary;
+    line-height: 17px;
 }
 .description {
     text-align: center;
     font-size: 10px;
+    line-height: 13px;
 
 }
 .price {
     text-align: center;
                 font-size:9px;
-                color:#757575
+                color:#757575;
+                line-height: 12px;
+                
 }
 .tags {
     border: 0.5px solid #C4C4C4;
@@ -157,6 +164,12 @@ a {
     margin-right:0.5rem;
     padding: 0 0.5rem;
     width:min-content;
+    display:inline-block;
+    
+}
+.tagsContainer {
+    display:flex;
+    justify-content: center;
 }
 .photo {
     
@@ -168,8 +181,12 @@ a {
 
 }
 .container_photo {
-    width:265px;
-    height:185px;
+    width:30%;
+    min-width:350px;
+    box-sizing: border-box;
+    height:auto;
+
+    
 }
 .logo {
     margin-bottom:70px;
