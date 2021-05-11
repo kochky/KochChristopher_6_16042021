@@ -17,7 +17,7 @@
     </head>
     <body>
         <header class=header>
-            <img class= header__logo src="images/logo.png" alt=logo width=200px; >
+            <a href=index.html><img class= header__logo src="images/logo.png" alt=logo width=200px; ></a>
         </header>
         <main class=main>
             <section class=main__presentation>
@@ -41,8 +41,8 @@
                 </span>
                 <article class=main__photos__article>
                     <div class=main__photos__article__container>
-                        <div class=main__photos__article__container__img>
-                        </div>
+                        <img class="main__photos__article__container__img" src="/images/Sample Photos/Mimi/Animals_Rainbow.jpg">
+                        
                         <div class=main__photos__article__container__description>
                            <span class=main__photos__article__container__description__name>nom photo</span>
                             <div>
@@ -52,8 +52,7 @@
                         </div>
                     </div>
                     <div class=main__photos__article__container>
-                        <div class=main__photos__article__container__img>
-                        </div>
+                        <img class="main__photos__article__container__img" src="/images/Sample Photos/Mimi/Animals_Rainbow.jpg">
                         <div class=main__photos__article__container__description>
                            <span class=main__photos__article__container__description__name>nom photo</span>
                             <div>
@@ -63,8 +62,8 @@
                         </div>
                     </div>
                     <div class=main__photos__article__container>
-                        <div class=main__photos__article__container__img>
-                        </div>
+                        <img class="main__photos__article__container__img" src="/images/Sample Photos/Mimi/Animals_Rainbow.jpg">
+                        
                         <div class=main__photos__article__container__description>
                            <span class=main__photos__article__container__description__name>nom photo</span>
                             <div>
@@ -74,8 +73,7 @@
                         </div>
                     </div>
                     <div class=main__photos__article__container>
-                        <div class=main__photos__article__container__img>
-                        </div>
+                        <img class="main__photos__article__container__img" src="/images/Sample Photos/Mimi/Animals_Rainbow.jpg">
                         <div class=main__photos__article__container__description>
                            <span class=main__photos__article__container__description__name>nom photo</span>
                             <div>
@@ -85,8 +83,8 @@
                         </div>
                     </div>
                     <div class=main__photos__article__container>
-                        <div class=main__photos__article__container__img>
-                        </div>
+                        <img class="main__photos__article__container__img" src="/images/Sample Photos/Mimi/Animals_Rainbow.jpg">
+                       
                         <div class=main__photos__article__container__description>
                            <span class=main__photos__article__container__description__name>nom photo</span>
                             <div>
@@ -96,8 +94,8 @@
                         </div>
                     </div>
                     <div class=main__photos__article__container>
-                        <div class=main__photos__article__container__img>
-                        </div>
+                        <img class="main__photos__article__container__img" src="/images/Sample Photos/Mimi/Animals_Rainbow.jpg">
+                        
                         <div class=main__photos__article__container__description>
                            <span class=main__photos__article__container__description__name>nom photo</span>
                             <div>
@@ -117,7 +115,33 @@
 
 
         </main>
+        <section class=contact>
+            <div class=contact__form>
+                <div class="contact__form__cross"></div>
+                <H1 class=contact__form__title> Contactez-moi <br>Mimi Keel</H1>
+                
+                <FORM name="formData"action="photograph.html" method="get"> 
+                    <label class=contact__form__label for="first">Prénom</label><br>
+                    <input class=contact__form__input type="text" id="first" name="first" required><br>
+                    
+                    <label class=contact__form__label  for="last">Nom</label><br>
+                    <input class=contact__form__input type="text" id="last" name="last" required><br>
+                    
+                    <label class=contact__form__label for="email">Email</label><br>
+                    <input class=contact__form__input type="email" id="email" name="email" required><br>
+                    
+                    <label class=contact__form__label for="message">Votre message</label><br>
+                    <input class="contact__form__input" id="message" name="message" required><br>
+                    
+                    <input type="submit" class="button" value="Envoyer"></input>
+
+                    
+                </FORM>
+            </div>
+
+
+        </section>
         
-        <script src="" async defer></script>
+        <script src="index.js" async defer></script>
     </body>
 </html>
