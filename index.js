@@ -12,15 +12,16 @@ fetch('FishEyeData.json')
   
   .then(function(value) {
      
-    let numberOfPhotographers = value.photographers.length;
+    var numberOfPhotographers = value.photographers.length;
    
     
     
     
     
     
-
-    for (var i=0; i < numberOfPhotographers; i++) { //crééer les div pour afficher les photographes disponibles sur le json
+//créer les div pour afficher les photographes disponibles sur le json
+var array= [];
+    for (var i=0; i < numberOfPhotographers; i++) { 
         const newElt = document.createElement("a");
         const photographContainer= document.createElement("div")
         const photographPhoto= document.createElement("img")
@@ -29,9 +30,17 @@ fetch('FishEyeData.json')
         const photo = document.createElement("div");
         const description = document.createElement("div");
         const prix = document.createElement("div");
-        let tagDiv= document.createElement("div")
-        let testDiv = document.getElementById("grid");
+        var tagDiv= document.createElement("div")
+        var testDiv = document.getElementById("grid");
+        
+
+        var tagsList = document.getElementsByClassName("header__navbar__liste");
+        
        
+       
+
+        //console.log(value.photographers[i].tags)
+
         testDiv.appendChild(newElt);
         newElt.classList.add("main__grid__photographe");
         newElt.appendChild(photographContainer);
@@ -47,7 +56,6 @@ fetch('FishEyeData.json')
         description.classList.add("main__grid__photographe__description");
         newElt.appendChild(prix);
         prix.classList.add("main__grid__photographe__prix");
-        console.log("test");
         photographPhoto.setAttribute("src", "/images/sample photos/Photographers ID Photos/"+value ['photographers'][i]['portrait']+" ")
         photographName.innerHTML = value['photographers'][i]['name'];
         city.innerHTML = value['photographers'][i]['city']+","+value['photographers'][i]['country'];
@@ -55,69 +63,39 @@ fetch('FishEyeData.json')
         prix.innerHTML = value['photographers'][i]['price']+"€";
         newElt.appendChild(tagDiv);
         tagDiv.className= "tagsContainer"
+        var numberOfTags = value.photographers[i].tags.length;
         
-        let numberOfTags = value.photographers[i].tags.length;
+        
         for (var h=0; h < numberOfTags; h++) {
-            console.log("tags"+h)
-            const tags = document.createElement("div");
-            
+         
+            var tags = document.createElement("div");
             tagDiv.appendChild(tags)
             tags.classList.add("main__grid__photographe__tags");
-            tags.innerHTML= "#"+value['photographers'][i]['tags'][h]
+            tags.innerHTML= "#"+value['photographers'][i]['tags'][h];
+            var tagsArray =  array.push(value.photographers[i].tags[h])
+            
 
-        }
+           
+        }     
+
+    }
+    var arrayNoDouble = Array.from(new Set(array)); //supprime les doublons de array
     
+    let numberOfTagsNavbar = arrayNoDouble.length;
+    for (var x=0; x < numberOfTagsNavbar; x++) {
+      var newTagsNavbar = document.createElement("li");
+           
+            tagsList[0].appendChild(newTagsNavbar);
+            newTagsNavbar.className="header__navbar__liste__tags";
+            newTagsNavbar.innerHTML= "#"+arrayNoDouble[x];
     
-       
 
-
-    //for (var i=0; i < numberOfTags, i++) {}
+           
     }
 
-   
-
-
-    
-
-   
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 })
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   .catch(function(err) {
+    
     
   });
 
