@@ -22,13 +22,13 @@
         <main class=main>
             <section class=main__presentation>
                 <div class=main__presentation__photograph>
-                    <div class=main__presentation__photograph__name><span>Mimi Keel</span><span><button class= main__presentation__photograph__button>Contactez-moi</button></span></div>
-                    <div class=main__presentation__photograph__localisation>London,UK</div>
-                    <div class=main__presentation__photograph__description>Voir le beau dans le quotidien</div>
-                    <div class="main__presentation__photograph__tags">tt</div>
+                    <div class=main__presentation__photograph__name><span id=photographer_name></span><span><button class= main__presentation__photograph__button>Contactez-moi</button></span></div>
+                    <div class=main__presentation__photograph__localisation id=photographer_location></div>
+                    <div class=main__presentation__photograph__description id=photographer_description></div>
+                   <div class=main__presentation__photograph__tagsContainer></div>
                 </div>
-                <div class=main__presentation__picture> 
-                    <div class=main__presentation__picture__img></div>  
+                <div class=main__presentation__picture > 
+                    <img class=main__presentation__picture__img id=photographer_picture>
                 </div>
 
             </section>
@@ -39,8 +39,11 @@
                         <button class=main__photos__allbutton__button__date>Date</button>
                         <button class=main__photos__allbutton__button__title>Titre</button>
                 </span>
+               
+               
+              
                 <article class=main__photos__article>
-                    <div class=main__photos__article__container>
+                    <!-- <div class=main__photos__article__container>
                         <img class="main__photos__article__container__img" src="/images/Sample Photos/Mimi/Animals_Rainbow.jpg">
                         
                         <div class=main__photos__article__container__description>
@@ -50,61 +53,11 @@
                                 <span class=main__photos__article__container__description__heart><i class="fas fa-heart"></i></span>
                             </div>
                         </div>
-                    </div>
-                    <div class=main__photos__article__container>
-                        <img class="main__photos__article__container__img" src="/images/Sample Photos/Mimi/Animals_Rainbow.jpg">
-                        <div class=main__photos__article__container__description>
-                           <span class=main__photos__article__container__description__name>nom photo</span>
-                            <div>
-                                <span class=main__photos__article__container__description__like>12</span>
-                                <span class=main__photos__article__container__description__heart><i class="fas fa-heart"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class=main__photos__article__container>
-                        <img class="main__photos__article__container__img" src="/images/Sample Photos/Mimi/Animals_Rainbow.jpg">
-                        
-                        <div class=main__photos__article__container__description>
-                           <span class=main__photos__article__container__description__name>nom photo</span>
-                            <div>
-                                <span class=main__photos__article__container__description__like>12</span>
-                                <span class=main__photos__article__container__description__heart><i class="fas fa-heart"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class=main__photos__article__container>
-                        <img class="main__photos__article__container__img" src="/images/Sample Photos/Mimi/Animals_Rainbow.jpg">
-                        <div class=main__photos__article__container__description>
-                           <span class=main__photos__article__container__description__name>nom photo</span>
-                            <div>
-                                <span class=main__photos__article__container__description__like>12</span>
-                                <span class=main__photos__article__container__description__heart><i class="fas fa-heart"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class=main__photos__article__container>
-                        <img class="main__photos__article__container__img" src="/images/Sample Photos/Mimi/Animals_Rainbow.jpg">
-                       
-                        <div class=main__photos__article__container__description>
-                           <span class=main__photos__article__container__description__name>nom photo</span>
-                            <div>
-                                <span class=main__photos__article__container__description__like>12</span>
-                                <span class=main__photos__article__container__description__heart><i class="fas fa-heart"></i></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class=main__photos__article__container>
-                        <img class="main__photos__article__container__img" src="/images/Sample Photos/Mimi/Animals_Rainbow.jpg">
-                        
-                        <div class=main__photos__article__container__description>
-                           <span class=main__photos__article__container__description__name>nom photo</span>
-                            <div>
-                                <span class=main__photos__article__container__description__like>12</span>
-                                <span class=main__photos__article__container__description__heart><i class="fas fa-heart"></i></span>
-                            </div>
-                        </div>
-                    </div>
+                    </div> -->
                 </article>
+              
+               
+                
                 <section class=main__like-price-button>
                     <span class=main__like-price-button__number>297 081<i class="fas fa-heart main__like-price-button__number__heart"></i></span>
                     <span class=main__like-price-button__price> 300€/jour</span>
@@ -118,7 +71,7 @@
         <section class=contact>
             <div class=contact__form>
                 <div class="contact__form__cross"></div>
-                <H1 class=contact__form__title> Contactez-moi <br>Mimi Keel</H1>
+                <H1 class=contact__form__title id= name_Modale></H1>
                 
                 <FORM name="formData"action="photograph.html" method="get"> 
                     <label class=contact__form__label for="first">Prénom</label><br>

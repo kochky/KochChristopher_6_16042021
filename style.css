@@ -33,7 +33,7 @@ button, .button {
   }
 }
 
-a {
+a, a:hover, a:active, a:visited {
   text-decoration: none;
   cursor: pointer;
 }
@@ -68,12 +68,12 @@ a {
   flex-wrap: wrap;
   justify-content: center;
 }
-.main__index {
+.index__main {
   position: relative;
   z-index: 2;
   top: -200px;
 }
-.main__titre {
+.index__main__titre {
   text-align: right;
   font-size: 30px;
   line-height: 50px;
@@ -83,49 +83,52 @@ a {
   white-space: nowrap;
 }
 @media screen and (max-width: 768px) {
-  .main__titre {
+  .index__main__titre {
     font-size: 16px;
     line-height: 25px;
   }
 }
-.main__grid {
+.index__main__grid {
   margin-top: 225px;
   display: flex;
   flex-wrap: wrap;
   row-gap: 75px;
   justify-content: space-around;
 }
-.main__grid__photographe {
+.index__main__grid__photographe {
+  width: 30%;
+  min-width: 350px;
   margin-bottom: 75px;
 }
-.name, .main__presentation__photograph__name, .main__grid__photographe__nom {
+.name, .main__presentation__photograph__name, .index__main__grid__photographe__nom {
   text-align: center;
   color: #D3573C;
   font-size: 36px;
   line-height: 47px;
 }
 
-.location, .main__presentation__photograph__localisation, .main__grid__photographe__localisation {
+.location, .main__presentation__photograph__localisation, .index__main__grid__photographe__localisation {
   text-align: center;
   font-size: 13px;
   color: #901c1c;
   line-height: 17px;
 }
 
-.description, .main__presentation__photograph__description, .main__grid__photographe__prix {
+.description, .main__presentation__photograph__description, .index__main__grid__photographe__description {
   text-align: center;
   font-size: 10px;
   line-height: 13px;
+  color: black;
 }
 
-.price, .main__grid__photographe__description {
+.price, .index__main__grid__photographe__prix {
   text-align: center;
   font-size: 9px;
   color: #757575;
   line-height: 12px;
 }
 
-.tags, .main__presentation__photograph__tags, .header__navbar__liste__tags, .main__grid__photographe__tags {
+.tags, .main__presentation__photograph__tags, .header__navbar__liste__tags, .index__main__grid__photographe__tags {
   border: 0.5px solid #C4C4C4;
   border-radius: 11px;
   color: #901c1c;
@@ -137,14 +140,17 @@ a {
   width: min-content;
   display: inline-block;
   text-transform: capitalize;
+  margin-bottom: 5px;
 }
 
-.tagsContainer {
+.tagsContainer, .main__presentation__photograph__tagsContainer {
   display: flex;
-  justify-content: center;
+  justify-content: start;
+  width: max-content;
+  margin: 0 auto;
 }
 
-.photo, .main__presentation__picture__img, .main__grid__photographe__container__photo {
+.photo, .main__presentation__picture__img, .index__main__grid__photographe__container__photo {
   width: 165px;
   height: 165px;
   border-radius: 165px;
@@ -152,9 +158,7 @@ a {
   display: block;
 }
 
-.container_photo, .main__presentation__picture, .main__grid__photographe {
-  width: 30%;
-  min-width: 350px;
+.container_photo, .main__presentation__picture, .index__main__grid__photographe {
   box-sizing: border-box;
   height: auto;
 }
@@ -199,7 +203,6 @@ a {
   .main__presentation {
     background-color: white;
     height: auto;
-    padding: 0;
   }
 }
 .main__presentation__photograph {
@@ -212,14 +215,14 @@ a {
   margin-left: 100px;
   vertical-align: top;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1337px) {
   .main__presentation__photograph__button {
-    margin-left: 30px;
+    margin-left: 0px;
     height: 35px;
     position: absolute;
     bottom: 10px;
     z-index: 99;
-    right: 90px;
+    right: 5%;
   }
 }
 @media screen and (max-width: 768px) {
@@ -234,12 +237,14 @@ a {
   }
 }
 .main__presentation__photograph__name {
+  text-align: left;
   font-size: 64px;
   line-height: 70px;
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1025px) {
   .main__presentation__photograph__name {
     font-size: 36px;
+    line-height: 40px;
   }
 }
 .main__presentation__photograph__localisation {
@@ -259,7 +264,21 @@ a {
     white-space: nowrap;
   }
 }
+.main__presentation__photograph__tagsContainer {
+  margin-left: 0;
+}
 @media screen and (max-width: 768px) {
+  .main__presentation__picture {
+    width: 165px;
+    min-width: 0px;
+  }
+}
+@media screen and (max-width: 575px) {
+  .main__presentation__picture {
+    width: 100px;
+  }
+}
+@media screen and (max-width: 575px) {
   .main__presentation__picture__img {
     width: 100px;
     height: 100px;
@@ -271,6 +290,11 @@ a {
   line-height: 70px;
   margin-right: 30px;
 }
+@media screen and (max-width: 568px) {
+  .main__photos__sort {
+    display: none;
+  }
+}
 .main__photos__allbutton {
   position: relative;
   font-size: 18px;
@@ -278,6 +302,11 @@ a {
   padding: 0 10px;
   width: 170px;
   border-radius: 0 0 5px 5px;
+}
+@media screen and (max-width: 568px) {
+  .main__photos__allbutton {
+    display: none;
+  }
 }
 .main__photos__allbutton:hover .main__photos__allbutton__button__date {
   animation: submenu 200ms;
