@@ -10,7 +10,7 @@
         <title>Photograph</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="/css/style.css">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/a4b46c7bcb.js" crossorigin="anonymous"></script>
@@ -43,24 +43,14 @@
                
               
                 <article class=main__photos__article>
-                    <!-- <div class=main__photos__article__container>
-                        <img class="main__photos__article__container__img" src="/images/Sample Photos/Mimi/Animals_Rainbow.jpg">
-                        
-                        <div class=main__photos__article__container__description>
-                           <span class=main__photos__article__container__description__name>nom photo</span>
-                            <div>
-                                <span class=main__photos__article__container__description__like>12</span>
-                                <span class=main__photos__article__container__description__heart><i class="fas fa-heart"></i></span>
-                            </div>
-                        </div>
-                    </div> -->
+                   
                 </article>
               
                
                 
                 <section class=main__like-price-button>
-                    <span class=main__like-price-button__number>297 081<i class="fas fa-heart main__like-price-button__number__heart"></i></span>
-                    <span class=main__like-price-button__price> 300€/jour</span>
+                    <span class=main__like-price-button__number></span>
+                    <span class=main__like-price-button__price> </span>
                 </section>
 
             </section>
@@ -68,6 +58,18 @@
 
 
         </main>
+        <section class=big-picture>
+            <div class=big-picture__container>
+                <img class=big-picture__container__img src="images/Sample Photos/Ellie-Rose/Architecture_Connected_Curves.jpg"class=big-picture__container__img>
+                <div class=big-picture__container__cross></div>
+                <img src="images/Vector.svg" class=big-picture__container__left-arrow></img>
+                <img src="images/Vector.svg" class=big-picture__container__right-arrow></img>
+                 
+            </div>
+
+
+
+        </section>
         <section class=contact>
             <div class=contact__form>
                 <div class="contact__form__cross"></div>
@@ -84,9 +86,9 @@
                     <input class=contact__form__input type="email" id="email" name="email" required><br>
                     
                     <label class=contact__form__label for="message">Votre message</label><br>
-                    <input class="contact__form__input" id="message" name="message" required><br>
+                    <textarea class="contact__form__input" id="message" name="message" rows=4 required></textarea><br>
                     
-                    <input type="submit" class="button" value="Envoyer"></input>
+                    <input type="submit"  class="button" id="button_modale" value="Envoyer">
 
                     
                 </FORM>
@@ -95,6 +97,8 @@
 
         </section>
         
-        <script src="photograph.js" async defer></script>
+        <script src="/js/photograph.js" async defer></script>
+        <script src="/js/modale.js" async defer></script>
+        <script src="/js/like.js" async defer></script>
     </body>
 </html>

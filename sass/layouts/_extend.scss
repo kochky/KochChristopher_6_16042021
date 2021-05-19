@@ -1,0 +1,134 @@
+.name {
+    text-align: center;
+    color: $color-secondary;
+    font-size:36px;
+    line-height: 47px;
+    
+}
+.location  {
+    text-align: center;
+    font-size:13px;
+    color:$color-primary;
+    line-height: 17px;
+    color:$color-secondary
+}
+.description {
+    text-align: center;
+    font-size: 10px;
+    line-height: 13px;
+    color:#525252
+
+}
+.price {
+    text-align: center;
+                font-size:9px;
+                color:#757575;
+                line-height: 12px;
+                
+}
+.tags {
+    border: 0.5px solid #C4C4C4;
+    border-radius: 11px;
+    color:$color-primary;
+    font-weight: 500;
+    height:25px;
+    line-height: 25px;
+    margin-right:0.5rem;
+    padding: 0 0.5rem;
+    width:min-content;
+    display:inline-block;
+    text-transform:capitalize;
+    margin-bottom:5px;
+    color:$color-primary;
+    
+}
+.tagsContainer {
+    display:flex;
+    justify-content: start;
+    width:max-content;
+    
+    margin:0 auto;
+   
+    
+}
+.photo {
+    
+    width:165px;
+    height:165px;
+    border-radius: 165px;
+    margin:0 auto; 
+    display:block;
+
+}
+.container_photo {
+    
+    
+    box-sizing: border-box;
+    height:auto;
+   
+
+    
+}
+.logo {
+    margin-bottom:70px;
+    width:200px;
+    height:50px;
+    margin-left:5px;
+    
+    @media screen and (max-width:768px) 
+     {width:150px;
+         height:37.5px;
+         margin-bottom:10px;
+     }
+}
+.arrow{
+   margin-left:20px;
+   
+   transition:all 300ms;
+}
+.header {
+    margin-top:40px;
+}
+
+.heart_full {
+opacity:0;
+position:relative;
+transition: all 300ms;
+}
+.heart_empty {
+    position:relative;
+    left:-15px;
+    color:$color-primary
+
+}
+
+.crossX {
+    width: 30px;
+                height: 30px;
+                cursor: pointer;
+                transform: scale(0.7);
+                float:right;
+                margin-left:10%;
+                margin-bottom:30px;  
+                    
+                &:before,
+                &:after {
+                position: absolute;
+                content: " ";
+                height: 80px;
+                width: 5px;
+                top:15px;
+                right:35px;
+                background-color: #fff;
+                @media screen and (max-width:768px) {
+                    height:40px;
+                    width: 5px
+                } 
+                }
+                &:before {
+                transform: rotate(45deg);
+                }
+                &:after {
+                transform: rotate(-45deg);
+                }
+}

@@ -1,0 +1,36 @@
+*{
+    margin:0 ;
+    padding:0;
+    box-sizing: content-box;
+}
+body {
+    width:90%;
+    font-family: "DM Sans", Verdana, sans-serif;
+    min-width:385px;
+    max-width: 1440px;
+    margin:0 auto; 
+    
+}
+li {
+    list-style: none;
+}
+button, .button {
+    width:170px;
+    height:70px;
+    background-color: $color-primary;
+    color:white;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+    border:none;
+    cursor: pointer;
+    @media screen and (max-width:425px){
+        height:35px;
+
+    }
+}
+a, a:hover, a:active, a:visited{
+    text-decoration: none;
+    cursor: pointer;
+
+}

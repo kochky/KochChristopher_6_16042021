@@ -1,0 +1,73 @@
+.contact {
+    display:none;
+    &__form {
+        background-color: #DB8876;
+        width:45%;
+        min-width: 375px;
+        height:auto;
+        border-radius:5px;
+        position:absolute;
+        z-index:9999;
+        top:10%;
+        margin:0 auto;
+        left:0;
+        right:0;
+        padding:20px 30px 30px 30px;
+        box-sizing: border-box;
+        &__title {
+            font-weight: normal;
+            font-size: 64px;
+            line-height: 83px;
+            @media screen and (max-width:768px) {
+                font-size: 36px;
+                line-height: 47px;
+            }
+        }
+        &__input {
+            box-sizing: border-box;
+            border-radius: 5px;
+            width:100%;
+            height:70px;  
+            font-size: 36px;
+            line-height: 47px;
+            padding-left:5px;
+            @media screen and (max-width:768px) {
+                font-size: 24px;
+                line-height: 31px; 
+            }
+        }
+        &__label {
+            font-family: DM Sans;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 36px;
+            line-height: 47px;
+            color:#312E2E;
+            @media screen and (max-width:768px) {
+                font-size: 24px;
+                line-height: 31px; 
+            }
+        }
+        &__cross{
+            @extend .crossX
+        }
+        
+    }
+}
+
+#button_modale {
+    @media screen and (max-width:425px){
+        display:block;
+        margin:0 auto;
+    }
+}
+#message {
+    height:170px;
+    margin-bottom:30px;
+    font-size:20px;
+    @media screen and (max-width:768px) {
+        font-size: 16px;
+        line-height: 24px; 
+    }
+   
+}

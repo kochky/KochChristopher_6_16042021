@@ -1,4 +1,4 @@
-fetch('FishEyeData.json')
+fetch('/js/FishEyeData.json')
   .then(function(res) {
     if (res.ok) {
       return res.json(); 

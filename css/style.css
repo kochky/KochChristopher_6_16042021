@@ -1,3 +1,134 @@
+.name, .main__presentation__photograph__name, .index__main__grid__photographe__nom {
+  text-align: center;
+  color: #D3573C;
+  font-size: 36px;
+  line-height: 47px;
+}
+
+.location, .main__presentation__photograph__localisation, .index__main__grid__photographe__localisation {
+  text-align: center;
+  font-size: 13px;
+  color: #901c1c;
+  line-height: 17px;
+  color: #D3573C;
+}
+
+.description, .main__presentation__photograph__description, .index__main__grid__photographe__description {
+  text-align: center;
+  font-size: 10px;
+  line-height: 13px;
+  color: #525252;
+}
+
+.price, .index__main__grid__photographe__prix {
+  text-align: center;
+  font-size: 9px;
+  color: #757575;
+  line-height: 12px;
+}
+
+.tags, .main__presentation__photograph__tags, .index__main__grid__photographe__tags, .header__navbar__liste__tags {
+  border: 0.5px solid #C4C4C4;
+  border-radius: 11px;
+  color: #901c1c;
+  font-weight: 500;
+  height: 25px;
+  line-height: 25px;
+  margin-right: 0.5rem;
+  padding: 0 0.5rem;
+  width: min-content;
+  display: inline-block;
+  text-transform: capitalize;
+  margin-bottom: 5px;
+  color: #901c1c;
+}
+
+.tagsContainer, .main__presentation__photograph__tagsContainer {
+  display: flex;
+  justify-content: start;
+  width: max-content;
+  margin: 0 auto;
+}
+
+.photo, .main__presentation__picture__img, .index__main__grid__photographe__container__photo {
+  width: 165px;
+  height: 165px;
+  border-radius: 165px;
+  margin: 0 auto;
+  display: block;
+}
+
+.container_photo, .main__presentation__picture, .index__main__grid__photographe {
+  box-sizing: border-box;
+  height: auto;
+}
+
+.logo, .header__logo {
+  margin-bottom: 70px;
+  width: 200px;
+  height: 50px;
+  margin-left: 5px;
+}
+@media screen and (max-width: 768px) {
+  .logo, .header__logo {
+    width: 150px;
+    height: 37.5px;
+    margin-bottom: 10px;
+  }
+}
+
+.arrow {
+  margin-left: 20px;
+  transition: all 300ms;
+}
+
+.header {
+  margin-top: 40px;
+}
+
+.heart_full {
+  opacity: 0;
+  position: relative;
+  transition: all 300ms;
+}
+
+.heart_empty {
+  position: relative;
+  left: -15px;
+  color: #901c1c;
+}
+
+.crossX, .big-picture__container__cross, .contact__form__cross {
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  transform: scale(0.7);
+  float: right;
+  margin-left: 10%;
+  margin-bottom: 30px;
+}
+.crossX:before, .big-picture__container__cross:before, .contact__form__cross:before, .crossX:after, .big-picture__container__cross:after, .contact__form__cross:after {
+  position: absolute;
+  content: " ";
+  height: 80px;
+  width: 5px;
+  top: 15px;
+  right: 35px;
+  background-color: #fff;
+}
+@media screen and (max-width: 768px) {
+  .crossX:before, .big-picture__container__cross:before, .contact__form__cross:before, .crossX:after, .big-picture__container__cross:after, .contact__form__cross:after {
+    height: 40px;
+    width: 5px;
+  }
+}
+.crossX:before, .big-picture__container__cross:before, .contact__form__cross:before {
+  transform: rotate(45deg);
+}
+.crossX:after, .big-picture__container__cross:after, .contact__form__cross:after {
+  transform: rotate(-45deg);
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -36,6 +167,83 @@ button, .button {
 a, a:hover, a:active, a:visited {
   text-decoration: none;
   cursor: pointer;
+}
+
+.contact {
+  display: none;
+}
+.contact__form {
+  background-color: #DB8876;
+  width: 45%;
+  min-width: 375px;
+  height: auto;
+  border-radius: 5px;
+  position: absolute;
+  z-index: 9999;
+  top: 10%;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  padding: 20px 30px 30px 30px;
+  box-sizing: border-box;
+}
+.contact__form__title {
+  font-weight: normal;
+  font-size: 64px;
+  line-height: 83px;
+}
+@media screen and (max-width: 768px) {
+  .contact__form__title {
+    font-size: 36px;
+    line-height: 47px;
+  }
+}
+.contact__form__input {
+  box-sizing: border-box;
+  border-radius: 5px;
+  width: 100%;
+  height: 70px;
+  font-size: 36px;
+  line-height: 47px;
+  padding-left: 5px;
+}
+@media screen and (max-width: 768px) {
+  .contact__form__input {
+    font-size: 24px;
+    line-height: 31px;
+  }
+}
+.contact__form__label {
+  font-family: DM Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 36px;
+  line-height: 47px;
+  color: #312E2E;
+}
+@media screen and (max-width: 768px) {
+  .contact__form__label {
+    font-size: 24px;
+    line-height: 31px;
+  }
+}
+@media screen and (max-width: 425px) {
+  #button_modale {
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+#message {
+  height: 170px;
+  margin-bottom: 30px;
+  font-size: 20px;
+}
+@media screen and (max-width: 768px) {
+  #message {
+    font-size: 16px;
+    line-height: 24px;
+  }
 }
 
 .header__index {
@@ -100,92 +308,6 @@ a, a:hover, a:active, a:visited {
   min-width: 350px;
   margin-bottom: 75px;
 }
-.name, .main__presentation__photograph__name, .index__main__grid__photographe__nom {
-  text-align: center;
-  color: #D3573C;
-  font-size: 36px;
-  line-height: 47px;
-}
-
-.location, .main__presentation__photograph__localisation, .index__main__grid__photographe__localisation {
-  text-align: center;
-  font-size: 13px;
-  color: #901c1c;
-  line-height: 17px;
-}
-
-.description, .main__presentation__photograph__description, .index__main__grid__photographe__description {
-  text-align: center;
-  font-size: 10px;
-  line-height: 13px;
-  color: black;
-}
-
-.price, .index__main__grid__photographe__prix {
-  text-align: center;
-  font-size: 9px;
-  color: #757575;
-  line-height: 12px;
-}
-
-.tags, .main__presentation__photograph__tags, .header__navbar__liste__tags, .index__main__grid__photographe__tags {
-  border: 0.5px solid #C4C4C4;
-  border-radius: 11px;
-  color: #901c1c;
-  font-weight: 500;
-  height: 25px;
-  line-height: 25px;
-  margin-right: 0.5rem;
-  padding: 0 0.5rem;
-  width: min-content;
-  display: inline-block;
-  text-transform: capitalize;
-  margin-bottom: 5px;
-}
-
-.tagsContainer, .main__presentation__photograph__tagsContainer {
-  display: flex;
-  justify-content: start;
-  width: max-content;
-  margin: 0 auto;
-}
-
-.photo, .main__presentation__picture__img, .index__main__grid__photographe__container__photo {
-  width: 165px;
-  height: 165px;
-  border-radius: 165px;
-  margin: 0 auto;
-  display: block;
-}
-
-.container_photo, .main__presentation__picture, .index__main__grid__photographe {
-  box-sizing: border-box;
-  height: auto;
-}
-
-.logo, .header__logo {
-  margin-bottom: 70px;
-  width: 200px;
-  height: 50px;
-  margin-left: 5px;
-}
-@media screen and (max-width: 768px) {
-  .logo, .header__logo {
-    width: 150px;
-    height: 37.5px;
-    margin-bottom: 10px;
-  }
-}
-
-.arrow {
-  margin-left: 20px;
-  transition: all 300ms;
-}
-
-.header {
-  margin-top: 40px;
-}
-
 .main {
   width: 100%;
 }
@@ -370,7 +492,11 @@ a, a:hover, a:active, a:visited {
   flex-wrap: wrap;
   column-gap: 5%;
   row-gap: 30px;
-  justify-content: space-around;
+  justify-content: flex-start;
+  margin-bottom: 100px;
+}
+.main__photos__article__container {
+  width: 350px;
 }
 .main__photos__article__container__img {
   width: 350px;
@@ -381,14 +507,26 @@ a, a:hover, a:active, a:visited {
 .main__photos__article__container__description {
   display: flex;
   justify-content: space-between;
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .main__photos__article__container__description__name {
   font-size: 24px;
   font-weight: 400;
+  color: #901c1c;
+  width: 80%;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .main__photos__article__container__description__like {
   font-weight: 500;
   font-size: 24px;
+}
+.main__photos__article__container__description__heart {
+  color: #901c1c;
 }
 .main__like-price-button {
   width: 375px;
@@ -413,87 +551,54 @@ a, a:hover, a:active, a:visited {
   }
 }
 
-.contact {
+.big-picture {
   display: none;
-}
-.contact__form {
-  background-color: #DB8876;
-  width: 45%;
-  min-width: 375px;
-  height: auto;
-  border-radius: 5px;
-  position: absolute;
-  z-index: 9999;
-  top: 10%;
-  margin: 0 auto;
-  left: 0;
-  right: 0;
-  padding: 20px 30px 30px 30px;
-  box-sizing: border-box;
-}
-.contact__form__title {
-  font-weight: normal;
-  font-size: 64px;
-  line-height: 83px;
-}
-@media screen and (max-width: 768px) {
-  .contact__form__title {
-    font-size: 36px;
-    line-height: 47px;
-  }
-}
-.contact__form__input {
-  border-radius: 5px;
   width: 100%;
-  height: 70px;
+  max-width: 1440px;
+  height: 100vh;
+  position: fixed;
+  background-color: blue;
+  z-index: 99;
+  top: 0;
+  right: 0%;
+  left: 0%;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
 }
-.contact__form__label {
-  font-family: DM Sans;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 36px;
-  line-height: 47px;
-  color: #312E2E;
+.big-picture__container {
+  width: 75%;
+  background-color: white;
+  margin: 0 auto;
+  position: relative;
 }
-@media screen and (max-width: 768px) {
-  .contact__form__label {
-    font-size: 24px;
-    line-height: 31px;
-  }
+.big-picture__container__img {
+  display: block;
+  margin: 0 auto;
+  width: 80%;
 }
-.contact__form__cross {
-  width: 30px;
-  height: 30px;
-  cursor: pointer;
-  transform: scale(0.7);
-  float: right;
-  margin-left: 10%;
-  margin-bottom: 30px;
-}
-.contact__form__cross:before, .contact__form__cross:after {
+.big-picture__container__cross {
   position: absolute;
-  content: " ";
-  height: 80px;
-  width: 5px;
-  top: 15px;
-  right: 35px;
-  background-color: #fff;
+  top: 0;
+  right: 0;
 }
-@media screen and (max-width: 768px) {
-  .contact__form__cross:before, .contact__form__cross:after {
-    height: 40px;
-  }
+.big-picture__container__cross:before, .big-picture__container__cross:after {
+  background-color: #901c1c;
+  top: 0;
+  right: 15px;
 }
-.contact__form__cross:before {
-  transform: rotate(45deg);
+.big-picture__container__left-arrow {
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
+  left: 0;
 }
-.contact__form__cross:after {
-  transform: rotate(-45deg);
-}
-
-#message {
-  height: 170px;
-  margin-bottom: 30px;
+.big-picture__container__right-arrow {
+  transform: rotate(180deg);
+  position: absolute;
+  top: 50%;
+  bottom: 50%;
+  right: 0;
 }
 
 /*# sourceMappingURL=style.css.map */
