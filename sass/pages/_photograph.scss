@@ -80,6 +80,7 @@
             }
             &__tags {
                 @extend .tags;
+                cursor: pointer;
                 
             }
 

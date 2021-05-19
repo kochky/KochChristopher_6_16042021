@@ -249,7 +249,7 @@ a, a:hover, a:active, a:visited {
 .header__index {
   position: relative;
   width: 100%;
-  z-index: 0;
+  z-index: 2;
   height: 200px;
   display: flex;
   flex-wrap: wrap;
@@ -278,7 +278,7 @@ a, a:hover, a:active, a:visited {
 }
 .index__main {
   position: relative;
-  z-index: 2;
+  z-index: 0;
   top: -200px;
 }
 .index__main__titre {
@@ -388,6 +388,9 @@ a, a:hover, a:active, a:visited {
 }
 .main__presentation__photograph__tagsContainer {
   margin-left: 0;
+}
+.main__presentation__photograph__tags {
+  cursor: pointer;
 }
 @media screen and (max-width: 768px) {
   .main__presentation__picture {

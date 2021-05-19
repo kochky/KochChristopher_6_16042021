@@ -78,13 +78,8 @@ fetch('js/FishEyeData.json')
      
 
 
-  //CLICK SUR COEUR FAIT MONTER LIKE
-
  
-  
 
-    
-     console.log("test")
    //créer les div des images
     if (numberOfPicture[p].image !=undefined) {
     
@@ -195,12 +190,13 @@ newI2.classList.add("heart_empty")
 
 //AUgmente les likes des photos ou diminue au2eme click
 let heartFull = document.getElementsByClassName("heart_full");
+
 for (var i=0; i < numberOfPicture.length; i++){
  
    
   (function (i){
 
-  likeButton[i].addEventListener("click", function(e){
+  likeButton[i].addEventListener("click", function(){
   
      if (likeCount[i].innerHTML== numberOfPicture[i].likes) {
       resultLike ++;
@@ -222,7 +218,8 @@ for (var i=0; i < numberOfPicture.length; i++){
   (i)
 };
     
-    
+
+  
             
 
   // remplir le bouton rose prix
@@ -230,13 +227,12 @@ for (var i=0; i < numberOfPicture.length; i++){
   priceTag[0].innerHTML= test3.price+ "€/jour";
   
   
-
   
   
   
  
   
-   })
+  })
 
     
  

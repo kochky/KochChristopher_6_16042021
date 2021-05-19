@@ -7,7 +7,7 @@ fetch('/js/FishEyeData.json')
   .then(function(value) {
       var numberOfPhotographers = value.photographers.length;
 //créer les div pour afficher les photographes disponibles sur le json
-var array= [];
+var tagsArray= [];
     for (var i=0; i < numberOfPhotographers; i++) { 
         const newElt = document.createElement("a");
         const photographContainer= document.createElement("div")
@@ -62,16 +62,17 @@ var array= [];
             tagDiv.appendChild(tags)
             tags.classList.add("index__main__grid__photographe__tags");
             tags.innerHTML= "#"+value['photographers'][i]['tags'][h];
-            var tagsArray =  array.push(value.photographers[i].tags[h])
+            var tagsArrayPush =  tagsArray.push(value.photographers[i].tags[h])//créer le tableau sans doublon
             
 
            
         }     
 
     }
-    var arrayNoDouble = Array.from(new Set(array)); //supprime les doublons de array
+    var arrayNoDouble = Array.from(new Set(tagsArray)); //supprime les doublons de array
     
     let numberOfTagsNavbar = arrayNoDouble.length;
+
     for (var x=0; x < numberOfTagsNavbar; x++) {
       var newTagsNavbar = document.createElement("li");
            
@@ -82,6 +83,52 @@ var array= [];
 
            
     }
+/////FILTRES DES TAGS
+    //console.log(value.photographers)
+  var tagsButtonNavbar = document.getElementsByClassName("header__navbar__liste__tags")
+let tagsContainer= document.getElementsByClassName("tagsContainer")
+
+var tagsEnable=false;
+
+for (var o=0; o<tagsButtonNavbar.length; o++){
+(function (o){
+ 
+tagsButtonNavbar[o].addEventListener("click",function(e){
+  
+
+  for (var u=0; u<tagsContainer.length; u++){
+    
+    const tagsCorr= tagsContainer[u].textContent.includes(tagsButtonNavbar[o].innerHTML);
+   console.log(tagsEnable)
+    if (tagsEnable==true){
+    tagsButtonNavbar[o].style.color="black";
+
+
+   }
+    else if (tagsCorr== true){
+      let tagsEnable = true;
+      tagsButtonNavbar[o].style.background ="#901c1c";
+      tagsButtonNavbar[o].style.color="white";
+    tagsEnable= true;
+      
+      
+      
+    }
+    else{
+      console.log("pas le même");
+       tagsContainer[u].parentNode.style.display="none"
+       
+      }
+    }
+})
+})
+  (o)
+}
+
+
+
+
+
 
 })
   .catch(function(err) {
