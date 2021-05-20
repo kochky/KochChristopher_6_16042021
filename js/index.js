@@ -87,39 +87,76 @@ var tagsArray= [];
     //console.log(value.photographers)
   var tagsButtonNavbar = document.getElementsByClassName("header__navbar__liste__tags")
 let tagsContainer= document.getElementsByClassName("tagsContainer")
+let tagsButtonNavbarArray=[];
 
-var tagsEnable=false;
+
+function bla(o) {
+ 
+  var tagsIndex= tagsButtonNavbarArray.indexOf(tagsButtonNavbar[o].innerHTML);
+
+ if (test[o]!=true) {
+    test[o]=true;
+    var tagsPush= tagsButtonNavbarArray.push(tagsButtonNavbar[o].innerHTML)
+    console.log(tagsButtonNavbarArray)
+    
+    for (var u=0; u<tagsContainer.length; u++){
+      
+      const tagsCorr= tagsContainer[u].textContent.includes(tagsButtonNavbar[o].innerHTML);
+
+      if (tagsCorr== true){
+      
+        tagsButtonNavbar[o].style.background ="#901c1c";
+        tagsButtonNavbar[o].style.color="white";
+      }
+      else{
+        tagsContainer[u].parentNode.style.display="none"
+        }
+      }
+    }
+
+else { 
+test[o]=false;
+
+var tagsRemove= tagsButtonNavbarArray.splice(tagsIndex,1)
+console.log(tagsIndex)
+console.log(tagsButtonNavbarArray)
+tagsButtonNavbar[o].style.color ="#901c1c";
+ tagsButtonNavbar[o].style.background="white";
+
+for (var u=0; u<tagsContainer.length; u++){
+  const tagsCorr2= tagsContainer[u].textContent.includes(tagsButtonNavbar[o].innerHTML);
+  tagsContainer[u].parentNode.style.display="block"
+ 
+ 
+//  if (tagsCorr== true){
+      
+//   tagsButtonNavbar[o].style.background ="#901c1c";
+//   tagsButtonNavbar[o].style.color="white";
+// }
+// else{
+//   tagsContainer[u].parentNode.style.display="none"
+//   }
+
+}
+}}
+
+
+
+
+
+
+
+
 
 for (var o=0; o<tagsButtonNavbar.length; o++){
 (function (o){
  
-tagsButtonNavbar[o].addEventListener("click",function(e){
+  tagsButtonNavbar[o].addEventListener("click",function(e){
+    bla(o)
   
 
-  for (var u=0; u<tagsContainer.length; u++){
-    
-    const tagsCorr= tagsContainer[u].textContent.includes(tagsButtonNavbar[o].innerHTML);
-   console.log(tagsEnable)
-    if (tagsEnable==true){
-    tagsButtonNavbar[o].style.color="black";
 
 
-   }
-    else if (tagsCorr== true){
-      let tagsEnable = true;
-      tagsButtonNavbar[o].style.background ="#901c1c";
-      tagsButtonNavbar[o].style.color="white";
-    tagsEnable= true;
-      
-      
-      
-    }
-    else{
-      console.log("pas le même");
-       tagsContainer[u].parentNode.style.display="none"
-       
-      }
-    }
 })
 })
   (o)
