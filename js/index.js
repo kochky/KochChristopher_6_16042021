@@ -83,94 +83,71 @@ var tagsArray= [];
 
            
     }
-/////FILTRES DES TAGS
-    //console.log(value.photographers)
-  var tagsButtonNavbar = document.getElementsByClassName("header__navbar__liste__tags")
+/////FILTRES DES TAGS/////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////
+
+
+let tagsButtonNavbar = document.getElementsByClassName("header__navbar__liste__tags")
 let tagsContainer= document.getElementsByClassName("tagsContainer")
 let tagsButtonNavbarArray=[];
+let tagEnable=[]
 
+////GIVE POINT TO THE PHOTOGRAPHERS IF THEY HAVE THE TAG WICH IS IN THE FILTERS
+function tagPoint(){
+  tagPoints= [[0],[0],[0],[0],[0],[0]]
+  for (var p=0; p<tagsButtonNavbarArray.length; p++){   
+    for (var u=0; u<tagsContainer.length; u++){
+   let tagsCorr = tagsContainer[u].textContent.includes(tagsButtonNavbarArray[p])
+      if(tagsCorr) {
+         tagPoints[u]++;
+      }
+}}
+}
+////IT MAKES THE ARRAY WITH THE ACTIVE FILTERS AND GIVE POINT TO THE PHOTOGRAPHER IF THEY HAVE THE ACTIVE FILTER
+function tagFilters(o) {
+let tagsIndex= tagsButtonNavbarArray.indexOf(tagsButtonNavbar[o].innerHTML);
 
-function bla(o) {
-  
-  var tagsIndex= tagsButtonNavbarArray.indexOf(tagsButtonNavbar[o].innerHTML);
-  
- if (test[o]!=true) {
-   tagPoints= [[0],[0],[0],[0],[0],[0]]
-    test[o]=true;
+ if (tagEnable[o]!=true) {
+  let tagsPush= tagsButtonNavbarArray.push(tagsButtonNavbar[o].innerHTML)
+ tagPoint();
+}else { 
+      let tagsRemove= tagsButtonNavbarArray.splice(tagsIndex,1);
+  tagPoint()
+      
+        }
+}
+////COMPARE THE POINTS WITH THE ACTIVE FILTERS
+function tagVisibility(){
+  for (var u=0; u<tagsContainer.length; u++){
+    if ( tagPoints[u] != tagsButtonNavbarArray.length && tagPoints) {
+      tagsContainer[u].parentNode.style.display="none"
+    }else {tagsContainer[u].parentNode.style.display="block"}
+  } 
+}
+//
+/// CHANGE THE COLOR OF THE TAGS IN THE NAVBAR
+function tagColor(o) {
+  if (tagEnable[o]!=true) {
+    tagEnable[o]=true;
     tagsButtonNavbar[o].style.background ="#901c1c";
     tagsButtonNavbar[o].style.color="white"
-    var tagsPush= tagsButtonNavbarArray.push(tagsButtonNavbar[o].innerHTML)
-    for (var p=0; p<tagsButtonNavbarArray.length; p++){   
-      for (var u=0; u<tagsContainer.length; u++){
-        //tagsContainer[u].parentNode.style.display="block"
-     const tagsCorr = tagsContainer[u].textContent.includes(tagsButtonNavbarArray[p])
-        if(tagsCorr) {
-           tagPoints[u]++;
-           
-          
-        }//else { tagsContainer[u].parentNode.style.display="none"}
-}}}
-      else { 
-      test[o]=false;
-      tagPoints= [[0],[0],[0],[0],[0],[0]]
-      var tagsRemove= tagsButtonNavbarArray.splice(tagsIndex,1);
-      tagsButtonNavbar[o].style.color ="#901c1c";
-      tagsButtonNavbar[o].style.background="white";   
-          for (var p=0; p<=tagsButtonNavbarArray.length; p++){
-              for (var u=0; u<tagsContainer.length; u++){
-                tagsContainer[u].parentNode.style.display="block";
-                const tagsCorr = tagsContainer[u].textContent.includes(tagsButtonNavbarArray[p])
-                if (tagsCorr){
-                  
-                  tagPoints[u] ++;
-                  if ( tagPoints[u] != tagsButtonNavbarArray.length && tagPoints){
-                    //tagsContainer[u].parentNode.style.display="none"
-                  }
-                }         
-               
-              }
-
-              }
-        }
-        
-        
-
+}else {
+    tagEnable[o]=false;
+    tagsButtonNavbar[o].style.color ="#901c1c";
+    tagsButtonNavbar[o].style.background="white";
+}
 }
 
 
-
-
-
-
-
-
-for (var o=0; o<tagsButtonNavbar.length; o++){
+////EVENT LISTERNER FOR EACH TAGS IN THE NAVBAR
+for (var o=0; o<tagsButtonNavbar.length; o++){   
 (function (o){
- 
   tagsButtonNavbar[o].addEventListener("click",function(e){
-    bla(o);
-    for (var u=0; u<tagsContainer.length; u++){
-      if ( tagPoints[u] != tagsButtonNavbarArray.length && tagPoints) {
-        console.log("pas bon");
-        tagsContainer[u].parentNode.style.display="none"
-      }
-    }
-    console.log(tagPoints);
-    console.log(tagsButtonNavbarArray.length)
-    
-  
-
-
-
-})
-})
-  (o)
-}
-
-
-
-
-
+    tagFilters(o);
+    tagVisibility();
+    tagColor(o);
+})})(o)}
+//
 
 })
   .catch(function(err) {
