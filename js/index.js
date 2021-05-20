@@ -91,55 +91,51 @@ let tagsButtonNavbarArray=[];
 
 
 function bla(o) {
- 
+  
   var tagsIndex= tagsButtonNavbarArray.indexOf(tagsButtonNavbar[o].innerHTML);
-
+  
  if (test[o]!=true) {
+   tagPoints= [[0],[0],[0],[0],[0],[0]]
     test[o]=true;
+    tagsButtonNavbar[o].style.background ="#901c1c";
+    tagsButtonNavbar[o].style.color="white"
     var tagsPush= tagsButtonNavbarArray.push(tagsButtonNavbar[o].innerHTML)
-    console.log(tagsButtonNavbarArray)
-    
-    for (var u=0; u<tagsContainer.length; u++){
-      
-      const tagsCorr= tagsContainer[u].textContent.includes(tagsButtonNavbar[o].innerHTML);
+    for (var p=0; p<tagsButtonNavbarArray.length; p++){   
+      for (var u=0; u<tagsContainer.length; u++){
+        //tagsContainer[u].parentNode.style.display="block"
+     const tagsCorr = tagsContainer[u].textContent.includes(tagsButtonNavbarArray[p])
+        if(tagsCorr) {
+           tagPoints[u]++;
+           
+          
+        }//else { tagsContainer[u].parentNode.style.display="none"}
+}}}
+      else { 
+      test[o]=false;
+      tagPoints= [[0],[0],[0],[0],[0],[0]]
+      var tagsRemove= tagsButtonNavbarArray.splice(tagsIndex,1);
+      tagsButtonNavbar[o].style.color ="#901c1c";
+      tagsButtonNavbar[o].style.background="white";   
+          for (var p=0; p<=tagsButtonNavbarArray.length; p++){
+              for (var u=0; u<tagsContainer.length; u++){
+                tagsContainer[u].parentNode.style.display="block";
+                const tagsCorr = tagsContainer[u].textContent.includes(tagsButtonNavbarArray[p])
+                if (tagsCorr){
+                  
+                  tagPoints[u] ++;
+                  if ( tagPoints[u] != tagsButtonNavbarArray.length && tagPoints){
+                    //tagsContainer[u].parentNode.style.display="none"
+                  }
+                }         
+               
+              }
 
-      if (tagsCorr== true){
-      
-        tagsButtonNavbar[o].style.background ="#901c1c";
-        tagsButtonNavbar[o].style.color="white";
-      }
-      else{
-        tagsContainer[u].parentNode.style.display="none"
+              }
         }
-      }
-    }
-
-else { 
-test[o]=false;
-
-var tagsRemove= tagsButtonNavbarArray.splice(tagsIndex,1)
-console.log(tagsIndex)
-console.log(tagsButtonNavbarArray)
-tagsButtonNavbar[o].style.color ="#901c1c";
- tagsButtonNavbar[o].style.background="white";
-
-for (var u=0; u<tagsContainer.length; u++){
-  const tagsCorr2= tagsContainer[u].textContent.includes(tagsButtonNavbar[o].innerHTML);
-  tagsContainer[u].parentNode.style.display="block"
- 
- 
-//  if (tagsCorr== true){
-      
-//   tagsButtonNavbar[o].style.background ="#901c1c";
-//   tagsButtonNavbar[o].style.color="white";
-// }
-// else{
-//   tagsContainer[u].parentNode.style.display="none"
-//   }
+        
+        
 
 }
-}}
-
 
 
 
@@ -152,7 +148,16 @@ for (var o=0; o<tagsButtonNavbar.length; o++){
 (function (o){
  
   tagsButtonNavbar[o].addEventListener("click",function(e){
-    bla(o)
+    bla(o);
+    for (var u=0; u<tagsContainer.length; u++){
+      if ( tagPoints[u] != tagsButtonNavbarArray.length && tagPoints) {
+        console.log("pas bon");
+        tagsContainer[u].parentNode.style.display="none"
+      }
+    }
+    console.log(tagPoints);
+    console.log(tagsButtonNavbarArray.length)
+    
   
 
 
