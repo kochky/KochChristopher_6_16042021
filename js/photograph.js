@@ -194,6 +194,11 @@ dateButton[0].addEventListener("click",function(){
   numberOfPicture.sort(compareDate)
   deleteMedia()
   pageMedia();
+  for (var i=0; i<numberOfPicture.length;i++) {
+    (function (i){
+     imgListener(i);
+    })(i)
+    }
   })
   //
 
@@ -203,6 +208,11 @@ popButton[0].addEventListener("click",function(){
   numberOfPicture.sort(compareLikes)
   deleteMedia()
   pageMedia();
+  for (var i=0; i<numberOfPicture.length;i++) {
+    (function (i){
+     imgListener(i);
+    })(i)
+    }
 
   })
 //AUgmente les likes des photos ou diminue au 2eme click
@@ -245,7 +255,7 @@ let bigPictureTitle= document.getElementsByClassName("big-picture__container__ti
 let leftArrow= document.getElementsByClassName("big-picture__container__left-arrow");
 let rightArrow= document.getElementsByClassName("big-picture__container__right-arrow");
 
-// change image à droite
+
 
 
 //ferme l'image
@@ -256,25 +266,44 @@ bigPictureClose[0].addEventListener("click",function(){
     main[0].style.opacity="1";
 })
 //ouvre l'image
-for (var i=0; i<numberOfPicture.length;i++) {
-(function (i){
-  
+function imgListener(i){
   photoContainerImage[i].addEventListener("click",function(){
   
     bigPicture[0].style.display="flex";
-    header[0].style.opacity="0.2";
-    main[0].style.opacity="0.2";
-    console.log(photoContainerImage[i].src)
+    //header[0].style.opacity="1";
+    main[0].style.opacity="0.1";
     bigPictureImg[0].src= photoContainerImage[i].src
     bigPictureTitle[0].innerHTML= numberOfPicture[i].title
     return imageResult= i
-
     })
+}
+
+
+for (var i=0; i<numberOfPicture.length;i++) {
+  
+(function (i){
+  
+ imgListener(i);
   
   
 })(i)
 }
+function videoInMedia () {
+  
+  if (numberOfPicture[imageResult].image==undefined){// si l'image précédente est une video
+    
+    bigPictureImg[1].style.display="block";
+    bigPictureImg[0].style.display="none";
+    bigPictureImg[1].firstElementChild.src= photoContainerImage[imageResult].firstElementChild.src;
+    bigPictureImg[1].load();
 
+  }else {
+    bigPictureImg[1].style.display="none";
+    bigPictureImg[0].style.display="block";
+  }
+  
+  
+}
 leftArrow[0].addEventListener("click",function(){
 
 if(imageResult<=0){
@@ -285,8 +314,9 @@ if(imageResult<=0){
 imageResult --
  bigPictureImg[0].src= photoContainerImage[imageResult].src;
  bigPictureTitle[0].innerHTML= numberOfPicture[imageResult].title ;
-
+ 
  }
+ videoInMedia()
   
 })
 
@@ -302,6 +332,7 @@ imageResult ++
 bigPictureImg[0].src= photoContainerImage[imageResult].src
 bigPictureTitle[0].innerHTML= numberOfPicture[imageResult].title
 }
+videoInMedia()
 })
 
 

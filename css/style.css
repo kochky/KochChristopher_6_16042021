@@ -579,6 +579,7 @@ a, a:hover, a:active, a:visited {
   display: block;
   margin: 0 auto;
   width: 100%;
+  max-height: 80vh;
 }
 .big-picture__container__title {
   font-size: 24px;
@@ -607,6 +608,10 @@ a, a:hover, a:active, a:visited {
   top: 50%;
   bottom: 50%;
   right: -50px;
+}
+
+#videoCarroussel {
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */
