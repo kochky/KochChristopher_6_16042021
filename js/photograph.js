@@ -150,7 +150,6 @@ pageMedia();
   //FIN BOUCLE
 ////function qui détruit les médias créés
 let photoContainer= document.getElementsByClassName("main__photos__article__container")
-console.log(photoContainer.length)
 
 function deleteMedia(){
   
@@ -259,26 +258,51 @@ bigPictureClose[0].addEventListener("click",function(){
 //ouvre l'image
 for (var i=0; i<numberOfPicture.length;i++) {
 (function (i){
+  
   photoContainerImage[i].addEventListener("click",function(){
   
     bigPicture[0].style.display="flex";
     header[0].style.opacity="0.2";
     main[0].style.opacity="0.2";
-    console.log(numberOfPicture[i-1])
-    bigPictureImg[0].setAttribute("src", "/images/sample photos/"+lastname+"/"+numberOfPicture[i].image)
+    console.log(photoContainerImage[i].src)
+    bigPictureImg[0].src= photoContainerImage[i].src
     bigPictureTitle[0].innerHTML= numberOfPicture[i].title
-    })
-  
-  leftArrow[0].addEventListener("click",function(){
-    bigPictureImg[0].setAttribute("src", "/images/sample photos/"+lastname+"/"+numberOfPicture[i].image)
-    console.log(bigPictureImg[0])
+    return imageResult= i
 
-  
     })
+  
+  
 })(i)
 }
 
+leftArrow[0].addEventListener("click",function(){
 
+if(imageResult<=0){
+  imageResult += numberOfPicture.length -1;
+   bigPictureImg[0].src= photoContainerImage[imageResult].src;
+ bigPictureTitle[0].innerHTML= numberOfPicture[imageResult].title ;
+}else {
+imageResult --
+ bigPictureImg[0].src= photoContainerImage[imageResult].src;
+ bigPictureTitle[0].innerHTML= numberOfPicture[imageResult].title ;
+
+ }
+  
+})
+
+rightArrow[0].addEventListener("click",function(){
+  
+ if (imageResult==numberOfPicture.length -1){
+  imageResult =0;
+  console.log(imageResult)
+  bigPictureImg[0].src= photoContainerImage[0].src;
+  bigPictureTitle[0].innerHTML= numberOfPicture[0].title ;
+  }else {
+imageResult ++
+bigPictureImg[0].src= photoContainerImage[imageResult].src
+bigPictureTitle[0].innerHTML= numberOfPicture[imageResult].title
+}
+})
 
 
 

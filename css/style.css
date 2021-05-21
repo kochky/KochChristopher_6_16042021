@@ -506,6 +506,7 @@ a, a:hover, a:active, a:visited {
   height: 300px;
   border-radius: 5px;
   background-size: cover;
+  cursor: pointer;
 }
 .main__photos__article__container__description {
   display: flex;
@@ -530,6 +531,7 @@ a, a:hover, a:active, a:visited {
 }
 .main__photos__article__container__description__heart {
   color: #901c1c;
+  cursor: pointer;
 }
 .main__like-price-button {
   width: 375px;
