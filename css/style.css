@@ -111,7 +111,7 @@
   position: absolute;
   content: " ";
   height: 80px;
-  width: 5px;
+  width: 10px;
   top: 15px;
   right: 35px;
   background-color: #fff;
@@ -560,7 +560,6 @@ a, a:hover, a:active, a:visited {
   max-width: 1440px;
   height: 100vh;
   position: fixed;
-  background-color: blue;
   z-index: 99;
   top: 0;
   right: 0%;
@@ -570,20 +569,24 @@ a, a:hover, a:active, a:visited {
   justify-content: center;
 }
 .big-picture__container {
-  width: 75%;
-  background-color: white;
+  width: 50%;
   margin: 0 auto;
   position: relative;
 }
 .big-picture__container__img {
   display: block;
   margin: 0 auto;
-  width: 80%;
+  width: 100%;
+}
+.big-picture__container__title {
+  font-size: 24px;
+  font-weight: 400;
+  color: #901c1c;
 }
 .big-picture__container__cross {
   position: absolute;
   top: 0;
-  right: 0;
+  right: -50px;
 }
 .big-picture__container__cross:before, .big-picture__container__cross:after {
   background-color: #901c1c;
@@ -594,14 +597,14 @@ a, a:hover, a:active, a:visited {
   position: absolute;
   top: 50%;
   bottom: 50%;
-  left: 0;
+  left: -50px;
 }
 .big-picture__container__right-arrow {
   transform: rotate(180deg);
   position: absolute;
   top: 50%;
   bottom: 50%;
-  right: 0;
+  right: -50px;
 }
 
 /*# sourceMappingURL=style.css.map */

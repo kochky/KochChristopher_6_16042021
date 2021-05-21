@@ -1,8 +1,4 @@
 
-
-
-
- 
 fetch('js/FishEyeData.json')
   .then(function(res) {
     if (res.ok) {
@@ -11,19 +7,11 @@ fetch('js/FishEyeData.json')
   })
   .then(function(value) {
 
+  // récupère l'id dans l'url
+    let urlId = window.location.search.slice(1);
 
-
-    
-// récupère l'id dans l'url
-    var urlId = window.location.search.slice(1);
-
-     //cible les média qqui ont l'id correspondant
-      let test3= value.photographers.find(x => x.id == urlId);
-
-
-
-
-
+  //cible les média qqui ont l'id correspondant
+  let test3= value.photographers.find(x => x.id == urlId);
    //cible les éléments pour y mettre les données   
    const photoName = document.getElementById("photographer_name");
    const photoLocation = document.getElementById("photographer_location");
@@ -31,6 +19,12 @@ fetch('js/FishEyeData.json')
    const tagContainer= document.getElementsByClassName("main__presentation__photograph__tagsContainer");
    const photoPicture = document.getElementById("photographer_picture");
    const nameForm = document.getElementById("name_Modale")
+   var pictureDiv = document.getElementsByClassName("main__photos__article");
+  //cible les média par rapport au id du photographe
+  let numberOfPicture= value.media.filter(x => x.photographerId == urlId);
+  let totalLike= document.getElementsByClassName("main__like-price-button__number");
+  const likeButton = document.getElementsByClassName("main__photos__article__container__description__heart");
+  const likeCount = document.getElementsByClassName("main__photos__article__container__description__like");
 
    //insérer les données du json pour remplir la page
    photoName.innerHTML = test3.name;
@@ -49,154 +43,177 @@ fetch('js/FishEyeData.json')
     tags2.innerHTML= "#"+test3.tags[x];
     
    }
+  // remplir le bouton rose prix
+      let priceTag= document.getElementsByClassName("main__like-price-button__price");
+      priceTag[0].innerHTML= test3.price+ "€/jour";
 
+  //garde le prénom du photographe pour créer le lien vers leur dossier image
+    var spaceLastname = test3.name.indexOf(" ");
+    var lastname = test3.name.substr(0,spaceLastname);
 
-
-
-//garde le prénom du photographe pour créer le lien vers leur dossier image
-   var spaceLastname = test3.name.indexOf(" ");
-   var lastname = test3.name.substr(0,spaceLastname);
-
-//cible les média par rapport au id du photographe
-   let numberOfPicture= value.media.filter(x => x.photographerId == urlId);
-   let totalLike= document.getElementsByClassName("main__like-price-button__number");
-   const likeButton = document.getElementsByClassName("main__photos__article__container__description__heart");
-   const likeCount = document.getElementsByClassName("main__photos__article__container__description__like");
 
    //tableau 
-   var imageArray= [];
-   var mp4Array=[];
    var resultLike = 0
-   
-   //boucle pour connaitre le nombre de média( image+video)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  //// Trier selon le nombre de likes////
+   function compareLikes(a,b){
+     if (a.likes < b.likes)
+     return 0
+     if (a.likes >b.likes)
+     return -1;
+   }
+   numberOfPicture.sort(compareLikes);
+   //
+  
+
+
+// structure des images 
+   function mediaMaker(p){
+    
+      var newPicture= document.createElement("div");
+      
+      pictureDiv[0].appendChild(newPicture);
+      newPicture.classList.add("main__photos__article__container")
+      newPicture.appendChild(newMedia);
+      newContainerDescription = document.createElement("div");
+      newContainerDescription.classList.add("main__photos__article__container__description");
+      newPicture.appendChild(newContainerDescription);
+    
+      newContainerDescriptionName = document.createElement("span");
+      newContainerDescription.appendChild(newContainerDescriptionName);
+      newContainerDescriptionName.classList.add("main__photos__article__container__description__name");
+      newContainerDescriptionName.innerHTML = numberOfPicture[p].title
+    
+    
+      newDiv= document.createElement("div");
+      newContainerDescription.appendChild(newDiv);
+      newSpan= document.createElement("span");
+      newSpan.classList.add("main__photos__article__container__description__like");
+      newDiv.appendChild(newSpan);
+      newSpan.innerHTML = numberOfPicture[p].likes;
+        newSpan2= document.createElement("span");
+      newSpan2.classList.add("main__photos__article__container__description__heart");
+      newDiv.appendChild(newSpan2);
+    
+      newI= document.createElement("i")
+      newSpan2.appendChild(newI);
+      newI.classList.add("fas");
+      newI.classList.add("fa-heart")
+      newI.classList.add("heart_full")
+    
+      newI2= document.createElement("i")
+      newSpan2.appendChild(newI2);
+      newI2.classList.add("far");
+      newI2.classList.add("fa-heart")
+      newI2.classList.add("heart_empty")
+  
+  }
+
+
+
+   /////boucle création de média +likes///////////////////////////////////////////////////////////////////////////////////
+
+   function pageMedia () {
   for (var p=0; p < numberOfPicture.length; p++) {
-   
-    //fait le total des likes à afficher en bas
-  resultLike +=numberOfPicture[p].likes
-      
-  totalLike[0].innerHTML = resultLike + "<i class='fas fa-heart main__like-price-button__number__heart'></i>";
-     
+          
+            //fait le total des likes à afficher en bas
+          resultLike +=numberOfPicture[p].likes  
+          totalLike[0].innerHTML = resultLike + "<i class='fas fa-heart main__like-price-button__number__heart'></i>";
+            
+          //créer les div des images
+            if (numberOfPicture[p].image !=undefined) {
+            newMedia = document.createElement("img");
+            newMedia.classList.add("main__photos__article__container__img");
+            newMedia.setAttribute("src", "/images/sample photos/"+lastname+"/"+numberOfPicture[p].image);
+            mediaMaker(p)
+          }
 
+        //créer les div des video
+            else if (numberOfPicture[p].video !=undefined) {
 
- 
-
-   //créer les div des images
-    if (numberOfPicture[p].image !=undefined) {
+          newMedia = document.createElement("video");
+        newMedia.setAttribute("controls","");
+        newMedia.classList.add("main__photos__article__container__img");
+        newSource= document.createElement("source");
+        newMedia.appendChild(newSource)
+          newSource.setAttribute("src", "/images/sample photos/"+lastname+"/"+numberOfPicture[p].video);
+          newSource.setAttribute("type", "video/mp4");
+          mediaMaker(p)
+          
+          
+          
+          }
     
-
+  } 
+}
+pageMedia();
   
-    var newPicture= document.createElement("div");
-  var pictureDiv = document.getElementsByClassName("main__photos__article");
-  pictureDiv[0].appendChild(newPicture);
-  newPicture.classList.add("main__photos__article__container")
+  //FIN BOUCLE
+////function qui détruit les médias créés
+let photoContainer= document.getElementsByClassName("main__photos__article__container")
+console.log(photoContainer.length)
 
-    newImage = document.createElement("img");
-    newImage.classList.add("main__photos__article__container__img");
-    newPicture.appendChild(newImage);
-    newImage.setAttribute("src", "/images/sample photos/"+lastname+"/"+numberOfPicture[p].image);
+function deleteMedia(){
+  
+  for (d=0; d< numberOfPicture.length; d++){
+   photoContainer[0].remove()
 
-    newContainerDescription = document.createElement("div");
-    newContainerDescription.classList.add("main__photos__article__container__description");
-    newPicture.appendChild(newContainerDescription);
-
-    newContainerDescriptionName = document.createElement("span");
-    newContainerDescription.appendChild(newContainerDescriptionName);
-    newContainerDescriptionName.classList.add("main__photos__article__container__description__name");
-    newContainerDescriptionName.innerHTML = numberOfPicture[p].title
-
-
-    newDiv= document.createElement("div");
-    newContainerDescription.appendChild(newDiv);
-    newSpan= document.createElement("span");
-    newSpan.classList.add("main__photos__article__container__description__like");
-    newDiv.appendChild(newSpan);
-    newSpan.innerHTML = numberOfPicture[p].likes;
-      newSpan2= document.createElement("span");
-    newSpan2.classList.add("main__photos__article__container__description__heart");
-    newDiv.appendChild(newSpan2);
-
-    newI= document.createElement("i")
-    newSpan2.appendChild(newI);
-    newI.classList.add("fas");
-    newI.classList.add("fa-heart")
-    newI.classList.add("heart_full")
-
-    newI2= document.createElement("i")
-    newSpan2.appendChild(newI2);
-    newI2.classList.add("far");
-    newI2.classList.add("fa-heart")
-    newI2.classList.add("heart_empty")
-      
-      
   }
 
-//créer les div des video
-    else if (numberOfPicture[p].video !=undefined) {
-   
-   
-    
-    var newPicture= document.createElement("div");
-    var pictureDiv = document.getElementsByClassName("main__photos__article");
-    pictureDiv[0].appendChild(newPicture);
-    newPicture.classList.add("main__photos__article__container")
- 
-  newVideo = document.createElement("video");
- newVideo.setAttribute("controls","");
- newVideo.classList.add("main__photos__article__container__img");
- newPicture.appendChild(newVideo);
- newSource= document.createElement("source");
- newVideo.appendChild(newSource)
- 
- 
-  newSource.setAttribute("src", "/images/sample photos/"+lastname+"/"+numberOfPicture[p].video);
-  newSource.setAttribute("type", "video/mp4");
-  
-  newContainerDescription = document.createElement("div");
-  newContainerDescription.classList.add("main__photos__article__container__description");
-  newPicture.appendChild(newContainerDescription);
 
-  newContainerDescriptionName = document.createElement("span");
-  newContainerDescription.appendChild(newContainerDescriptionName);
-  newContainerDescriptionName.classList.add("main__photos__article__container__description__name");
-  newContainerDescriptionName.innerHTML = numberOfPicture[p].title
+}
+  ///// Bouton filtre par titre!////////
+let dateButton= document.getElementsByClassName("main__photos__allbutton__button__date");
+let titleButton= document.getElementsByClassName("main__photos__allbutton__button__title");
+let popButton= document.getElementsByClassName("main__photos__allbutton__button__popular")
+//function filtre les objet selon leur titre
+function compareTitle(a,b){
+  if (a.title < b.title)
+  return -1;
+  if (a.title >b.title)
+  return 0;
+}
+///EventListener du bouton date qui trie les objets et les recrééer
+titleButton[0].addEventListener("click",function(){
 
-
- newDiv= document.createElement("div");
-  newContainerDescription.appendChild(newDiv);
-  newSpan= document.createElement("span");
-   newSpan.classList.add("main__photos__article__container__description__like");
-   newDiv.appendChild(newSpan);
-   newSpan.innerHTML = numberOfPicture[p].likes
-    newSpan2= document.createElement("span");
-   newSpan2.classList.add("main__photos__article__container__description__heart");
-newDiv.appendChild(newSpan2);
-  
-newI= document.createElement("i")
-newSpan2.appendChild(newI);
-newI.classList.add("fas");
-newI.classList.add("fa-heart")
-newI.classList.add("heart_full")
-
-newI2= document.createElement("i")
-newSpan2.appendChild(newI2);
-newI2.classList.add("far");
-newI2.classList.add("fa-heart")
-newI2.classList.add("heart_empty")
-  }
-    
-  } //FIN BOUCLE
+numberOfPicture.sort(compareTitle)
+deleteMedia()
+pageMedia();
+})
+//
 
 
 
-//AUgmente les likes des photos ou diminue au2eme click
+
+//function filtre les objets selon leur DATE
+
+function compareDate(a,b){
+  return new Date(b.date) - new Date(a.date)
+}
+///EventListener du bouton date qui trie les objets et les recrééer
+dateButton[0].addEventListener("click",function(){
+
+  numberOfPicture.sort(compareDate)
+  deleteMedia()
+  pageMedia();
+  })
+  //
+
+
+///EventListener du bouton date qui trie les objets et les recrééer
+popButton[0].addEventListener("click",function(){
+  numberOfPicture.sort(compareLikes)
+  deleteMedia()
+  pageMedia();
+
+  })
+//AUgmente les likes des photos ou diminue au 2eme click
+
 let heartFull = document.getElementsByClassName("heart_full");
 
 for (var i=0; i < numberOfPicture.length; i++){
- 
-   
   (function (i){
 
-  likeButton[i].addEventListener("click", function(){
+      likeButton[i].addEventListener("click", function(){
   
      if (likeCount[i].innerHTML== numberOfPicture[i].likes) {
       resultLike ++;
@@ -208,36 +225,67 @@ for (var i=0; i < numberOfPicture.length; i++){
       resultLike --;
       totalLike[0].innerHTML = resultLike + "<i class='fas fa-heart main__like-price-button__number__heart'></i>";
        likeCount[i].innerHTML --;
-       heartFull[i].style.opacity= 0;
-       
+       heartFull[i].style.opacity= 0; 
      }
    
     })
-
   })
   (i)
 };
-    
+
+
+////Ouvre image en grand////
+let photoContainerImage= document.getElementsByClassName("main__photos__article__container__img")
+let bigPicture= document.getElementsByClassName("big-picture")
+let bigPictureClose= document.getElementsByClassName("big-picture__container__cross")
+let bigPictureImg= document.getElementsByClassName("big-picture__container__img")
+let header = document.getElementsByTagName("header");
+let main = document.getElementsByTagName("main")
+let bigPictureTitle= document.getElementsByClassName("big-picture__container__title")
+
+let leftArrow= document.getElementsByClassName("big-picture__container__left-arrow");
+let rightArrow= document.getElementsByClassName("big-picture__container__right-arrow");
+
+// change image à droite
+
+
+//ferme l'image
+bigPictureClose[0].addEventListener("click",function(){
+
+  bigPicture[0].style.display="none";
+  header[0].style.opacity="1";
+    main[0].style.opacity="1";
+})
+//ouvre l'image
+for (var i=0; i<numberOfPicture.length;i++) {
+(function (i){
+  photoContainerImage[i].addEventListener("click",function(){
+  
+    bigPicture[0].style.display="flex";
+    header[0].style.opacity="0.2";
+    main[0].style.opacity="0.2";
+    console.log(numberOfPicture[i-1])
+    bigPictureImg[0].setAttribute("src", "/images/sample photos/"+lastname+"/"+numberOfPicture[i].image)
+    bigPictureTitle[0].innerHTML= numberOfPicture[i].title
+    })
+  
+  leftArrow[0].addEventListener("click",function(){
+    bigPictureImg[0].setAttribute("src", "/images/sample photos/"+lastname+"/"+numberOfPicture[i].image)
+    console.log(bigPictureImg[0])
 
   
-            
+    })
+})(i)
+}
 
-  // remplir le bouton rose prix
-  let priceTag= document.getElementsByClassName("main__like-price-button__price");
-  priceTag[0].innerHTML= test3.price+ "€/jour";
-  
-  
-  
-  
-  
- 
-  
+
+
+
+
+
+
   })
 
-    
- 
-
    .catch(function(err) {
-    
-    
+ 
 });
