@@ -20,6 +20,20 @@ fetch('js/FishEyeData.json')
    const photoPicture = document.getElementById("photographer_picture");
    const nameForm = document.getElementById("name_Modale")
    var pictureDiv = document.getElementsByClassName("main__photos__article");
+   let heartFull = document.getElementsByClassName("heart_full");
+   let photoContainerImage= document.getElementsByClassName("main__photos__article__container__img")
+    let bigPicture= document.getElementsByClassName("big-picture")
+    let bigPictureClose= document.getElementsByClassName("big-picture__container__cross")
+    let bigPictureImg= document.getElementsByClassName("big-picture__container__img")
+    let header = document.getElementsByTagName("header");
+    let main = document.getElementsByTagName("main")
+    let bigPictureTitle= document.getElementsByClassName("big-picture__container__title")
+    let photoContainer= document.getElementsByClassName("main__photos__article__container")
+    let priceTag= document.getElementsByClassName("main__like-price-button__price");
+    let leftArrow= document.getElementsByClassName("big-picture__container__left-arrow");
+    let rightArrow= document.getElementsByClassName("big-picture__container__right-arrow");
+
+
   //cible les média par rapport au id du photographe
   let numberOfPicture= value.media.filter(x => x.photographerId == urlId);
   let totalLike= document.getElementsByClassName("main__like-price-button__number");
@@ -44,7 +58,7 @@ fetch('js/FishEyeData.json')
     
    }
   // remplir le bouton rose prix
-      let priceTag= document.getElementsByClassName("main__like-price-button__price");
+      
       priceTag[0].innerHTML= test3.price+ "€/jour";
 
   //garde le prénom du photographe pour créer le lien vers leur dossier image
@@ -145,11 +159,57 @@ fetch('js/FishEyeData.json')
     
   } 
 }
+function likeClick(i){
+  likeButton[i].addEventListener("click", function(){
+  
+    if (likeCount[i].innerHTML== numberOfPicture[i].likes) {
+     resultLike ++;
+     totalLike[0].innerHTML = resultLike + "<i class='fas fa-heart main__like-price-button__number__heart'></i>";
+      likeCount[i].innerHTML ++; 
+      heartFull[i].style.opacity= 1;
+      heartFull[i].style.transform= "scale(1.1, 1.1)";
+    } else {
+     resultLike --;
+     totalLike[0].innerHTML = resultLike + "<i class='fas fa-heart main__like-price-button__number__heart'></i>";
+      likeCount[i].innerHTML --;
+      heartFull[i].style.opacity= 0; 
+    }
+  
+   })
+}
+function imgListener(i){
+  photoContainerImage[i].addEventListener("click",function(){
+  
+    bigPicture[0].style.display="flex";
+    header[0].style.opacity="0.1";
+    main[0].style.opacity="0.1";
+    bigPictureImg[0].src= photoContainerImage[i].src
+    bigPictureTitle[0].innerHTML= numberOfPicture[i].title
+    return imageResult= i
+    })
+}
+
 pageMedia();
+for (var i=0; i < numberOfPicture.length; i++){
+  (function (i){
+    likeClick(i)
+     
+  })
+  (i)
+};
+for (var i=0; i<numberOfPicture.length;i++) {
+  
+  (function (i){
+    
+   imgListener(i);
+    
+    
+  })(i)
+  }
   
   //FIN BOUCLE
 ////function qui détruit les médias créés
-let photoContainer= document.getElementsByClassName("main__photos__article__container")
+
 
 function deleteMedia(){
   
@@ -171,12 +231,19 @@ function compareTitle(a,b){
   if (a.title >b.title)
   return 0;
 }
-///EventListener du bouton date qui trie les objets et les recrééer
+///EventListener du bouton titre qui trie les objets et les recrééer
 titleButton[0].addEventListener("click",function(){
+  resultLike=0;
+        numberOfPicture.sort(compareTitle)
+        deleteMedia()
+        pageMedia();
 
-numberOfPicture.sort(compareTitle)
-deleteMedia()
-pageMedia();
+        for (var i=0; i<numberOfPicture.length;i++) {
+          (function (i){
+          imgListener(i);
+          likeClick(i)
+          })(i)
+          }
 })
 //
 
@@ -190,70 +257,33 @@ function compareDate(a,b){
 }
 ///EventListener du bouton date qui trie les objets et les recrééer
 dateButton[0].addEventListener("click",function(){
-
-  numberOfPicture.sort(compareDate)
-  deleteMedia()
-  pageMedia();
-  for (var i=0; i<numberOfPicture.length;i++) {
-    (function (i){
-     imgListener(i);
-    })(i)
-    }
+  resultLike=0;
+      numberOfPicture.sort(compareDate)
+      deleteMedia()
+      pageMedia();
+      for (var i=0; i<numberOfPicture.length;i++) {
+        (function (i){
+        imgListener(i);
+        likeClick(i)
+        })(i)
+        }
   })
   //
 
 
-///EventListener du bouton date qui trie les objets et les recrééer
+///EventListener du bouton populaire qui trie les objets et les recrééer
 popButton[0].addEventListener("click",function(){
-  numberOfPicture.sort(compareLikes)
-  deleteMedia()
-  pageMedia();
-  for (var i=0; i<numberOfPicture.length;i++) {
-    (function (i){
-     imgListener(i);
-    })(i)
-    }
-
+  resultLike=0;
+      numberOfPicture.sort(compareLikes)
+      deleteMedia()
+      pageMedia();
+      for (var i=0; i<numberOfPicture.length;i++) {
+        (function (i){
+        imgListener(i);
+        likeClick(i)
+        })(i)
+        }
   })
-//AUgmente les likes des photos ou diminue au 2eme click
-
-let heartFull = document.getElementsByClassName("heart_full");
-
-for (var i=0; i < numberOfPicture.length; i++){
-  (function (i){
-
-      likeButton[i].addEventListener("click", function(){
-  
-     if (likeCount[i].innerHTML== numberOfPicture[i].likes) {
-      resultLike ++;
-      totalLike[0].innerHTML = resultLike + "<i class='fas fa-heart main__like-price-button__number__heart'></i>";
-       likeCount[i].innerHTML ++; 
-       heartFull[i].style.opacity= 1;
-       heartFull[i].style.transform= "scale(1.1, 1.1)";
-     } else {
-      resultLike --;
-      totalLike[0].innerHTML = resultLike + "<i class='fas fa-heart main__like-price-button__number__heart'></i>";
-       likeCount[i].innerHTML --;
-       heartFull[i].style.opacity= 0; 
-     }
-   
-    })
-  })
-  (i)
-};
-
-
-////Ouvre image en grand////
-let photoContainerImage= document.getElementsByClassName("main__photos__article__container__img")
-let bigPicture= document.getElementsByClassName("big-picture")
-let bigPictureClose= document.getElementsByClassName("big-picture__container__cross")
-let bigPictureImg= document.getElementsByClassName("big-picture__container__img")
-let header = document.getElementsByTagName("header");
-let main = document.getElementsByTagName("main")
-let bigPictureTitle= document.getElementsByClassName("big-picture__container__title")
-
-let leftArrow= document.getElementsByClassName("big-picture__container__left-arrow");
-let rightArrow= document.getElementsByClassName("big-picture__container__right-arrow");
 
 
 
@@ -266,28 +296,9 @@ bigPictureClose[0].addEventListener("click",function(){
     main[0].style.opacity="1";
 })
 //ouvre l'image
-function imgListener(i){
-  photoContainerImage[i].addEventListener("click",function(){
-  
-    bigPicture[0].style.display="flex";
-    //header[0].style.opacity="1";
-    main[0].style.opacity="0.1";
-    bigPictureImg[0].src= photoContainerImage[i].src
-    bigPictureTitle[0].innerHTML= numberOfPicture[i].title
-    return imageResult= i
-    })
-}
 
 
-for (var i=0; i<numberOfPicture.length;i++) {
-  
-(function (i){
-  
- imgListener(i);
-  
-  
-})(i)
-}
+
 function videoInMedia () {
   
   if (numberOfPicture[imageResult].image==undefined){// si l'image précédente est une video
@@ -306,33 +317,33 @@ function videoInMedia () {
 }
 leftArrow[0].addEventListener("click",function(){
 
-if(imageResult<=0){
-  imageResult += numberOfPicture.length -1;
-   bigPictureImg[0].src= photoContainerImage[imageResult].src;
- bigPictureTitle[0].innerHTML= numberOfPicture[imageResult].title ;
-}else {
-imageResult --
- bigPictureImg[0].src= photoContainerImage[imageResult].src;
- bigPictureTitle[0].innerHTML= numberOfPicture[imageResult].title ;
- 
- }
- videoInMedia()
+        if(imageResult<=0){
+          imageResult += numberOfPicture.length -1;
+          bigPictureImg[0].src= photoContainerImage[imageResult].src;
+        bigPictureTitle[0].innerHTML= numberOfPicture[imageResult].title ;
+        }else {
+        imageResult --
+        bigPictureImg[0].src= photoContainerImage[imageResult].src;
+        bigPictureTitle[0].innerHTML= numberOfPicture[imageResult].title ;
+        
+        }
+        videoInMedia()
   
 })
 
 rightArrow[0].addEventListener("click",function(){
   
- if (imageResult==numberOfPicture.length -1){
-  imageResult =0;
-  console.log(imageResult)
-  bigPictureImg[0].src= photoContainerImage[0].src;
-  bigPictureTitle[0].innerHTML= numberOfPicture[0].title ;
-  }else {
-imageResult ++
-bigPictureImg[0].src= photoContainerImage[imageResult].src
-bigPictureTitle[0].innerHTML= numberOfPicture[imageResult].title
-}
-videoInMedia()
+      if (imageResult==numberOfPicture.length -1){
+        imageResult =0;
+        console.log(imageResult)
+        bigPictureImg[0].src= photoContainerImage[0].src;
+        bigPictureTitle[0].innerHTML= numberOfPicture[0].title ;
+        }else {
+      imageResult ++
+      bigPictureImg[0].src= photoContainerImage[imageResult].src
+      bigPictureTitle[0].innerHTML= numberOfPicture[imageResult].title
+      }
+      videoInMedia()
 })
 
 
