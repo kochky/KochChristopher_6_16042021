@@ -5,65 +5,29 @@ fetch('/js/FishEyeData.json')
     } else {alert ("test")}
   })
   .then(function(value) {
-      var numberOfPhotographers = value.photographers.length;
+      var gridDiv = document.getElementById("grid");
+      var tagsList = document.getElementsByClassName("header__navbar__liste");
+      let tagsContainer= document.getElementsByClassName("tagsContainer");
+      let tagsButtonNavbar = document.getElementsByClassName("header__navbar__liste__tags")
 //créer les div pour afficher les photographes disponibles sur le json
 var tagsArray= [];
-    for (var i=0; i < numberOfPhotographers; i++) { 
-        const newElt = document.createElement("a");
-        const photographContainer= document.createElement("div")
-        const photographPhoto= document.createElement("img")
-        const photographName = document.createElement("div");
-        const city = document.createElement("div");
-        const photo = document.createElement("div");
-        const description = document.createElement("div");
-        const prix = document.createElement("div");
-        var tagDiv= document.createElement("div")
-        var testDiv = document.getElementById("grid");
-        var tagsList = document.getElementsByClassName("header__navbar__liste");
-        testDiv.appendChild(newElt);
-        newElt.classList.add("index__main__grid__photographe");
-        newElt.appendChild(photographContainer);
-        newElt.id= value['photographers'][i]['id'];
-        newElt.setAttribute("href","photograph.html?"+newElt.id);
-        photographContainer.className= "index__main__grid__photographe__container";
-        photographContainer.appendChild(photographPhoto);
-        photographPhoto.classList.add("index__main__grid__photographe__container__photo");
-        newElt.appendChild(photographName);
-        photographName.classList.add("index__main__grid__photographe__nom");
-        newElt.appendChild(city);
-        city.classList.add("index__main__grid__photographe__localisation");
-        newElt.appendChild(description);
-        description.classList.add("index__main__grid__photographe__description");
-        newElt.appendChild(prix);
-        prix.classList.add("index__main__grid__photographe__prix");
-        photographPhoto.setAttribute("src", "/images/sample photos/Photographers ID Photos/"+value ['photographers'][i]['portrait']+" ")
-        photographName.innerHTML = value['photographers'][i]['name'];
-        city.innerHTML = value['photographers'][i]['city']+","+value['photographers'][i]['country'];
-        description.innerHTML = value['photographers'][i]['tagline'];
-        prix.innerHTML = value['photographers'][i]['price']+"€";
-        newElt.appendChild(tagDiv);
-        tagDiv.className= "tagsContainer"
+    for (var i=0; i < value.photographers.length; i++) { 
+       
         var numberOfTags = value.photographers[i].tags.length;
-        
-        
+        gridDiv.innerHTML +=  "<a id="+value['photographers'][i]['id']+" href=photograph.html?"+value['photographers'][i]['id']+" class=index__main__grid__photographe><div class=index__main__grid__photographe__container> <img src=/images/sample%20photos/Photographers%20ID%20Photos/"+value['photographers'][i]['portrait']+" class=index__main__grid__photographe__container__photo></div><div class=index__main__grid__photographe__nom>"+value['photographers'][i]['name']+"</div> <div class=index__main__grid__photographe__localisation>"+value['photographers'][i]['city']+","+value['photographers'][i]['country']+"</div> <div class=index__main__grid__photographe__description>"+value['photographers'][i]['tagline']+"</div> <div class=index__main__grid__photographe__prix>"+value['photographers'][i]['price']+"€</div><div class=tagsContainer> </div></a>";
+        console.log("test")
+  
         for (var h=0; h < numberOfTags; h++) {
-         
-            var tags = document.createElement("div");
-            tagDiv.appendChild(tags)
-            tags.classList.add("index__main__grid__photographe__tags");
-            tags.innerHTML= "#"+value['photographers'][i]['tags'][h];
-            var tagsArrayPush =  tagsArray.push(value.photographers[i].tags[h])//créer le tableau sans doublon
-            
-
-           
+          
+       
+          tagsContainer[i].innerHTML += "<div class=index__main__grid__photographe__tags>#"+value['photographers'][i]['tags'][h]+"</div> " 
+          var tagsArrayPush =  tagsArray.push(value.photographers[i].tags[h])//créer le tableau sans doublon  
         }     
 
     }
     var arrayNoDouble = Array.from(new Set(tagsArray)); //supprime les doublons de array
-    
-    let numberOfTagsNavbar = arrayNoDouble.length;
 
-    for (var x=0; x < numberOfTagsNavbar; x++) {
+    for (var x=0; x <  arrayNoDouble.length; x++) {
       var newTagsNavbar = document.createElement("li");
            
             tagsList[0].appendChild(newTagsNavbar);
@@ -77,8 +41,8 @@ var tagsArray= [];
 //////////////////////////////////////////////////////////////////////////////////
 
 
-let tagsButtonNavbar = document.getElementsByClassName("header__navbar__liste__tags")
-let tagsContainer= document.getElementsByClassName("tagsContainer")
+
+
 let tagsButtonNavbarArray=[];
 let tagEnable=[]
 

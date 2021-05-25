@@ -69,54 +69,18 @@ fetch('js/FishEyeData.json')
    var resultLike =0;
   
 // structure des images 
-   function mediaMaker(p){
-    
-      var newPicture= document.createElement("div");
-      
-      pictureDiv[0].appendChild(newPicture);
-      newPicture.classList.add("main__photos__article__container")
-      newPicture.appendChild(newMedia);
-      newContainerDescription = document.createElement("div");
-      newContainerDescription.classList.add("main__photos__article__container__description");
-      newPicture.appendChild(newContainerDescription);
-    
-      newContainerDescriptionName = document.createElement("span");
-      newContainerDescription.appendChild(newContainerDescriptionName);
-      newContainerDescriptionName.classList.add("main__photos__article__container__description__name");
-      newContainerDescriptionName.innerHTML = numberOfPicture[p].title
-    
-    
-      newDiv= document.createElement("div");
-      newContainerDescription.appendChild(newDiv);
-      newSpan= document.createElement("span");
-      newSpan.classList.add("main__photos__article__container__description__like");
-      newDiv.appendChild(newSpan);
-      newSpan.innerHTML = numberOfPicture[p].likes;
-        newSpan2= document.createElement("span");
-      newSpan2.classList.add("main__photos__article__container__description__heart");
-      newDiv.appendChild(newSpan2);
-    
-      newI= document.createElement("i")
-      newSpan2.appendChild(newI);
-      newI.classList.add("fas");
-      newI.classList.add("fa-heart")
-      newI.classList.add("heart_full")
-    
-      newI2= document.createElement("i")
-      newSpan2.appendChild(newI2);
-      newI2.classList.add("far");
-      newI2.classList.add("fa-heart")
-      newI2.classList.add("heart_empty")
-  }
+  
 
    /////boucle création de média +likes///////////////////////////////////////////////////////////////////////////////////
 
    function pageMedia () {
   for (var p=0; p < numberOfPicture.length; p++) {
-          
+   
       
           //créer les div des images
             if (numberOfPicture[p].image !=undefined) {
+              pictureDiv[0].innerHTML+="<div class=main__photos__article__container><img src=/images/sample%20photos/"+lastname+"/"+numberOfPicture[p].image+" class=main__photos__article__container__img><div class=main__photos__article__container__description><span class=main__photos__article__container__description__name >"+numberOfPicture[p].title+"</span><div><span class=main__photos__article__container__description__like>"+numberOfPicture[p].likes+"</span><span class=main__photos__article__container__description__heart><i class='fas fa-heart heart_full'></i><i class='far fa-heart heart_empty'></i></span></div></div></div>"
+
             newMedia = document.createElement("img");
             newMedia.classList.add("main__photos__article__container__img");
             newMedia.setAttribute("src", "/images/sample photos/"+lastname+"/"+numberOfPicture[p].image);
@@ -125,20 +89,13 @@ fetch('js/FishEyeData.json')
 
         //créer les div des video
             else if (numberOfPicture[p].video !=undefined) {
+              console.log("ok")
+              pictureDiv[0].innerHTML+="<div class=main__photos__article__container><video controls class=main__photos__article__container__img><source src=/images/sample%20photos/"+lastname+"/"+numberOfPicture[p].video+ " type=video/mp4></video><div class=main__photos__article__container__description><span class=main__photos__article__container__description__name >"+numberOfPicture[p].title+"</span><div><span class=main__photos__article__container__description__like>"+numberOfPicture[p].likes+"</span><span class=main__photos__article__container__description__heart><i class='fas fa-heart heart_full'></i><i class='far fa-heart heart_empty'></i></span></div></div></div>"
 
-          newMedia = document.createElement("video");
-        newMedia.setAttribute("controls","");
-        newMedia.classList.add("main__photos__article__container__img");
-        newSource= document.createElement("source");
-        newMedia.appendChild(newSource)
-          newSource.setAttribute("src", "/images/sample photos/"+lastname+"/"+numberOfPicture[p].video);
-          newSource.setAttribute("type", "video/mp4");
-          
-          
-          
           
           }
-          mediaMaker(p)
+      
+          
     
   } 
 }
