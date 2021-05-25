@@ -24,14 +24,9 @@
   let dateButton= document.getElementsByClassName("main__photos__allbutton__button__date");
   let titleButton= document.getElementsByClassName("main__photos__allbutton__button__title");
   let popButton= document.getElementsByClassName("main__photos__allbutton__button__popular")
-  
+  let allButton = document.getElementsByClassName("main__photos__allbutton")
  // récupère l'id dans l'url
  let urlId = window.location.search.slice(1);
-
-
-
-
-
 
 fetch('js/FishEyeData.json')
   .then(function(res) {
@@ -207,6 +202,8 @@ function filterBy(e) {
     })(i)
     }
 }
+
+
       //function filtre les objet selon leur titre
       function compareTitle(a,b){
         if (a.title < b.title)
@@ -216,9 +213,13 @@ function filterBy(e) {
       }
       ///EventListener du bouton titre qui trie les objets et les recrééer
       titleButton[0].addEventListener("click",function(){
-          filterBy(compareTitle)
+          filterBy(compareTitle);
+          allButton[0].insertBefore(titleButton[0],allButton[0].children[0]);
+          allButton[0].insertBefore(allButton[0].children[2],allButton[0].children[1]);
+          radiusButton ()
       })
     
+
 
       //function filtre les objets selon leur DATE
       function compareDate(a,b){
@@ -226,8 +227,13 @@ function filterBy(e) {
       }
       ///EventListener du bouton date qui trie les objets et les recrééer
       dateButton[0].addEventListener("click",function(){
-        filterBy(compareDate)
+        filterBy(compareDate);
+        allButton[0].insertBefore(dateButton[0],allButton[0].children[0]);
+        allButton[0].insertBefore(allButton[0].children[2],allButton[0].children[1]);
+        radiusButton ()
+
         })
+
 
 
       //// Trier selon le nombre de likes////
@@ -236,18 +242,35 @@ function filterBy(e) {
         return 0
         if (a.likes >b.likes)
         return -1;
-      }
-      
+      } 
       ///EventListener du bouton populaire qui trie les objets et les recrééer
       popButton[0].addEventListener("click",function(){
         filterBy(compareLikes);
+        allButton[0].insertBefore(popButton[0],allButton[0].children[0]);
+        allButton[0].insertBefore(allButton[0].children[2],allButton[0].children[1]);
+        radiusButton ()
         })
 
+function radiusButton () {
 
+  allButton[0].children[0].style.borderTopLeftRadius= "5px";
+  allButton[0].children[0].style.borderTopRightRadius= "5px";
+  allButton[0].children[2].style.borderBottomLeftRadius= "5px";
+  allButton[0].children[2].style.borderBottomRightRadius= "5px";
+  allButton[0].children[1].style.borderTopLeftRadius= "0px";
+  allButton[0].children[1].style.borderTopRightRadius= "0px";
+  allButton[0].children[1].style.borderBottomLeftRadius= "0px";
+  allButton[0].children[1].style.borderBottomRightRadius= "0px";
+  allButton[0].children[0].style.borderBottomLeftRadius= "0px";
+  allButton[0].children[0].style.borderBottomRightRadius= "0px";
+  allButton[0].children[2].style.borderTopLeftRadius= "0px";
+  allButton[0].children[2].style.borderTopRightRadius= "0px";
+}
 //Function qui se lance au lancement de la page
 
 numberOfPicture.sort(compareLikes);
 pageMedia();
+radiusButton ();
 for (var i=0; i < numberOfPicture.length; i++){
   (function (i){
     likeClick(i);
@@ -317,6 +340,3 @@ rightArrow[0].addEventListener("click",function(){
 
   })
 
-   .catch(function(err) {
- 
-});

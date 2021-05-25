@@ -111,12 +111,13 @@
 
 
     &__photos { 
-
+        position: relative;
         &__sort {
             font-size:18px;
             font-weight:700;
             line-height: 70px;
             margin-right:30px;
+            vertical-align: top;
             @media screen and (max-width:568px) {
                 display:none;
             }
@@ -126,60 +127,80 @@
             @media screen and (max-width:568px) {
                 display:none;
             }
-            position:relative;
+            & button:nth-last-of-type(2){
+                transform-origin: 50% 0%;
+                transform:scaleY(0);
+                width:0;
+            }
+            & button:last-of-type{
+                transform-origin: 50% 0%;
+                transform:scaleY(0);
+                width:0;
+            }
+            display:inline-block;
+            position:absolute;
+            z-index:90;
             font-size: 18px;
             font-weight: bold;
-            padding:0 10px;
-            width:170px;
-            border-radius:0 0 5px 5px;
-            &:hover .main__photos__allbutton__button__date{
+            width:175px;
+           
+            &:hover button:nth-last-of-type(2){
                 animation: submenu 200ms;
                 animation-fill-mode: forwards;
+                width:170px;
           
                
             }
-            &:hover .main__photos__allbutton__button__title{
+            &:hover button:last-of-type{
                 animation: submenu 200ms;
                 animation-fill-mode: forwards;
                 animation-delay:200ms;
+                width:170px;
+                
                
             }
-            &:hover .arrow{
+             &:hover .arrow{
                 transform:rotate(-180deg)
-            }
-        
+             }
+           
             &__button {
-                margin-left:25px;
-                padding:0 10px;
+
                 &__popular {
+            
                     box-sizing: border-box;
-                    position:absolute;
+                    height:70;
+                    text-align:left;
+                    padding-left:25px;
+                    border-bottom:1px solid white;
+                    border-left:1px solid white;
+                    border-right:1px solid white;
+                    border-radius:0;
+                   
                 }
                 &__date {
-                    position:absolute;
-                    top:45px;
-                    z-index:90;
+                   
                     height:70;
                     box-sizing: border-box;
                     border-radius:0;
-                    border-top:1px solid white;
+                    border-left:1px solid white;
+                    border-right:1px solid white;
                     border-bottom:1px solid white;
                     padding-left:25px;
                     text-align:left;
-                    transform-origin: 50% 0%;
-                    transform:scaleY(0)
+                   
                   
                 }
                 &__title {
-                    position:absolute;
-                    top:115px;
-                    z-index:90;
+            
                     box-sizing: border-box;
                     height:70px;
                     text-align:left;
                     padding-left:25px;
-                    transform-origin: 50% 0%;
-                    transform:scaleY(0)
+                   
+                    border-radius:0;
+                    border-bottom:1px solid white;
+                    border-left:1px solid white;
+                    border-right:1px solid white;
                 
                 }
             }
@@ -268,4 +289,10 @@
          }
 
     }
+}
+.arrow {
+    position:absolute;
+    left: 70%;
+    top:12%;
+    color:white;
 }
