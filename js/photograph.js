@@ -114,16 +114,13 @@ fetch('js/FishEyeData.json')
    function pageMedia () {
   for (var p=0; p < numberOfPicture.length; p++) {
           
-            //fait le total des likes à afficher en bas
-          resultLike +=numberOfPicture[p].likes  
-          totalLike[0].innerHTML = resultLike + "<i class='fas fa-heart main__like-price-button__number__heart'></i>";
-            
+      
           //créer les div des images
             if (numberOfPicture[p].image !=undefined) {
             newMedia = document.createElement("img");
             newMedia.classList.add("main__photos__article__container__img");
             newMedia.setAttribute("src", "/images/sample photos/"+lastname+"/"+numberOfPicture[p].image);
-            mediaMaker(p)
+           
           }
 
         //créer les div des video
@@ -136,31 +133,47 @@ fetch('js/FishEyeData.json')
         newMedia.appendChild(newSource)
           newSource.setAttribute("src", "/images/sample photos/"+lastname+"/"+numberOfPicture[p].video);
           newSource.setAttribute("type", "video/mp4");
-          mediaMaker(p)
+          
           
           
           
           }
+          mediaMaker(p)
     
   } 
 }
-function likeClick(i){
-  likeButton[i].addEventListener("click", function(){
-  
-    if (likeCount[i].innerHTML== numberOfPicture[i].likes) {
-     resultLike ++;
-     totalLike[0].innerHTML = resultLike + "<i class='fas fa-heart main__like-price-button__number__heart'></i>";
-      likeCount[i].innerHTML ++; 
-      heartFull[i].style.opacity= 1;
-      heartFull[i].style.transform= "scale(1.1, 1.1)";
-    } else {
-     resultLike --;
-     totalLike[0].innerHTML = resultLike + "<i class='fas fa-heart main__like-price-button__number__heart'></i>";
-      likeCount[i].innerHTML --;
-      heartFull[i].style.opacity= 0; 
+function allLikes() {
+  resultLike=0;
+for (var y=0; y<numberOfPicture.length; y++) {
+  resultLike +=numberOfPicture[y].likes;
+}
+totalLike[0].innerHTML = resultLike + "<i class='fas fa-heart main__like-price-button__number__heart'></i>";
+}
+function alreadyClick(i) {
+ 
+    if (numberOfPicture[i].alreadyLike) {
+      heartFull[i].style.opacity= 1
+    }else {
+      heartFull[i].style.opacity= 0;
     }
   
-   })
+}
+function likeClick(i){
+  likeButton[i].addEventListener("click", function(){
+  if (numberOfPicture[i].alreadyLike){
+    numberOfPicture[i].likes --;
+    numberOfPicture[i].alreadyLike= false;
+    heartFull[i].style.opacity= 0; 
+
+  }else {
+    numberOfPicture[i].likes ++;
+    numberOfPicture[i].alreadyLike= true;
+    heartFull[i].style.opacity= 1; 
+    heartFull[i].style.transform= "scale(1.1, 1.1)";
+   }
+   likeCount[i].innerHTML=numberOfPicture[i].likes;
+   allLikes()
+  })
 }
 function imgListener(i){
   photoContainerImage[i].addEventListener("click",function(){
@@ -198,7 +211,8 @@ function filterBy(e) {
   for (var i=0; i<numberOfPicture.length;i++) {
     (function (i){
     imgListener(i);
-    likeClick(i)
+    likeClick(i);
+    alreadyClick(i)
     })(i)
     }
 }
@@ -266,15 +280,18 @@ function radiusButton () {
   allButton[0].children[2].style.borderTopLeftRadius= "0px";
   allButton[0].children[2].style.borderTopRightRadius= "0px";
 }
-//Function qui se lance au lancement de la page
-
+///////////////////////////////////////////////////////////////////////////////
+//Function qui se lance au lancement de la page////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 numberOfPicture.sort(compareLikes);
 pageMedia();
+allLikes();
 radiusButton ();
 for (var i=0; i < numberOfPicture.length; i++){
   (function (i){
     likeClick(i);
     imgListener(i);
+    
   })
   (i)
 };

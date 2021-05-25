@@ -19,22 +19,12 @@ var tagsArray= [];
         const prix = document.createElement("div");
         var tagDiv= document.createElement("div")
         var testDiv = document.getElementById("grid");
-        
-
         var tagsList = document.getElementsByClassName("header__navbar__liste");
-        
-       
-       
-
-      
-
-
         testDiv.appendChild(newElt);
         newElt.classList.add("index__main__grid__photographe");
         newElt.appendChild(photographContainer);
         newElt.id= value['photographers'][i]['id'];
         newElt.setAttribute("href","photograph.html?"+newElt.id);
-        
         photographContainer.className= "index__main__grid__photographe__container";
         photographContainer.appendChild(photographPhoto);
         photographPhoto.classList.add("index__main__grid__photographe__container__photo");
