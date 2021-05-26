@@ -132,51 +132,29 @@
             & button:nth-last-of-type(2){
                 transform-origin: 50% 0%;
                 transform:scaleY(0);
-                width:0;
+                transition:all 200ms 0ms;
+              
+                
             }
             & button:last-of-type{
                 transform-origin: 50% 0%;
                 transform:scaleY(0);
-                width:0;
+                transition:all 200ms 200ms;
+              
+               
             }
             display:inline-block;
             position:absolute;
             z-index:90;
             font-size: 18px;
             font-weight: bold;
-            width:175px;
-            & button.firstChild:active button:nth-last-of-type(2)   {
-                    animation: submenu 200ms;
-                    animation-fill-mode: forwards;
-                    width:170px;
-
-            }
-            &:hover button:nth-last-of-type(2){
-                animation: submenu 200ms;
-                animation-fill-mode: forwards;
-                width:170px;
-          
-               
-            }
-            &:hover button:last-of-type{
-                animation: submenu 200ms;
-                animation-fill-mode: forwards;
-                animation-delay:200ms;
-                width:170px;
-                
-               
-            }
-             &:hover .arrow{
-                transform:rotate(-180deg)
-                
-             }
-           
+            width:175px; 
             &__button {
                
                 &__popular {
             
                     box-sizing: border-box;
-                    height:70;
+                  
                     text-align:left;
                     padding-left:25px;
                     border-bottom:1px solid white;
@@ -187,7 +165,7 @@
                 }
                 &__date {
                    
-                    height:70;
+                    
                     box-sizing: border-box;
                     border-radius:0;
                     border-left:1px solid white;
@@ -201,7 +179,7 @@
                 &__title {
             
                     box-sizing: border-box;
-                    height:70px;
+        
                     text-align:left;
                     padding-left:25px;
                    
@@ -212,11 +190,6 @@
                 
                 }
             }
-        }
-        @keyframes submenu {
-            0% {transform:scaleY(0)}
-            100%{transform:scaleY(1)}
-            
         }
         &__article {
            position:relative;
@@ -301,6 +274,6 @@
 .arrow {
     position:absolute;
     left: 70%;
-    top:12%;
+    top:25px;
     color:white;
 }

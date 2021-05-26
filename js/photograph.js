@@ -25,7 +25,8 @@
   let titleButton= document.getElementsByClassName("main__photos__allbutton__button__title");
   let popButton= document.getElementsByClassName("main__photos__allbutton__button__popular")
   let allButton = document.getElementsByClassName("main__photos__allbutton");
-  let buttonLightbox= document.getElementsByClassName("openLightbox")
+  let buttonLightbox= document.getElementsByClassName("openLightbox");
+  let arrowButton= document.getElementsByClassName("arrow");
  // récupère l'id dans l'url
  let urlId = window.location.search.slice(1);
 
@@ -86,7 +87,6 @@ fetch('js/FishEyeData.json')
 
         //créer les div des video
             else if (numberOfPicture[p].video !=undefined) {
-              console.log("ok")
               pictureDiv[0].innerHTML+="<article class=main__photos__article__container aria-label='"+numberOfPicture[p].title+"'><video  alt='"+numberOfPicture[p].alt+"' controls class=main__photos__article__container__img><source src=/images/sample%20photos/"+lastname+"/"+numberOfPicture[p].video+ " type=video/mp4></video><div class=main__photos__article__container__description><span class=main__photos__article__container__description__name >"+numberOfPicture[p].title+"</span><div><span class=main__photos__article__container__description__like>"+numberOfPicture[p].likes+"</span><button aria-label='Ouvrir la photo "+numberOfPicture[p].title +" en grand' class=openLightbox></button><button aria-label='Aimer la     video' class=main__photos__article__container__description__heart><i class='fas fa-heart heart_full'></i><i class='far fa-heart heart_empty'></i></button></div></div></article>"
 
           
@@ -143,7 +143,7 @@ function deleteMedia(){
 }
 
 //////////////////////////////////////////////////////////////////////
-///// Bouton filtre par titre!////////////////////////////////////////
+///// Bouton filtre ////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////
 
 
@@ -161,6 +161,43 @@ function filterBy(e) {
     }
 }
 
+//////Animation bouton filtre
+let clicked;
+function animationButton(){
+
+console.log(clicked)
+allButton[0].children[0].addEventListener("click",function(){
+  
+  if (clicked!=true){
+  clicked= true;
+  allButton[0].children[0].style.transform="scaleY(1)"
+   arrowButton[0].style.transform="rotate(-180deg)"
+   allButton[0].children[1].style.transitionDelay=" 0ms";
+    allButton[0].children[2].style.transitionDelay="200ms";
+   allButton[0].children[1].style.transform="scaleY(1)"
+   allButton[0].children[2].style.transform="scaleY(1)"
+  } 
+
+})
+body[0].addEventListener("click",function(e){
+
+  if (e.target== allButton[0].children[0]){}
+  else  {
+    clicked=false;
+    allButton[0].children[1].style.transitionDelay=" 200ms";
+    allButton[0].children[2].style.transitionDelay="0ms";
+    allButton[0].children[1].style.transform='scaleY(0)';
+    allButton[0].children[2].style.transform="scaleY(0)";
+    arrowButton[0].style.transform="rotate(0deg)"
+  
+  }
+  
+  
+  
+  })
+}
+
+
 
       //function filtre les objet selon leur titre
       function compareTitle(a,b){
@@ -171,11 +208,12 @@ function filterBy(e) {
       }
       ///EventListener du bouton titre qui trie les objets et les recrééer
       titleButton[0].addEventListener("click",function(){
+        if ( titleButton[0] !== allButton[0].children[0])
           filterBy(compareTitle);
           allButton[0].insertBefore(titleButton[0],allButton[0].children[0]);
-          allButton[0].insertBefore(allButton[0].children[2],allButton[0].children[1]);
-          radiusButton ()
-      })
+          radiusButton ();
+          animationButton();
+      })        
     
 
 
@@ -185,10 +223,11 @@ function filterBy(e) {
       }
       ///EventListener du bouton date qui trie les objets et les recrééer
       dateButton[0].addEventListener("click",function(){
+        if ( dateButton[0] !== allButton[0].children[0])
         filterBy(compareDate);
         allButton[0].insertBefore(dateButton[0],allButton[0].children[0]);
-        allButton[0].insertBefore(allButton[0].children[2],allButton[0].children[1]);
-        radiusButton ()
+        radiusButton ();
+        animationButton();
 
         })
 
@@ -203,10 +242,11 @@ function filterBy(e) {
       } 
       ///EventListener du bouton populaire qui trie les objets et les recrééer
       popButton[0].addEventListener("click",function(){
+        if ( popButton[0] !== allButton[0].children[0])
         filterBy(compareLikes);
         allButton[0].insertBefore(popButton[0],allButton[0].children[0]);
-        allButton[0].insertBefore(allButton[0].children[2],allButton[0].children[1]);
         radiusButton ()
+        animationButton();
         })
 
 function radiusButton () {
@@ -337,6 +377,7 @@ numberOfPicture.sort(compareLikes);
 pageMedia();
 allLikes();
 radiusButton ();
+animationButton();
 for (var i=0; i < numberOfPicture.length; i++){
   (function (i){
     likeClick(i);
