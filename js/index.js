@@ -2,7 +2,7 @@ fetch('/js/FishEyeData.json')
   .then(function(res) {
     if (res.ok) {
       return res.json(); 
-    } else {alert ("test")}
+    }
   })
   .then(function(value) {
       var gridDiv = document.getElementById("grid");
@@ -10,16 +10,14 @@ fetch('/js/FishEyeData.json')
       let tagsContainer= document.getElementsByClassName("tagsContainer");
       let tagsButtonNavbar = document.getElementsByClassName("header__navbar__liste__tags")
 //créer les div pour afficher les photographes disponibles sur le json
-var tagsArray= [];
+    var tagsArray= [];
     for (var i=0; i < value.photographers.length; i++) { 
        
         var numberOfTags = value.photographers[i].tags.length;
-        gridDiv.innerHTML +=  "<a id="+value['photographers'][i]['id']+" href=photograph.html?"+value['photographers'][i]['id']+" class=index__main__grid__photographe><div class=index__main__grid__photographe__container> <img src=/images/sample%20photos/Photographers%20ID%20Photos/"+value['photographers'][i]['portrait']+" class=index__main__grid__photographe__container__photo></div><div class=index__main__grid__photographe__nom>"+value['photographers'][i]['name']+"</div> <div class=index__main__grid__photographe__localisation>"+value['photographers'][i]['city']+","+value['photographers'][i]['country']+"</div> <div class=index__main__grid__photographe__description>"+value['photographers'][i]['tagline']+"</div> <div class=index__main__grid__photographe__prix>"+value['photographers'][i]['price']+"€</div><div class=tagsContainer> </div></a>";
-        console.log("test")
-  
+        gridDiv.innerHTML +=  "<a aria-label='card de "+value['photographers'][i]['name']+"' id="+value['photographers'][i]['id']+" href=photograph.html?"+value['photographers'][i]['id']+" class=index__main__grid__photographe><div class=index__main__grid__photographe__container> <img src=/images/sample%20photos/Photographers%20ID%20Photos/"+value['photographers'][i]['portrait']+" class=index__main__grid__photographe__container__photo></div><div class=index__main__grid__photographe__nom>"+value['photographers'][i]['name']+"</div> <div class=index__main__grid__photographe__localisation>"+value['photographers'][i]['city']+","+value['photographers'][i]['country']+"</div> <div class=index__main__grid__photographe__description>"+value['photographers'][i]['tagline']+"</div> <div class=index__main__grid__photographe__prix>"+value['photographers'][i]['price']+"€</div><div class=tagsContainer> </div></a>";
+     
         for (var h=0; h < numberOfTags; h++) {
           
-       
           tagsContainer[i].innerHTML += "<div class=index__main__grid__photographe__tags>#"+value['photographers'][i]['tags'][h]+"</div> " 
           var tagsArrayPush =  tagsArray.push(value.photographers[i].tags[h])//créer le tableau sans doublon  
         }     
@@ -28,25 +26,21 @@ var tagsArray= [];
     var arrayNoDouble = Array.from(new Set(tagsArray)); //supprime les doublons de array
 
     for (var x=0; x <  arrayNoDouble.length; x++) {
-      var newTagsNavbar = document.createElement("li");
+      var newTagsNavbar = document.createElement("button");
            
             tagsList[0].appendChild(newTagsNavbar);
             newTagsNavbar.className="header__navbar__liste__tags";
             newTagsNavbar.innerHTML= "#"+arrayNoDouble[x];
-    
-
-           
+            newTagsNavbar.setAttribute("aria-label","Filtrer les photographes par le tag "+newTagsNavbar.textContent)
+            console.log(newTagsNavbar.textContent)       
     }
 /////FILTRES DES TAGS/////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////
 
-
-
-
 let tagsButtonNavbarArray=[];
 let tagEnable=[]
 
-////GIVE POINT TO THE PHOTOGRAPHERS IF THEY HAVE THE TAG WICH IS IN THE FILTERS
+////GIVE POINT TO THE PHOTOGRAPHERS IF THEY HAVE THE TAG WhICH IS IN THE FILTERS
 function tagPoint(){
   tagPoints= [[0],[0],[0],[0],[0],[0]]
   for (var p=0; p<tagsButtonNavbarArray.length; p++){   

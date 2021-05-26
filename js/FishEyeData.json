@@ -70,7 +70,9 @@
       "tags": ["fashion"],
       "likes": 62,
       "date": "2011-12-08",
-      "price": 55
+      "alt": "Femme habillé en jaune à la plage",
+      "price": 55 
+      
     },
     {
       "id": 8520927,
@@ -80,6 +82,7 @@
       "tags": ["fashion"],
       "likes": 11,
       "date": "2011-11-06",
+      "alt": "Femme pose sur un pont en ville",
       "price": 55
     },
     {
@@ -90,6 +93,7 @@
       "tags": ["fashion"],
       "likes": 72,
       "date": "2013-08-12",
+      "alt": "Femme habillé en motif pose devant un mur en motif",
       "price": 55
     },
     {
@@ -100,6 +104,7 @@
       "tags": ["events"],
       "likes": 69,
       "date": "2018-02-22",
+      "alt": "Autel de mariage dans un jardin avec des chaises",
       "price": 55
     },
     {
@@ -110,6 +115,7 @@
       "tags": ["events"],
       "likes": 2,
       "date": "2020-05-25",
+      "alt": "Mariage dont les invités tiennent des bougies étincelles",
       "price": 55
     },
     {
@@ -120,6 +126,7 @@
       "tags": ["events"],
       "likes": 33,
       "date": "2019-06-12",
+      "alt": "table décorée de ballon en forme de 18",
       "price": 55
     },
     {
@@ -130,6 +137,7 @@
       "tags": ["art"],
       "likes": 24,
       "date": "2011-12-08",
+      "alt": "Cheval fait en bois à taille réelle",
       "price": 100
     },
     {
@@ -140,6 +148,7 @@
       "tags": ["art"],
       "likes": 88,
       "date": "2007-05-07",
+      "alt": "peinture sur une porte et son mur, avec un homme bleu et jaune, et un triangle qui le superpose",
       "price": 55
     },
     {
@@ -150,6 +159,7 @@
       "tags": ["art"],
       "likes": 24,
       "date": "2018-05-05",
+      "alt": "tunnel rose recouvert de graffiti",
       "price": 55
     },
     {
@@ -160,6 +170,7 @@
       "tags": ["art"],
       "likes": 75,
       "date": "2019-11-25",
+      "alt": "graffiti d'oiseaux rouge et d'oiseaux bleu",
       "price": 55
     },
 
@@ -171,6 +182,7 @@
       "tags": ["sport"],
       "likes": 52,
       "date": "2013-02-30",
+      "alt": "rameurs vu de haut",
       "price": 70
     },
     {
@@ -181,6 +193,7 @@
       "tags": ["fashion"],
       "likes": 58,
       "date": "2018-07-17",
+      "alt": "femme et homme posent",
       "price": 70
     },
     {
@@ -191,6 +204,7 @@
       "tags": ["fashion"],
       "likes": 11,
       "date": "2019-08-12",
+      "alt": "femme descend des marches dans une robe rouge",
       "price": 70
     },
     {
@@ -201,6 +215,7 @@
       "tags": ["events"],
       "likes": 2,
       "date": "2019-01-02",
+      "alt": "réunion de travail dans une salle avec 5 employés",
       "price": 70
     },
     {
@@ -211,6 +226,7 @@
       "tags": ["events"],
       "likes": 3,
       "date": "2019-05-20",
+      "alt": "orateur s'adresse à un public",
       "price": 70
     },
     {
@@ -221,6 +237,7 @@
       "tags": ["events"],
       "likes": 52,
       "date": "2019-07-18",
+      "alt": "Artiste joue du clavier",
       "price": 70
     },
     {
@@ -231,6 +248,7 @@
       "tags": ["events"],
       "likes": 23,
       "date": "2018-02-22",
+      "alt": "Chanteur sur une scène",
       "price": 70
     },
     {
@@ -241,6 +259,7 @@
       "tags": ["animals"],
       "likes": 52,
       "date": "2017-03-13",
+      "alt": "Un cerf majestueux",
       "price": 70
     },
     {
@@ -251,6 +270,7 @@
       "tags": ["animals"],
       "likes": 52,
       "date": "2016-06-12",
+      "alt": "un chiot joue sur la plage",
       "price": 70
     },
 
@@ -262,6 +282,7 @@
       "tags": ["travel"],
       "likes": 23,
       "date": "2017-03-18",
+      "alt": "vue au dessus d'une montagne rocheuse",
       "price": 45
     },
     {
@@ -272,6 +293,7 @@
       "tags": ["travel"],
       "likes": 101,
       "date": "2017-04-03",
+      "alt": "Bain extérieur naturel",
       "price": 45
     },
     {
@@ -282,6 +304,7 @@
       "tags": ["travel"],
       "likes": 99,
       "date": "2018-04-30",
+      "alt": "longue route déserte",
       "price": 45
     },
     {
@@ -292,6 +315,7 @@
       "tags": ["travel"],
       "likes": 34,
       "date": "2016-04-05",
+      "alt": "Pont menant vers la forêt",
       "price": 45
     },
     {
@@ -302,6 +326,7 @@
       "tags": ["travel"],
       "likes": 23,
       "date": "2017-03-18",
+      "alt": "L'avant d'un bateau en bois sur l'eau",
       "price": 45
     },
     {
@@ -312,6 +337,7 @@
       "tags": ["portrait"],
       "likes": 66,
       "date": "2018-05-24",
+      "alt": "Femme rousse qui sourit",
       "price": 45
     },
     {
@@ -322,6 +348,7 @@
       "tags": ["portait"],
       "likes": 52,
       "date": "2017-04-21",
+      "alt": "Portrait monochrome d'un homme",
       "price": 45
     },
     {
@@ -332,6 +359,7 @@
       "tags": ["portait"],
       "likes": 95,
       "date": "2018-11-02",
+      "alt": "Portrait monochrome d'une femme",
       "price": 45
     },
     {
@@ -342,6 +370,7 @@
       "tags": ["portait"],
       "likes": 25,
       "date": "2019-01-02",
+      "alt": "Homme avec cigarette",
       "price": 45
     },
 
@@ -353,6 +382,7 @@
       "tags": ["travel"],
       "likes": 88,
       "date": "2019-02-03",
+      "alt": "randonneur petit face au paysage",
       "price": 45
     },
     {
@@ -363,6 +393,7 @@
       "tags": ["travel"],
       "likes": 85,
       "date": "2019-04-03",
+      "alt": "Habitations perchées sur un rocher près de la mer",
       "price": 45
     },
     {
@@ -373,6 +404,7 @@
       "tags": ["portait"],
       "likes": 34,
       "date": "2019-04-07",
+      "alt": "Fille en noir et blanc",
       "price": 45
     },
     {
@@ -383,6 +415,7 @@
       "tags": ["portait"],
       "likes": 63,
       "date": "2019-04-07",
+      "alt": "femme sous des néons",
       "price": 45
     },
     {
@@ -393,6 +426,7 @@
       "tags": ["portait"],
       "likes": 55,
       "date": "2019-06-20",
+      "alt": "Femme noir et blanc",
       "price": 45
     },
     {
@@ -403,6 +437,7 @@
       "tags": ["events"],
       "likes": 25,
       "date": "2019-06-21",
+      "alt": "Table d'un mariage sur la plage",
       "price": 45
     },
     {
@@ -413,6 +448,7 @@
       "tags": ["events"],
       "likes": 52,
       "date": "2019-06-25",
+      "alt": "Deux mariés face à l'autre sur des rochers",
       "price": 45
     },
     {
@@ -423,6 +459,7 @@
       "tags": ["events"],
       "likes": 77,
       "date": "2019-06-28",
+      "alt": "deux mariés sur l'allée de l'autel",
       "price": 45
     },
     {
@@ -433,6 +470,7 @@
       "tags": ["animals"],
       "likes": 142,
       "date": "2019-08-23",
+      "alt": "Des chevaux sauvages dans les montagnes",
       "price": 60
     },
     {
@@ -443,6 +481,7 @@
       "tags": ["animals"],
       "likes": 59,
       "date": "2019-07-02",
+      "alt": "oiseau arc-en-ciel",
       "price": 60
     },
 
@@ -454,6 +493,7 @@
       "tags": ["travel"],
       "likes": 25,
       "date": "2019-04-03",
+      "alt": "Tour de Tokyo vu à travers une rue",
       "price": 60
     },
     {
@@ -464,6 +504,7 @@
       "tags": ["travel"],
       "likes": 53,
       "date": "2019-05-06",
+      "alt": "Canal de venice avec ses gondoles",
       "price": 60
     },
     {
@@ -474,6 +515,7 @@
       "tags": ["travel"],
       "likes": 33,
       "date": "2019-05-12",
+      "alt": "Lac au milieu des montagnes",
       "price": 60
     },
     {
@@ -484,6 +526,7 @@
       "tags": ["travel"],
       "likes": 53,
       "date": "2019-06-20",
+      "alt": "vélo posé sur des escalier dans une rue à Paris",
       "price": 60
     },
     {
@@ -494,6 +537,7 @@
       "tags": ["travel"],
       "likes": 63,
       "date": "2019-06-26",
+      "alt": "La ville à travers une porte",
       "price": 60
     },
     {
@@ -504,6 +548,7 @@
       "tags": ["architecture"],
       "likes": 52,
       "date": "2019-06-30",
+      "alt": "Monument de St-Petersbourg",
       "price": 60
     },
     {
@@ -514,6 +559,7 @@
       "tags": ["architecture"],
       "likes": 63,
       "date": "2019-07-20",
+      "alt": "Une ville sur une colline",
       "price": 60
     },
     {
@@ -524,6 +570,7 @@
       "tags": ["architecture"],
       "likes": 88,
       "date": "2020-01-05",
+      "alt": "Tour de Pise vu d'en bas",
       "price": 60
     },
     {
@@ -534,6 +581,7 @@
       "tags": ["architecture"],
       "likes": 57,
       "date": "2020-01-20",
+      "alt": "Echangeur d'autoroute vu de haut",
       "price": 65
     },
     {
@@ -544,6 +592,7 @@
       "tags": ["architecture"],
       "likes": 54,
       "date": "2020-05-05",
+      "alt": "Dernier étage d'un immeuble faisant l'angle vu de  plus bas",
       "price": 60
     },
 
@@ -555,6 +604,7 @@
       "tags": ["sport"],
       "likes": 150,
       "date": "2018-02-30",
+      "alt": "sportive suspendue faisant des accrobaties en l'ai",
       "price": 70
     },
     {
@@ -565,6 +615,7 @@
       "tags": ["sport"],
       "likes": 101,
       "date": "2018-03-05",
+      "alt": "Escaladeur sur un mur",
       "price": 65
     },
     {
@@ -575,6 +626,7 @@
       "tags": ["sport"],
       "likes": 103,
       "date": "2018-03-10",
+      "alt": "Surfeur dans un tube",
       "price": 70
     },
     {
@@ -585,6 +637,7 @@
       "tags": ["sport"],
       "likes": 77,
       "date": "2018-04-16",
+      "alt": "Skieur en l'air pratiquant une figure",
       "price": 50
     },
     {
@@ -595,6 +648,7 @@
       "tags": ["sport"],
       "likes": 88,
       "date": "2018-04-22",
+      "alt": "Course féminine d'athlétisme",
       "price": 65
     },
     {
@@ -605,6 +659,7 @@
       "tags": ["sport"],
       "likes": 95,
       "date": "2018-04-27",
+      "alt": "Skateur en l'air dans un skatepark",
       "price": 70
     },
     {
@@ -615,6 +670,7 @@
       "tags": ["architecture"],
       "likes": 52,
       "date": "2018-05-03",
+      "alt": "dôme lumineux ",
       "price": 75
     },
     {
@@ -625,6 +681,7 @@
       "tags": ["architecture"],
       "likes": 55,
       "date": "2018-05-10",
+      "alt": "Eau sur un batiment moderne",
       "price": 72
     },
     {
@@ -635,6 +692,7 @@
       "tags": ["architecture"],
       "likes": 85,
       "date": "2018-05-15",
+      "alt": "vue d'en bas laissant apparaitre une forme de sabot dans le ciel",
       "price": 71
     },
     {
@@ -645,6 +703,7 @@
       "tags": ["architecture"],
       "likes": 66,
       "date": "2018-05-20",
+      "alt": "Vue d'en bas d'un batiment laissant apparaitre une forme de croix dans le ciel",
       "price": 58
     },
     {
@@ -655,6 +714,7 @@
       "tags": ["architecture"],
       "likes": 79,
       "date": "2018-05-21",
+      "alt": "Batiment conncté par ses courbes",
       "price": 80
     }
   ]

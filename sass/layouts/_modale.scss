@@ -49,7 +49,9 @@
             }
         }
         &__cross{
-            @extend .crossX
+            @extend .crossX;
+            width:0px;
+            border-radius:0;
         }
         
     }

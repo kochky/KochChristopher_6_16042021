@@ -10,14 +10,14 @@
   font-size: 13px;
   color: #901c1c;
   line-height: 17px;
-  color: #D3573C;
+  color: #901c1c;
 }
 
 .description, .main__presentation__photograph__description, .index__main__grid__photographe__description {
   text-align: center;
   font-size: 10px;
   line-height: 13px;
-  color: #525252;
+  color: #000000;
 }
 
 .price, .index__main__grid__photographe__prix {
@@ -147,7 +147,16 @@ li {
   list-style: none;
 }
 
-button, .button {
+button {
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
+  font: inherit;
+  outline: inherit;
+}
+
+.button {
   width: 170px;
   height: 70px;
   background-color: #901c1c;
@@ -159,14 +168,15 @@ button, .button {
   cursor: pointer;
 }
 @media screen and (max-width: 425px) {
-  button, .button {
+  .button {
     height: 35px;
   }
 }
 
-a, a:hover, a:active, a:visited {
+a, a:hover, a:active, a:visited, a:link {
   text-decoration: none;
   cursor: pointer;
+  color: black;
 }
 
 .contact {
@@ -227,6 +237,11 @@ a, a:hover, a:active, a:visited {
     line-height: 31px;
   }
 }
+.contact__form__cross {
+  width: 0px;
+  border-radius: 0;
+}
+
 @media screen and (max-width: 425px) {
   #button_modale {
     display: block;
@@ -345,6 +360,7 @@ a, a:hover, a:active, a:visited {
     bottom: 10px;
     z-index: 99;
     right: 5%;
+    line-height: 35px;
   }
 }
 @media screen and (max-width: 768px) {
@@ -379,6 +395,7 @@ a, a:hover, a:active, a:visited {
 }
 .main__presentation__photograph__description {
   font-size: 18px;
+  color: #525252;
 }
 @media screen and (max-width: 768px) {
   .main__presentation__photograph__description {
@@ -446,6 +463,11 @@ a, a:hover, a:active, a:visited {
   transform-origin: 50% 0%;
   transform: scaleY(0);
   width: 0;
+}
+.main__photos__allbutton button.firstChild:active button:nth-last-of-type(2) {
+  animation: submenu 200ms;
+  animation-fill-mode: forwards;
+  width: 170px;
 }
 .main__photos__allbutton:hover button:nth-last-of-type(2) {
   animation: submenu 200ms;

@@ -31,6 +31,7 @@
                     bottom:10px;
                     z-index:99;
                     right:5%;
+                    line-height: 35px;
 
                     
                 }
@@ -69,6 +70,7 @@
             &__description {
                 @extend .description;
                 font-size:18px;
+                color:#525252;
                 @media screen and (max-width:768px) {
                     font-size:13px;
                     white-space: nowrap;
@@ -143,7 +145,12 @@
             font-size: 18px;
             font-weight: bold;
             width:175px;
-           
+            & button.firstChild:active button:nth-last-of-type(2)   {
+                    animation: submenu 200ms;
+                    animation-fill-mode: forwards;
+                    width:170px;
+
+            }
             &:hover button:nth-last-of-type(2){
                 animation: submenu 200ms;
                 animation-fill-mode: forwards;
@@ -161,10 +168,11 @@
             }
              &:hover .arrow{
                 transform:rotate(-180deg)
+                
              }
            
             &__button {
-
+               
                 &__popular {
             
                     box-sizing: border-box;
