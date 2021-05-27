@@ -1,30 +1,34 @@
 .name, .main__presentation__photograph__name, .index__main__grid__photographe__nom {
   text-align: center;
   color: #D3573C;
-  font-size: 36px;
+  font-size: 40px;
   line-height: 47px;
+  margin-bottom: 5px;
 }
 
 .location, .main__presentation__photograph__localisation, .index__main__grid__photographe__localisation {
   text-align: center;
-  font-size: 13px;
+  font-size: 16px;
   color: #901c1c;
   line-height: 17px;
   color: #901c1c;
+  margin-bottom: 5px;
 }
 
 .description, .main__presentation__photograph__description, .index__main__grid__photographe__description {
   text-align: center;
-  font-size: 10px;
-  line-height: 13px;
+  font-size: 12px;
+  line-height: 15px;
   color: #000000;
+  margin-bottom: 5px;
 }
 
 .price, .index__main__grid__photographe__prix {
   text-align: center;
-  font-size: 9px;
+  font-size: 13px;
   color: #757575;
   line-height: 12px;
+  margin-bottom: 5px;
 }
 
 .tags, .main__presentation__photograph__tags, .index__main__grid__photographe__tags, .header__navbar__liste__tags {
@@ -41,6 +45,8 @@
   text-transform: capitalize;
   margin-bottom: 5px;
   color: #901c1c;
+  font-size: 16px;
+  margin-bottom: 5px;
 }
 
 .tagsContainer, .main__presentation__photograph__tagsContainer {
@@ -141,10 +147,15 @@ body {
   min-width: 385px;
   max-width: 1440px;
   margin: 0 auto;
+  font-weight: 400;
 }
 
 li {
   list-style: none;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 400;
 }
 
 button {
@@ -240,6 +251,7 @@ a, a:hover, a:active, a:visited, a:link {
 .contact__form__cross {
   width: 0px;
   border-radius: 0;
+  color: #DB8876;
 }
 
 @media screen and (max-width: 425px) {
@@ -375,6 +387,7 @@ a, a:hover, a:active, a:visited, a:link {
   }
 }
 .main__presentation__photograph__name {
+  display: flex;
   text-align: left;
   font-size: 64px;
   line-height: 70px;
@@ -533,6 +546,7 @@ a, a:hover, a:active, a:visited, a:link {
 .main__photos__article__container__description__like {
   font-weight: 500;
   font-size: 24px;
+  display: inline-block;
 }
 .main__photos__article__container__description__heart {
   color: #901c1c;
@@ -551,6 +565,14 @@ a, a:hover, a:active, a:visited, a:link {
   z-index: 200;
   bottom: 0;
   right: 5%;
+}
+.main__like-price-button__price {
+  font-weight: 500;
+  font-size: 24px;
+}
+.main__like-price-button__number {
+  font-weight: 500;
+  font-size: 24px;
 }
 .main__like-price-button__number__heart {
   margin-left: 3px;

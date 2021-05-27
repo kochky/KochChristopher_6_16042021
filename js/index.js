@@ -1,3 +1,4 @@
+fetchData();
 fetch('/js/FishEyeData.json')
   .then(function(res) {
     if (res.ok) {
@@ -14,7 +15,7 @@ fetch('/js/FishEyeData.json')
     for (var i=0; i < value.photographers.length; i++) { 
        
         var numberOfTags = value.photographers[i].tags.length;
-        gridDiv.innerHTML +=  "<a aria-label='card de "+value['photographers'][i]['name']+"' id="+value['photographers'][i]['id']+" href=photograph.html?"+value['photographers'][i]['id']+" class=index__main__grid__photographe><div class=index__main__grid__photographe__container> <img src=/images/sample%20photos/Photographers%20ID%20Photos/"+value['photographers'][i]['portrait']+" class=index__main__grid__photographe__container__photo></div><div class=index__main__grid__photographe__nom>"+value['photographers'][i]['name']+"</div> <div class=index__main__grid__photographe__localisation>"+value['photographers'][i]['city']+","+value['photographers'][i]['country']+"</div> <div class=index__main__grid__photographe__description>"+value['photographers'][i]['tagline']+"</div> <div class=index__main__grid__photographe__prix>"+value['photographers'][i]['price']+"€</div><div class=tagsContainer> </div></a>";
+        gridDiv.innerHTML +=  "<a aria-label='card de "+value['photographers'][i]['name']+"' id="+value['photographers'][i]['id']+" href=photograph.html?"+value['photographers'][i]['id']+" class=index__main__grid__photographe><div class=index__main__grid__photographe__container> <img alt='photo de "+value['photographers'][i]['name']+"' src=/images/sample_photos/Photographers_ID_Photos/"+value['photographers'][i]['portrait']+" class=index__main__grid__photographe__container__photo></div><h1 class=index__main__grid__photographe__nom>"+value['photographers'][i]['name']+"</h1> <h2 class=index__main__grid__photographe__localisation>"+value['photographers'][i]['city']+","+value['photographers'][i]['country']+"</h2> <h3 class=index__main__grid__photographe__description>"+value['photographers'][i]['tagline']+"</h3> <h4 class=index__main__grid__photographe__prix>"+value['photographers'][i]['price']+"€</h4><div class=tagsContainer> </div></a>";
      
         for (var h=0; h < numberOfTags; h++) {
           
@@ -31,8 +32,7 @@ fetch('/js/FishEyeData.json')
             tagsList[0].appendChild(newTagsNavbar);
             newTagsNavbar.className="header__navbar__liste__tags";
             newTagsNavbar.innerHTML= "#"+arrayNoDouble[x];
-            newTagsNavbar.setAttribute("aria-label","Filtrer les photographes par le tag "+newTagsNavbar.textContent)
-            console.log(newTagsNavbar.textContent)       
+            newTagsNavbar.setAttribute("aria-label","Filtrer les photographes par le tag "+newTagsNavbar.textContent)       
     }
 /////FILTRES DES TAGS/////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////

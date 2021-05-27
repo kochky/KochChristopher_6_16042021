@@ -7,7 +7,7 @@
  const nameForm = document.getElementById("name_Modale")
  var pictureDiv = document.getElementsByClassName("main__photos__article");
  let heartFull = document.getElementsByClassName("heart_full");
- let photoContainerImage= document.getElementsByClassName("main__photos__article__container__img")
+ let photoContainerImage= document.getElementsByClassName("main__photos__article__container__img");
   let bigPicture= document.getElementsByClassName("big-picture")
   let bigPictureClose= document.getElementsByClassName("big-picture__container__cross")
   let bigPictureImg= document.getElementsByClassName("big-picture__container__img")
@@ -49,7 +49,8 @@ fetch('js/FishEyeData.json')
     photoName.innerHTML = test3.name;
     photoLocation.innerHTML= test3.city+","+test3.country;
     photoDescription.innerHTML= test3.tagline;
-    photoPicture.setAttribute("src", "/images/sample photos/Photographers ID Photos/"+test3.portrait)
+    photoPicture.setAttribute("src", "/images/sample_photos/Photographers_ID_Photos/"+test3.portrait)
+    photoPicture.setAttribute("alt","photo de "+test3.name)
     var numberOfPhotographersTags = test3.tags.length;
     nameForm.innerHTML= "Contactez-moi" + "<br />" +test3.name
     
@@ -81,13 +82,13 @@ fetch('js/FishEyeData.json')
       
           //créer les div des images
             if (numberOfPicture[p].image !=undefined) {
-              pictureDiv[0].innerHTML+="<article class=main__photos__article__container aria-label='"+numberOfPicture[p].title+"'><img alt='"+numberOfPicture[p].alt+"' src=/images/sample%20photos/"+lastname+"/"+numberOfPicture[p].image+" class=main__photos__article__container__img><div class=main__photos__article__container__description><span class=main__photos__article__container__description__name >"+numberOfPicture[p].title+"</span><div><span class=main__photos__article__container__description__like>"+numberOfPicture[p].likes+"</span><button aria-label='Ouvrir la photo "+numberOfPicture[p].title +" en grand' class=openLightbox></button><button aria-label='Aimer la photo' class=main__photos__article__container__description__heart><i class='fas fa-heart heart_full'></i><i class='far fa-heart heart_empty'></i></button></div></div></article>"
+              pictureDiv[0].innerHTML+="<article class=main__photos__article__container aria-label='"+numberOfPicture[p].title+"'><img alt='"+numberOfPicture[p].alt+"' src=/images/sample_photos/"+lastname+"/"+numberOfPicture[p].image+" class=main__photos__article__container__img><div class=main__photos__article__container__description><h2 class=main__photos__article__container__description__name >"+numberOfPicture[p].title+"</h2><div><p class=main__photos__article__container__description__like>"+numberOfPicture[p].likes+"</p><button aria-label='Ouvrir la photo "+numberOfPicture[p].title +" en grand' class=openLightbox></button><button aria-label='Aimer la photo' class=main__photos__article__container__description__heart><i class='fas fa-heart heart_full'></i><i class='far fa-heart heart_empty'></i></button></div></div></article>"
 
           }
 
         //créer les div des video
             else if (numberOfPicture[p].video !=undefined) {
-              pictureDiv[0].innerHTML+="<article class=main__photos__article__container aria-label='"+numberOfPicture[p].title+"'><video  alt='"+numberOfPicture[p].alt+"' controls class=main__photos__article__container__img><source src=/images/sample%20photos/"+lastname+"/"+numberOfPicture[p].video+ " type=video/mp4></video><div class=main__photos__article__container__description><span class=main__photos__article__container__description__name >"+numberOfPicture[p].title+"</span><div><span class=main__photos__article__container__description__like>"+numberOfPicture[p].likes+"</span><button aria-label='Ouvrir la photo "+numberOfPicture[p].title +" en grand' class=openLightbox></button><button aria-label='Aimer la     video' class=main__photos__article__container__description__heart><i class='fas fa-heart heart_full'></i><i class='far fa-heart heart_empty'></i></button></div></div></article>"
+              pictureDiv[0].innerHTML+="<article class=main__photos__article__container aria-label='"+numberOfPicture[p].title+"'><video  controls class=main__photos__article__container__img><source src=/images/sample_photos/"+lastname+"/"+numberOfPicture[p].video+ " type=video/mp4></video><div class=main__photos__article__container__description><h2 class=main__photos__article__container__description__name >"+numberOfPicture[p].title+"</h2><div><p class=main__photos__article__container__description__like>"+numberOfPicture[p].likes+"</p><button aria-label='Ouvrir la photo "+numberOfPicture[p].title +" en grand' class=openLightbox></button><button aria-label='Aimer la video' class=main__photos__article__container__description__heart><i class='fas fa-heart heart_full'></i><i class='far fa-heart heart_empty'></i></button></div></div></article>"
 
           
           }
@@ -164,8 +165,35 @@ function filterBy(e) {
 //////Animation bouton filtre
 let clicked;
 function animationButton(){
+  
+  for (var u=0; u< allButton[0].children.length -1; u++){
+  allButton[0].children[u].addEventListener("focus",function(){
+  
+    if (clicked!=true){
+      clicked= true;
+      allButton[0].children[0].style.transform="scaleY(1)"
+       arrowButton[0].style.transform="rotate(-180deg)"
+       allButton[0].children[1].style.transitionDelay=" 0ms";
+        allButton[0].children[2].style.transitionDelay="200ms";
+       allButton[0].children[1].style.transform="scaleY(1)"
+       allButton[0].children[2].style.transform="scaleY(1)"
+      } 
+  
+  })
+  document.addEventListener("keydown",function(e){
+    
+    if(e.which=== 27 ){
+        clicked=false;
+    
+       allButton[0].children[1].style.transitionDelay=" 200ms";
+       allButton[0].children[2].style.transitionDelay="0ms";
+       allButton[0].children[1].style.transform='scaleY(0)';
+       allButton[0].children[2].style.transform="scaleY(0)";
+       arrowButton[0].style.transform="rotate(0deg)"
+    }
+  })
+}
 
-console.log(clicked)
 allButton[0].children[0].addEventListener("click",function(){
   
   if (clicked!=true){
@@ -179,6 +207,7 @@ allButton[0].children[0].addEventListener("click",function(){
   } 
 
 })
+
 body[0].addEventListener("click",function(e){
 
   if (e.target== allButton[0].children[0]){}
@@ -223,6 +252,7 @@ body[0].addEventListener("click",function(e){
       }
       ///EventListener du bouton date qui trie les objets et les recrééer
       dateButton[0].addEventListener("click",function(){
+        console.log("ok")
         if ( dateButton[0] !== allButton[0].children[0])
         filterBy(compareDate);
         allButton[0].insertBefore(dateButton[0],allButton[0].children[0]);
@@ -274,6 +304,7 @@ function radiusButton () {
 
 //Open lightbox
 function openLightbox(i){
+  
   bigPicture[0].style.display="flex";
   header[0].style.opacity="0.1";
   main[0].style.opacity="0.1";
@@ -289,13 +320,15 @@ function openLightbox(i){
 //click or key to open the lightbox
 function imgListener(i){
   photoContainerImage[i].addEventListener("click",function(){
-    openLightbox(i)
+    openLightbox(i);
+    videoInMedia()
     
     })
-  buttonLightbox[i].addEventListener("click", function(){
-    openLightbox(i)
-  })
-
+   buttonLightbox[i].addEventListener("click", function(){
+     openLightbox(i)
+     videoInMedia()
+   })
+  
 //Escape to close the lightbox
 document.onkeydown = function(evt) {
       evt = evt || window.event;
@@ -355,9 +388,21 @@ leftArrow[0].parentNode.addEventListener("click",function(){
         srcTitle()
   
 })
+document.addEventListener("keydown", function(evt){
+  if (evt.which == 37) {
+    if(imageResult<=0){
+      imageResult += numberOfPicture.length -1;
+    }else {
+    imageResult --
+    }
+    videoInMedia()
+    srcTitle()
+  }
+}
+);
 
 //pick the next media
-rightArrow[0].  parentNode.addEventListener("click",function(){
+rightArrow[0].parentNode.addEventListener("click",function(){
   
       if (imageResult==numberOfPicture.length -1){
         imageResult =0;
@@ -367,7 +412,18 @@ rightArrow[0].  parentNode.addEventListener("click",function(){
       srcTitle()
       videoInMedia()
 })
-
+document.addEventListener("keydown", function(evt){
+  if (evt.which == 39) {
+    if (imageResult==numberOfPicture.length -1){
+      imageResult =0;
+      }else {
+    imageResult ++
+    }
+    srcTitle()
+    videoInMedia()
+}
+}
+);
 
 
 ///////////////////////////////////////////////////////////////////////////////

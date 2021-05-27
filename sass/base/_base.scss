@@ -9,10 +9,15 @@ body {
     min-width:385px;
     max-width: 1440px;
     margin:0 auto; 
+    font-weight: 400;
     
 }
 li {
     list-style: none;
+}
+h1,h2,h3,h4{
+   
+    font-weight: 400;
 }
 button{
     background: none;
@@ -23,6 +28,8 @@ button{
 	outline: inherit;
 
 }
+// button:focus {
+//     border:2px solid $color-secondary}
 .button {
     width:170px;
     height:70px;

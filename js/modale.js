@@ -47,13 +47,22 @@ submit[0].addEventListener("submit",function(e){
 e.preventDefault();
 validation();
 })
+function inputValueModal(){
+    console.log("Prénom ="+inputs[0].value)
+    console.log("Nom ="+inputs[0].value)
+    console.log("email ="+inputs[0].value)
+    console.log("Message ="+textArea[0].value)
+}
 function validation (){
-    for(var i=0; i< inputs.length -1; i++) {
-        if( inputs[i].value !=undefined)
-        { 
-            contactEl[0].style.display= "none";
-            inputs[i].value="";
+    
+        if( textArea[0].value !=undefined)
+        {    inputValueModal()
             textArea[0].value="";
+            contactEl[0].style.display= "none";
+            for(var i=0; i< inputs.length -1; i++) {
+            inputs[i].value="";
+            
+            
     }
     }
 }

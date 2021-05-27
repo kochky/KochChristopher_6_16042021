@@ -1,28 +1,32 @@
 .name {
     text-align: center;
     color: $color-secondary;
-    font-size:36px;
+    font-size:40px;
     line-height: 47px;
+    margin-bottom:5px;
     
 }
 .location  {
     text-align: center;
-    font-size:13px;
+    font-size:16px;
     color:$color-primary;
     line-height: 17px;
-    color:$color-primary
+    color:$color-primary;
+    margin-bottom:5px;
 }
 .description {
     text-align: center;
-    font-size: 10px;
-    line-height: 13px;
-    color:#000000
+    font-size: 12px;
+    line-height: 15px;
+    color:#000000;
+    margin-bottom:5px;
 }
 .price {
     text-align: center;
-                font-size:9px;
+                font-size:13px;
                 color:#757575;
                 line-height: 12px;
+                margin-bottom:5px;
                 
 }
 .tags {
@@ -39,6 +43,8 @@
     text-transform:capitalize;
     margin-bottom:5px;
     color:$color-primary;
+    font-size:16px;
+    margin-bottom:5px;
     
 }
 .tagsContainer {
