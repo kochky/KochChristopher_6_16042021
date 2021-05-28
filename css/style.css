@@ -167,6 +167,10 @@ button {
   outline: inherit;
 }
 
+button:focus, img:focus {
+  border: 5px solid #D3573C;
+}
+
 .button {
   width: 170px;
   height: 70px;
