@@ -1,0 +1,7 @@
+fetchData().then((data) => 
+{
+    
+ 
+
+
+})

@@ -5,7 +5,7 @@ fetchData().then((data) =>
     let tagsButtonNavbarArray=[];
     let tagEnable=[]
     
-    ////GIVE POINT TO THE PHOTOGRAPHERS IF THEY HAVE THE TAG WhICH IS IN THE FILTERS
+    //GIVE POINT TO THE PHOTOGRAPHERS IF THEY HAVE THE TAG WhICH IS IN THE FILTERS
     function tagPoint(){
       tagPoints= [[0],[0],[0],[0],[0],[0]]
       for (var p=0; p<tagsButtonNavbarArray.length; p++){   
@@ -16,7 +16,7 @@ fetchData().then((data) =>
           }
     }}
     }
-    ////IT MAKES THE ARRAY WITH THE ACTIVE FILTERS AND GIVE POINT TO THE PHOTOGRAPHER IF THEY HAVE THE ACTIVE FILTER
+    //IT MAKES THE ARRAY WITH THE ACTIVE FILTERS AND GIVE POINT TO THE PHOTOGRAPHER IF THEY HAVE THE ACTIVE FILTER
     function tagFilters(o) {
     let tagsIndex= tagsButtonNavbarArray.indexOf(tagsButtonNavbar[o].innerHTML);
     

@@ -5,6 +5,8 @@
  const tagContainer= document.getElementsByClassName("main__presentation__photograph__tagsContainer");
  const photoPicture = document.getElementById("photographer_picture");
  const nameForm = document.getElementById("name_Modale")
+
+ 
  var pictureDiv = document.getElementsByClassName("main__photos__article");
  let heartFull = document.getElementsByClassName("heart_full");
  let photoContainerImage= document.getElementsByClassName("main__photos__article__container__img");
@@ -27,6 +29,7 @@
   let allButton = document.getElementsByClassName("main__photos__allbutton");
   let buttonLightbox= document.getElementsByClassName("openLightbox");
   let arrowButton= document.getElementsByClassName("arrow");
+  
  // récupère l'id dans l'url
  let urlId = window.location.search.slice(1);
 

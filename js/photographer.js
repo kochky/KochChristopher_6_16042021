@@ -43,11 +43,41 @@ class Photographer {
     createTag(tag,i){ // Div in the card for the tags
         document.getElementById(i).children[5].innerHTML += this.renderTag(tag);
         
+    }
+    
+    selectMedia(data,media){
+        let urlId = window.location.search.slice(1);
+        this.medias= data.media.filter(x => x.photographerId == urlId)
 
     }
-
     
+    renderProfile(){
+        const photoName = document.getElementById("photographer_name");
+        const photoLocation = document.getElementById("photographer_location");
+        const photoDescription = document.getElementById("photographer_description");
+        const photoPicture = document.getElementById("photographer_picture");
+        const nameForm = document.getElementById("name_Modale")
+        photoName.innerHTML =this.name;
+        photoLocation.innerHTML= this.city+","+this.country;
+        photoDescription.innerHTML= this.tagline;
+        photoPicture.setAttribute("src", "/images/sample_photos/Photographers_ID_Photos/"+this.portrait)
+        photoPicture.setAttribute("alt","photo de "+this.name)
+        nameForm.innerHTML= "Contactez-moi" + "<br />" +this.name
+        this.renderTags()
+    }
 
+    renderTags(){
+        const tagContainer= document.getElementsByClassName("main__presentation__photograph__tagsContainer");
+        for (let tag of this.tags){
+            var tags = document.createElement("div");
+            tagContainer[0].appendChild(tags);
+            tags.classList.add("main__presentation__photograph__tags");
+            tags.innerHTML= "#"+tag;
+
+
+        }
+
+    }
 
 
 
