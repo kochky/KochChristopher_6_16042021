@@ -1,23 +1,27 @@
 fetchData().then((data) => 
-{
-   
-    var tagIndexNavbar= new TagNavbar(data);
-    var tagsArray=[];
-    
+{  let tagsButtonNavbar = document.getElementsByClassName("header__navbar__liste__tags")
+    var newTagNavbar= new TagNavbar(); 
     for (let photographer of data.photographers){ // create the photographers and their card
         var newPhotographer =new Photographer(photographer)
         newPhotographer.createCard();
         
         for (let tag of newPhotographer.tags){  //create the tags in the card
            newPhotographer.createTag(tag,newPhotographer.id);
-           var tagsArrayPush =  tagsArray.push(tag)     //Put the tags in an array, to create the navbar
+           newTagNavbar.AddTag(tag)
        }
     }
-
-    var arrayNoDouble = Array.from(new Set(tagsArray))// No tags in double in the navbar
-           
-    for (let tag of arrayNoDouble){ // create the navbar with the tags of the photographers without double
-        tagIndexNavbar.createTagNavbar(tag)
+   
+    for (let tag of newTagNavbar.tagsNoDouble){ // create the navbar with the tags of the photographers without double
+        newTagNavbar.createTagNavbar(tag)
     }
-    
+
+    for (let tag in newTagNavbar.tagsNoDouble){  //the navbar filter the photographers cards
+        
+            tagsButtonNavbar[tag].addEventListener("click",function(){ 
+            newTagNavbar.tagFilters(tag)
+            newTagNavbar.tagVisibility();
+            newTagNavbar.tagColor(tag);
+            
+        })
+    }
 })

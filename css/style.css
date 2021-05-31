@@ -389,7 +389,7 @@ a, a:hover, a:active, a:visited, a:link {
 .main__presentation__photograph__name {
   display: flex;
   text-align: left;
-  font-size: 64px;
+  font-size: 50px;
   line-height: 70px;
 }
 @media screen and (max-width: 1025px) {

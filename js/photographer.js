@@ -45,13 +45,14 @@ class Photographer {
         
     }
     
-    selectMedia(data,media){
+    selectMedia(data,media){// pick the id in the url
         let urlId = window.location.search.slice(1);
         this.medias= data.media.filter(x => x.photographerId == urlId)
+        
 
     }
     
-    renderProfile(){
+    renderProfile(){// Photographer infos go in the header
         const photoName = document.getElementById("photographer_name");
         const photoLocation = document.getElementById("photographer_location");
         const photoDescription = document.getElementById("photographer_description");
@@ -64,19 +65,22 @@ class Photographer {
         photoPicture.setAttribute("alt","photo de "+this.name)
         nameForm.innerHTML= "Contactez-moi" + "<br />" +this.name
         this.renderTags()
+        this.renderPriceLikeButton()
     }
 
-    renderTags(){
+    renderTags(){//Pattern of the tags in the photograph.html page
         const tagContainer= document.getElementsByClassName("main__presentation__photograph__tagsContainer");
         for (let tag of this.tags){
             var tags = document.createElement("div");
             tagContainer[0].appendChild(tags);
             tags.classList.add("main__presentation__photograph__tags");
             tags.innerHTML= "#"+tag;
-
-
         }
-
+      
+    }
+    renderPriceLikeButton(){//Put the price in the bottom 
+        let priceTag= document.getElementsByClassName("main__like-price-button__price");
+        priceTag[0].innerHTML= this.price+ "€/jour";
     }
 
 

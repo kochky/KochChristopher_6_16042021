@@ -1,7 +1,0 @@
-fetchData().then((data) => 
-{
-    
- 
-
-
-})
