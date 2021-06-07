@@ -11,8 +11,42 @@ class MediaList
     }
 
 
-    init(media) 
-        {   
+
+    //DOM ELEMENTS
+                  allButton(e){
+                    return document.getElementsByClassName("main__photos__allbutton")[e]
+                  }
+                  
+                  arrowButton(e){
+                    return  document.getElementsByClassName("arrow")[e]
+                  }
+                  main(){
+                    return document.getElementsByTagName("main")[0]
+                  }
+                  body(){
+                      return document.getElementsByTagName("body")[0]
+                  }
+                  bigPicture(){
+                    return document.getElementsByClassName("big-picture")[0];
+                  }
+                  bigPictureClose(){
+                    return document.getElementsByClassName("big-picture__container__cross")[0]
+                  }
+                  header(){
+                    return document.getElementsByTagName("header")[0];
+                  }
+                  photoContainerImage(i){
+                    return document.getElementsByClassName("main__photos__article__container__img")[i]
+                  }
+                  bigPictureTitle(){
+                    return document.getElementsByClassName("big-picture__container__title")[0]
+                  }
+                  bigPictureImg(i){
+                    return document.getElementsByClassName("big-picture__container__img")[i]
+                  }
+
+    init(media) //Start when photograph.html is open
+        {  
             for (let item of media) 
             {
             this.all.push(this.factory.init(item))
@@ -27,7 +61,7 @@ class MediaList
             
           
         }
-    factoryMedia(media){
+    factoryMedia(media){//Create MediaCard depends if video or picture
         for (let item of media) 
         {
         this.factory.init(item).render(item) 
@@ -68,44 +102,39 @@ class MediaList
         }
         
     }
-
+    
+  
     animationOpen(){//Animation to display all the buttons
-        let allButton = document.getElementsByClassName("main__photos__allbutton");
-        let arrowButton= document.getElementsByClassName("arrow");
-
         if (this.clicked!=true){
-        MediaList.clicked= true;
-            allButton[0].children[0].style.transform="scaleY(1)"
-            arrowButton[0].style.transform="rotate(-180deg)"
-            allButton[0].children[1].style.transitionDelay=" 0ms";
-            allButton[0].children[2].style.transitionDelay="200ms";
-            allButton[0].children[1].style.transform="scaleY(1)"
-            allButton[0].children[2].style.transform="scaleY(1)"
+          MediaList.clicked= true;
+            this.allButton(0).children[0].style.transform="scaleY(1)"
+            this.arrowButton(0).style.transform="rotate(-180deg)"
+            this.allButton(0).children[1].style.transitionDelay=" 0ms";
+            this.allButton(0).children[2].style.transitionDelay="200ms";
+            this.allButton(0).children[1].style.transform="scaleY(1)"
+            this.allButton(0).children[2].style.transform="scaleY(1)"
         } 
     }
 
 
     animationClose(e){//Animation to close the buttons list
-        let allButton = document.getElementsByClassName("main__photos__allbutton");
-        let arrowButton= document.getElementsByClassName("arrow");
-        if (e.which!= 27 && e.target== allButton[0].children[0]){}
+        if (e.which!= 27 && e.target== this.allButton(0).children[0]){}
         else{
             MediaList.clicked=false;
-            allButton[0].children[1].style.transitionDelay=" 200ms";
-            allButton[0].children[2].style.transitionDelay="0ms";
-            allButton[0].children[1].style.transform='scaleY(0)';
-            allButton[0].children[2].style.transform="scaleY(0)";
-            arrowButton[0].style.transform="rotate(0deg)" 
+            this.allButton(0).children[1].style.transitionDelay=" 200ms";
+            this.allButton(0).children[2].style.transitionDelay="0ms";
+            this.allButton(0).children[1].style.transform='scaleY(0)';
+            this.allButton(0).children[2].style.transform="scaleY(0)";
+            this.arrowButton(0).style.transform="rotate(0deg)" 
         }
     }
         
     animationButton(){// Listener for the buttons list
-        let allButton = document.getElementsByClassName("main__photos__allbutton");
-        for (var u=0; u< allButton[0].children.length -1; u++){
-        allButton[0].children[u].addEventListener("focus",this.animationOpen)
-        allButton[0].children[0].addEventListener("click",this.animationOpen)
-        document.addEventListener("keydown",this.animationClose)
-        document.addEventListener("click",this.animationClose)
+        for (var u=0; u<this.allButton(0).children.length -1; u++){
+          this.allButton(0).children[u].addEventListener("focus",(e)=>{this.animationOpen()})
+          this.allButton(0).children[0].addEventListener("click",(e)=>{this.animationOpen()})
+          document.addEventListener("keydown",(e)=>{this.animationClose(e)})
+          document.addEventListener("click",(e)=>{this.animationClose(e)})
       
         }
     }
@@ -125,20 +154,19 @@ class MediaList
         return 0; 
     }
     radiusButton () {//change the radius because the buttons change itself order when clicked
-        let allButton = document.getElementsByClassName("main__photos__allbutton");
-        allButton[0].children[0].style.borderTopLeftRadius= "5px";
-        allButton[0].children[0].style.borderTopRightRadius= "5px";
-        allButton[0].children[2].style.borderBottomLeftRadius= "5px";
-        allButton[0].children[2].style.borderBottomRightRadius= "5px";
-        allButton[0].children[1].style.borderTopLeftRadius= "0px";
-        allButton[0].children[1].style.borderTopRightRadius= "0px";
-        allButton[0].children[1].style.borderBottomLeftRadius= "0px";
-        allButton[0].children[1].style.borderBottomRightRadius= "0px";
-        allButton[0].children[0].style.borderBottomLeftRadius= "0px";
-        allButton[0].children[0].style.borderBottomRightRadius= "0px";
-        allButton[0].children[2].style.borderTopLeftRadius= "0px";
-        allButton[0].children[2].style.borderTopRightRadius= "0px";
-        
+       
+        this.allButton(0).children[0].style.borderTopLeftRadius= "5px";
+        this.allButton(0).children[0].style.borderTopRightRadius= "5px";
+        this.allButton(0).children[2].style.borderBottomLeftRadius= "5px";
+        this.allButton(0).children[2].style.borderBottomRightRadius= "5px";
+        this.allButton(0).children[1].style.borderTopLeftRadius= "0px";
+        this.allButton(0).children[1].style.borderTopRightRadius= "0px";
+        this.allButton(0).children[1].style.borderBottomLeftRadius= "0px";
+        this.allButton(0).children[1].style.borderBottomRightRadius= "0px";
+        this.allButton(0).children[0].style.borderBottomLeftRadius= "0px";
+        this.allButton(0).children[0].style.borderBottomRightRadius= "0px";
+        this.allButton(0).children[2].style.borderTopLeftRadius= "0px";
+        this.allButton(0).children[2].style.borderTopRightRadius= "0px";
         
       }
     allButtonFilterListener(){//Listener "sort by"
@@ -146,14 +174,15 @@ class MediaList
         this.dateButtonFilterListener();
         this.popButtonFilterListener()
     }
+    
     titleButtonFilterListener(){
-        let allButton = document.getElementsByClassName("main__photos__allbutton");
+      
         let titleButton= document.getElementsByClassName("main__photos__allbutton__button__title");
        
         titleButton[0].addEventListener("click",(e)=>{
-            if (  titleButton[0] !== allButton[0].children[0]){
+            if (  titleButton[0] !==this.allButton(0).children[0]){
               this.filterBy(this.compareTitle);
-              allButton[0].insertBefore(titleButton[0],allButton[0].children[0]);
+              this.allButton(0).insertBefore(titleButton[0],this.allButton(0).children[0]);
               this.radiusButton()
              }
           })  
@@ -161,13 +190,12 @@ class MediaList
     
    dateButtonFilterListener(){
     let dateButton= document.getElementsByClassName("main__photos__allbutton__button__date");
-    let allButton = document.getElementsByClassName("main__photos__allbutton");
     dateButton[0].addEventListener("click",(e)=>{
 
-        if ( dateButton[0] !== allButton[0].children[0]){
+        if ( dateButton[0] !== this.allButton(0).children[0]){
          
         this.filterBy(this.compareDate);
-        allButton[0].insertBefore(dateButton[0],allButton[0].children[0]);
+        this.allButton(0).insertBefore(dateButton[0],this.allButton(0).children[0]);
         this.radiusButton()
         }
 
@@ -175,41 +203,29 @@ class MediaList
 
    }
    popButtonFilterListener(){
-    let allButton = document.getElementsByClassName("main__photos__allbutton");
     let popButton= document.getElementsByClassName("main__photos__allbutton__button__popular")
     popButton[0].addEventListener("click",(e)=>{
         
-        if ( popButton[0] !== allButton[0].children[0]){
+        if ( popButton[0] !== this.allButton(0).children[0]){
         this.filterBy(this.compareLikes);
-        allButton[0].insertBefore(popButton[0],allButton[0].children[0]);
+        this.allButton(0).insertBefore(popButton[0],this.allButton(0).children[0]);
         this.radiusButton()
         }
         })
    }
    
-  
-
-
+            
    openLightbox(i){//Open the lightbox and background has an opacity
-  
-    let bigPicture= document.getElementsByClassName("big-picture");
-    let header = document.getElementsByTagName("header");
-    let main = document.getElementsByTagName("main")
-    let body = document.getElementsByTagName("body")
-    let bigPictureTitle= document.getElementsByClassName("big-picture__container__title")
-    let bigPictureImg= document.getElementsByClassName("big-picture__container__img")
-    let bigPictureClose= document.getElementsByClassName("big-picture__container__cross")
-   
-      bigPicture[0].style.display="flex";
-      
-      header[0].style.opacity="0.1";
-      main[0].style.opacity="0.1";
-      bigPictureImg[0].alt=this.all[i].alt
-      bigPictureImg[0].src= "images/sample_photos/"+this.all[i].photographerId+"/"+this.all[i].src
-      bigPictureTitle[0].innerHTML= this.all[i].title;
-      bigPictureClose[0].focus();
-      body[0].setAttribute("aria-hidden","true");
-      bigPicture[0].setAttribute("aria-hidden","false");
+
+      this.bigPicture().style.display="flex";
+      this.header().style.opacity="0.1";
+      this.main().style.opacity="0.1";
+      this.bigPictureImg(0).alt=this.all[i].alt
+      this.bigPictureImg(0).src= "./images/Sample_Photos/"+this.all[i].photographerId+"/"+this.all[i].src
+      this.bigPictureTitle().innerHTML= this.all[i].title;
+      this.bigPictureClose().focus();
+      this.body().setAttribute("aria-hidden","true");
+      this.bigPicture().setAttribute("aria-hidden","false");
       this.closeListener()
       this.lightboxController(i)
       this.imageResult= i;
@@ -217,9 +233,9 @@ class MediaList
 
   closeListener(){//If click on the X or Escape pressed, the modal will close
 
-    let bigPictureClose= document.getElementsByClassName("big-picture__container__cross")
    
-    bigPictureClose[0].addEventListener("click",(e)=>{
+   
+    this.bigPictureClose().addEventListener("click",(e)=>{
       this.closeLightbox()
     })
     document.onkeydown = (evt)=> {
@@ -231,8 +247,7 @@ class MediaList
   } 
 
   imgListener(i){//Card open the lightbox
-    let photoContainerImage= document.getElementsByClassName("main__photos__article__container__img");
-    photoContainerImage[i].addEventListener("click",(e)=>{
+    this.photoContainerImage(i).addEventListener("click",(e)=>{
     
            this.openLightbox(i);
            this.videoInMedia()
@@ -247,41 +262,33 @@ class MediaList
   }
         
   closeLightbox(){//close lightbox
-    let bigPicture= document.getElementsByClassName("big-picture");
-    let header = document.getElementsByTagName("header");
-    let main = document.getElementsByTagName("main")
-    let body = document.getElementsByTagName("body")
-    bigPicture[0].style.display="none";
-    header[0].style.opacity="1";
-    main[0].style.opacity="1";
-    body[0].setAttribute("aria-hidden","false");
-    bigPicture[0].setAttribute("aria-hidden","true");
+    
+    this.bigPicture().style.display="none";
+    this.header().style.opacity="1";
+    this.main().style.opacity="1";
+    this.body().setAttribute("aria-hidden","false");
+    this.bigPicture().setAttribute("aria-hidden","true");
   
   }
   srcTitle(){//Get the title of the media
-    let bigPictureTitle= document.getElementsByClassName("big-picture__container__title")
-    let bigPictureImg= document.getElementsByClassName("big-picture__container__img")
-    let photoContainerImage= document.getElementsByClassName("main__photos__article__container__img");
-
-    bigPictureImg[0].src= "images/sample_photos/"+this.all[this.imageResult].photographerId+"/"+this.all[this.imageResult].src
-    bigPictureTitle[0].innerHTML= this.all[this.imageResult].title
-    bigPictureImg[0].alt=this.all[this.imageResult].alt
+    this.bigPictureImg(0).src= "./images/Sample_Photos/"+this.all[this.imageResult].photographerId+"/"+this.all[this.imageResult].src
+    this.bigPictureTitle().innerHTML= this.all[this.imageResult].title
+    this.bigPictureImg(0).alt=this.all[this.imageResult].alt
   }
   
 
   videoInMedia () {//the lightbox will adapt to the format of the media
-    let bigPictureImg= document.getElementsByClassName("big-picture__container__img")
 
-    if (this.all[this.imageResult].image==undefined){// si l'image précédente est une video
+    if (this.all[this.imageResult].image==undefined){
       
-      bigPictureImg[1].style.display="block";
-      bigPictureImg[0].style.display="none";
-      bigPictureImg[1].firstElementChild.src= "images/sample_photos/"+this.all[this.imageResult].photographerId+"/"+this.all[this.imageResult].src
-      bigPictureImg[1].load();
+      this.bigPictureImg(1).style.display="block";
+      this.bigPictureImg(0).style.display="none";
+      this.bigPictureImg(1).firstElementChild.src= "./images/Sample_Photos/"+this.all[this.imageResult].photographerId+"/"+this.all[this.imageResult].src
+      this.bigPictureImg(1).load();
 
     }else {
-      bigPictureImg[1].style.display="none";
-      bigPictureImg[0].style.display="block";
+      this.bigPictureImg(1).style.display="none";
+      this.bigPictureImg(0).style.display="block";
     }
         
   }

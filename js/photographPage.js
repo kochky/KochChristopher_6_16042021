@@ -3,7 +3,7 @@ fetchData().then((data) =>
 
     //Pick  the id in the url adress
     function pickId(){
-    let urlId = window.location.search.slice(1);
+    let urlId = window.location.search.slice(4);
     let idPage= data.photographers.find(x => x.id == urlId)
     return idPage  
     }
@@ -12,12 +12,12 @@ fetchData().then((data) =>
     newPhotographer.selectMedia(data,data.media)// Give the media to the photographer
     newPhotographer.renderProfile()//make the photographer information in the header
 
-
+   
     let list= new MediaList(newPhotographer);//Create the class medialist which contains the mediafactory
     list.init(list.medias)//create the Image or Video with the MediaFactory and display them on the page
 
     for (let media in list.all){
-       
+      
         list.imgListener(media)//every media can open the lightbox
         list.all[media].alreadyClick(media)//check if the like are already clicked
         

@@ -16,9 +16,9 @@ class Photographer {
     
     renderCard() //HTML pattern of the cards
     {  return `
-            <a aria-label="card de ${this.name}" id="${this.id}" href="photograph.html?${this.id}" class="index__main__grid__photographe">
+            <a aria-label="card de ${this.name}" id="${this.id}" href="photograph.html?id=${this.id}" class="index__main__grid__photographe">
             <div class="index__main__grid__photographe__container"> 
-                <img alt="photo de ${this.name}" src="/images/sample_photos/Photographers_ID_Photos/${this.portrait}" class="index__main__grid__photographe__container__photo">
+                <img alt="photo de ${this.name}" src="images/Sample_Photos/Photographers_ID_Photos/${this.portrait}" class="index__main__grid__photographe__container__photo">
             </div>
             <h1 class="index__main__grid__photographe__nom">${this.name}</h1>
             <h2 class="index__main__grid__photographe__localisation">${this.city},${this.country}</h2> 
@@ -46,7 +46,7 @@ class Photographer {
     }
     
     selectMedia(data,media){// pick the id in the url
-        let urlId = window.location.search.slice(1);
+        let urlId = window.location.search.slice(4);
         this.medias= data.media.filter(x => x.photographerId == urlId)
         
 
@@ -61,7 +61,7 @@ class Photographer {
         photoName.innerHTML =this.name;
         photoLocation.innerHTML= this.city+","+this.country;
         photoDescription.innerHTML= this.tagline;
-        photoPicture.setAttribute("src", "/images/sample_photos/Photographers_ID_Photos/"+this.portrait)
+        photoPicture.setAttribute("src", "images/Sample_Photos/Photographers_ID_Photos/"+this.portrait)
         photoPicture.setAttribute("alt","photo de "+this.name)
         nameForm.innerHTML= "Contactez-moi" + "<br />" +this.name
         this.renderTags()
