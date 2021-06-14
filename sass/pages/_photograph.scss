@@ -13,9 +13,10 @@
         @media screen and (max-width:768px) {
             background-color: white;
             height:auto;  
+            width:90%;
         }
         &__photograph {
-            
+      
             display:flex;
             flex-direction: column;
             align-items:flex-start;
@@ -87,7 +88,7 @@
             }
 
         }
-        &__picture {
+        &__picture {     
             @extend .container_photo;
             @media screen and (max-width:768px) {
                 width:165px;
@@ -96,14 +97,19 @@
 
             @media screen and (max-width:575px) {
                 width:100px;
+             
                
             }
             &__img {
                 @extend .photo;
-                @media screen and (max-width:575px) {
+                @media screen and (max-width:645px) {
                     width:100px;
                     height:100px;
-                   
+                    position:absolute;
+                    z-index:99;
+                    top:-30px;
+                    right:40px;
+              
                 }
             }
 
@@ -200,7 +206,7 @@
             flex-wrap: wrap;
             column-gap: 5%;
             row-gap:30px;
-            justify-content: flex-start;
+            justify-content:center;
             margin-bottom:100px;
             &__container {
                 width:350px;

@@ -6,11 +6,15 @@
 body {
     width:90%;
     font-family: "DM Sans", Verdana, sans-serif;
-    min-width:385px;
+    min-width:425px;
     max-width: 1440px;
     margin:0 auto; 
     font-weight: 400;
+
     
+}
+button{
+    cursor: pointer;
 }
 li {
     list-style: none;
@@ -28,8 +32,8 @@ button{
 	outline: inherit;
 
 }
-// button:focus, img:focus { 
-//     border: 5px solid $color-secondary}
+button:focus, img:focus { 
+    border: 5px solid $color-secondary}
 .button {
     width:170px;
     height:70px;

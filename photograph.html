@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Photograph</title>
+        <title>Page du photographe sélectionné</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="./css/style.css">
@@ -20,15 +20,15 @@
             <section class=main__presentation>
                 <div class=main__presentation__photograph>
                     <div class=main__presentation__photograph__name>
-                            <h1 id=photographer_name></h1>
+                            <h1 id=photographer_name>a</h1>
                             <button aria-label="Formulaire de contact" class="button main__presentation__photograph__button"    >Contactez-moi</button>
                         </div>
-                    <h2 class=main__presentation__photograph__localisation id=photographer_location></h2>
-                    <h3 class=main__presentation__photograph__description id=photographer_description></h3>
+                    <h2 class=main__presentation__photograph__localisation id=photographer_location>a</h2>
+                    <h3 class=main__presentation__photograph__description id=photographer_description>a</h3>
                    <div class=main__presentation__photograph__tagsContainer></div>
                 </div>
                 <div class=main__presentation__picture > 
-                    <img class=main__presentation__picture__img id=photographer_picture >
+                    <img class=main__presentation__picture__img id=photographer_picture src='' alt="profil du photographe">
                 </div>
 
             </section>
@@ -36,9 +36,9 @@
             <div class=main__photos>
                 <span class=main__photos__sort>Trier par</span>
                 <span class=main__photos__allbutton >
-                        <button aria-label="trier par Popularité"class="main__photos__allbutton__button__popular button">Popularité  </button>
+                        <button aria-label="trier par Popularité" class="main__photos__allbutton__button__popular button">Popularité  </button>
                         <button aria-label="trier par date" class="button main__photos__allbutton__button__date">Date</button>
-                        <button aria-label="trier par titre" class="button main__photos__allbutton__button__title">Titre</button> <i class="fas fa-angle-down arrow"></i>
+                        <button aria-label="trier par titre" class="button main__photos__allbutton__button__title">Titre</button> <em class="fas fa-angle-down arrow"></em>
                 </span>
                
                
@@ -50,8 +50,8 @@
                
                 
                 <section class=main__like-price-button>
-                    <h2 class=main__like-price-button__number></h2>
-                    <h2 class=main__like-price-button__price> </h2>
+                    <h2 class=main__like-price-button__number>0</h2>
+                    <h2 class=main__like-price-button__price>0 </h2>
                 </section>
 
             </div>
@@ -59,27 +59,27 @@
 
 
         </main>
-        <div  aria-hidden="true"class=big-picture>
+        <div  aria-hidden="true" class=big-picture>
             <div class=big-picture__container>
-                <img alt="photographe"class="big-picture__container__img" src="images/logo.png">
+                <img alt="photographe" class="big-picture__container__img" src="images/logo.png">
                 <video   controls class=big-picture__container__img id=videoCarroussel>
                     <source  src="images/Sample_Photos/82/Art_Wooden_Horse_Sculpture.mp4" type="video/mp4">
                 </video>
                  <div class=big-picture__container__title>test</div>
             
             <button aria-label="fermer l'image" class=big-picture__container__cross></button>
-            <button aria-label="media précédent"><img src="images/Vector.svg" alt="flèche de navigation gauche" class=big-picture__container__left-arrow></img></button>
-            <button aria-label="media suivant"><img src="images/Vector.svg" alt="flèche de navigation droite" class=big-picture__container__right-arrow></img></button>
+            <button aria-label="media précédent"><img src="images/Vector.svg" alt="flèche de navigation gauche" class=big-picture__container__left-arrow></button>
+            <button aria-label="media suivant"><img src="images/Vector.svg" alt="flèche de navigation droite" class=big-picture__container__right-arrow></button>
             </div>
        </div> 
         <section class=contact role=dialog aria-hidden=true aria-label="Contact photographer">
             <div class=contact__form>
                 <button class="contact__form__cross">X</button>
-                <H1 class=contact__form__title id= name_Modale></H1>
+                <H1 class=contact__form__title id= name_Modale>Modale</H1>
                 
-                <form name="formData"action="photograph.html" method="get"> 
+                <form name="formData" action="photograph.html" method="get"> 
                     <label class=contact__form__label for="first">Prénom</label><br>
-                    <input class=contact__form__input type="text" id="first" name="first"aria-label="firstname" required><br>
+                    <input class=contact__form__input type="text" id="first" name="first" aria-label="firstname" required><br>
                     
                     <label class=contact__form__label  for="last">Nom</label><br>
                     <input class=contact__form__input type="text" id="last" name="last" aria-label="lastname" required><br>
