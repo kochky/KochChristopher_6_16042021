@@ -20,7 +20,8 @@ fetchData().then((data) =>
       
         list.imgListener(media)//every media can open the lightbox
         list.all[media].alreadyClick(media)//check if the like are already clicked
-        
+      
+    
         const likeButton = document.getElementsByClassName("main__photos__article__container__description__heart");
         likeButton[media].addEventListener("click", function(){//every like button can increase the number of likes
         list.all[media].likeClick(media);
@@ -29,7 +30,6 @@ fetchData().then((data) =>
     
           
     }
-    
     
     
     

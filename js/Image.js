@@ -7,12 +7,12 @@ class Image extends Media {
     }
 
     render(data)
-    {   
+    {  
         var pictureDiv = document.getElementsByClassName("main__photos__article");
 
         pictureDiv[0].innerHTML+= `
         <article class=main__photos__article__container aria-label='${this.title}'>
-            <img alt=${this.alt} src=./images/Sample_Photos/${this.photographerId}/${this.image} class=main__photos__article__container__img>
+            <img alt='${data.alt}' src=./images/Sample_Photos/${this.photographerId}/${this.image} class=main__photos__article__container__img>
             <div class=main__photos__article__container__description>
                 <h2 class=main__photos__article__container__description__name >${this.title}</h2>
                 <div>

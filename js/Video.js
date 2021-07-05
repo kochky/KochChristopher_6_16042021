@@ -11,7 +11,7 @@ class Video extends Media {
     {
         var pictureDiv = document.getElementsByClassName("main__photos__article");
         pictureDiv[0].innerHTML+= `
-        <article class=main__photos__article__container aria-label=${this.title}>
+        <article class=main__photos__article__container aria-label='${this.title}'>
             <video  class=main__photos__article__container__img>
                 <source src=./images/Sample_Photos/${this.photographerId}/${this.video} type=video/mp4>
             </video>
