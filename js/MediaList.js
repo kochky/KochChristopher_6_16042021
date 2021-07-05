@@ -13,37 +13,37 @@ class MediaList
 
 
     //DOM ELEMENTS
-                  allButton(e){
-                    return document.getElementsByClassName("main__photos__allbutton")[e]
-                  }
-                  
-                  arrowButton(e){
-                    return  document.getElementsByClassName("arrow")[e]
-                  }
-                  main(){
-                    return document.getElementsByTagName("main")[0]
-                  }
-                  body(){
-                      return document.getElementsByTagName("body")[0]
-                  }
-                  bigPicture(){
-                    return document.getElementsByClassName("big-picture")[0];
-                  }
-                  bigPictureClose(){
-                    return document.getElementsByClassName("big-picture__container__cross")[0]
-                  }
-                  header(){
-                    return document.getElementsByTagName("header")[0];
-                  }
-                  photoContainerImage(i){
-                    return document.getElementsByClassName("main__photos__article__container__img")[i]
-                  }
-                  bigPictureTitle(){
-                    return document.getElementsByClassName("big-picture__container__title")[0]
-                  }
-                  bigPictureImg(i){
-                    return document.getElementsByClassName("big-picture__container__img")[i]
-                  }
+    allButton(e){
+      return document.getElementsByClassName("main__photos__allbutton")[e]
+    }
+    
+    arrowButton(e){
+      return  document.getElementsByClassName("arrow")[e]
+    }
+    main(){
+      return document.getElementsByTagName("main")[0]
+    }
+    body(){
+        return document.getElementsByTagName("body")[0]
+    }
+    bigPicture(){
+      return document.getElementsByClassName("big-picture")[0];
+    }
+    bigPictureClose(){
+      return document.getElementsByClassName("big-picture__container__cross")[0]
+    }
+    header(){
+      return document.getElementsByTagName("header")[0];
+    }
+    photoContainerImage(i){
+      return document.getElementsByClassName("main__photos__article__container__img")[i]
+    }
+    bigPictureTitle(){
+      return document.getElementsByClassName("big-picture__container__title")[0]
+    }
+    bigPictureImg(i){
+      return document.getElementsByClassName("big-picture__container__img")[i]
+    }
 
     init(media) //Start when photograph.html is open
         {  
@@ -58,6 +58,7 @@ class MediaList
             this.allLikes()
             this.allButtonFilterListener()
             this.radiusButton()
+           this.fakeCard()
             
           
         }
@@ -67,6 +68,10 @@ class MediaList
         this.factory.init(item).render(item) 
         }
 
+    }
+    fakeCard(){
+      var pictureDiv = document.getElementsByClassName("main__photos__article");
+        pictureDiv[0].innerHTML+= "<div class=fakecard></div>"
     }
     allLikes(){//Add the likes of all the medias et display the result in the page bottom
         this.resultLike=0;
@@ -88,6 +93,7 @@ class MediaList
         this.all.sort(media);
         this.deleteMedia();
         this.factoryMedia(this.all);
+        this.fakeCard()
         this.animationButton();
         this.allLikes()
         for (let media in this.all ) { 
@@ -103,7 +109,7 @@ class MediaList
         
     }
     
-  
+ 
     animationOpen(){//Animation to display all the buttons
         if (this.clicked!=true){
           MediaList.clicked= true;
@@ -130,7 +136,7 @@ class MediaList
     }
         
     animationButton(){// Listener for the buttons list
-        for (var u=0; u<this.allButton(0).children.length -1; u++){
+        for (let u=0; u<this.allButton(0).children.length -1; u++){
           this.allButton(0).children[u].addEventListener("focus",(e)=>{this.animationOpen()})
           this.allButton(0).children[0].addEventListener("click",(e)=>{this.animationOpen()})
           document.addEventListener("keydown",(e)=>{this.animationClose(e)})
@@ -139,7 +145,7 @@ class MediaList
         }
     }
     compareLikes(a,b){
-        if (a.likes < b.likes)
+        if (a.likes <= b.likes)
         return 0
         if (a.likes >b.likes)
         return -1;
@@ -188,155 +194,155 @@ class MediaList
           })  
     }
     
-   dateButtonFilterListener(){
-    let dateButton= document.getElementsByClassName("main__photos__allbutton__button__date");
-    dateButton[0].addEventListener("click",(e)=>{
+    dateButtonFilterListener(){
+      let dateButton= document.getElementsByClassName("main__photos__allbutton__button__date");
+      dateButton[0].addEventListener("click",(e)=>{
 
-        if ( dateButton[0] !== this.allButton(0).children[0]){
-         
-        this.filterBy(this.compareDate);
-        this.allButton(0).insertBefore(dateButton[0],this.allButton(0).children[0]);
-        this.radiusButton()
-        }
-
-        })
-
-   }
-   popButtonFilterListener(){
-    let popButton= document.getElementsByClassName("main__photos__allbutton__button__popular")
-    popButton[0].addEventListener("click",(e)=>{
-        
-        if ( popButton[0] !== this.allButton(0).children[0]){
-        this.filterBy(this.compareLikes);
-        this.allButton(0).insertBefore(popButton[0],this.allButton(0).children[0]);
-        this.radiusButton()
-        }
-        })
-   }
-   
-            
-   openLightbox(i){//Open the lightbox and background has an opacity
-
-      this.bigPicture().style.display="flex";
-      this.header().style.opacity="0.1";
-      this.main().style.opacity="0.1";
-      this.bigPictureImg(0).alt=this.all[i].alt
-      this.bigPictureImg(0).src= "./images/Sample_Photos/"+this.all[i].photographerId+"/"+this.all[i].src
-      this.bigPictureTitle().innerHTML= this.all[i].title;
-      this.bigPictureClose().focus();
-      this.body().setAttribute("aria-hidden","true");
-      this.bigPicture().setAttribute("aria-hidden","false");
-      this.closeListener()
-      this.lightboxController(i)
-      this.imageResult= i;
-    }
-
-  closeListener(){//If click on the X or Escape pressed, the modal will close
-
-   
-   
-    this.bigPictureClose().addEventListener("click",(e)=>{
-      this.closeLightbox()
-    })
-    document.onkeydown = (evt)=> {
-      evt = evt || window.event;
-      if (evt.keyCode == 27) {  
-        this.closeLightbox()
-      }
-  };
-  } 
-
-  imgListener(i){//Card open the lightbox
-    this.photoContainerImage(i).addEventListener("click",(e)=>{
-    
-           this.openLightbox(i);
-           this.videoInMedia()
+          if ( dateButton[0] !== this.allButton(0).children[0]){
           
-         
-          })
-    let buttonLightbox= document.getElementsByClassName("openLightbox");
-    buttonLightbox[i].addEventListener("click", (e)=>{
-          this.openLightbox(i)
-          this.videoInMedia()
-         })
-  }
-        
-  closeLightbox(){//close lightbox
-    
-    this.bigPicture().style.display="none";
-    this.header().style.opacity="1";
-    this.main().style.opacity="1";
-    this.body().setAttribute("aria-hidden","false");
-    this.bigPicture().setAttribute("aria-hidden","true");
-  
-  }
-  srcTitle(){//Get the title of the media
-    this.bigPictureImg(0).src= "./images/Sample_Photos/"+this.all[this.imageResult].photographerId+"/"+this.all[this.imageResult].src
-    this.bigPictureTitle().innerHTML= this.all[this.imageResult].title
-    this.bigPictureImg(0).alt=this.all[this.imageResult].alt
-  }
-  
-
-  videoInMedia () {//the lightbox will adapt to the format of the media
-
-    if (this.all[this.imageResult].image==undefined){
-      
-      this.bigPictureImg(1).style.display="block";
-      this.bigPictureImg(0).style.display="none";
-      this.bigPictureImg(1).firstElementChild.src= "./images/Sample_Photos/"+this.all[this.imageResult].photographerId+"/"+this.all[this.imageResult].src
-      this.bigPictureImg(1).load();
-
-    }else {
-      this.bigPictureImg(1).style.display="none";
-      this.bigPictureImg(0).style.display="block";
-    }
-        
-  }
-  leftArrow(){
-      
-    if(this.imageResult<=0){
-        this.imageResult += this.all.length -1;
-      }else {
-        this.imageResult --
-      }
-      this.videoInMedia()
-      this.srcTitle()
-  }
-  rightArrow(){
-    if (this.imageResult== this.all.length -1){
-        this.imageResult =0;
-        }else {
-          this.imageResult ++
-      }
-      this.srcTitle()
-      this.videoInMedia()
-  }
-
-  lightboxController() {//Control the change of media in the lightbox
-    let leftArrow= document.getElementsByClassName("big-picture__container__left-arrow");
-    let rightArrow= document.getElementsByClassName("big-picture__container__right-arrow");
-
-      leftArrow[0].parentNode.addEventListener("click",(e)=>{//Pick the precedent media
-        this.leftArrow()
-          
-        })
-        document.addEventListener("keydown",(evt)=>{
-          if (evt.which == 37) {
-           this.leftArrow()
+          this.filterBy(this.compareDate);
+          this.allButton(0).insertBefore(dateButton[0],this.allButton(0).children[0]);
+          this.radiusButton()
           }
-        }
-        );
 
+          })
 
-        rightArrow[0].parentNode.addEventListener("click",(e)=>{
-          this.rightArrow()
-             
-        })
-        document.addEventListener("keydown",(evt)=>{
-          if (evt.which == 39) {
-           this.rightArrow()
-        }
-        }
-        );
     }
+    popButtonFilterListener(){
+      let popButton= document.getElementsByClassName("main__photos__allbutton__button__popular")
+      popButton[0].addEventListener("click",(e)=>{
+          
+          if ( popButton[0] !== this.allButton(0).children[0]){
+          this.filterBy(this.compareLikes);
+          this.allButton(0).insertBefore(popButton[0],this.allButton(0).children[0]);
+          this.radiusButton()
+          }
+          })
+    }
+    
+              
+    openLightbox(i){//Open the lightbox and background has an opacity
+
+        this.bigPicture().style.display="flex";
+        this.header().style.opacity="0.1";
+        this.main().style.opacity="0.1";
+        this.bigPictureImg(0).alt=this.all[i].alt
+        this.bigPictureImg(0).src= "./images/Sample_Photos/"+this.all[i].photographerId+"/"+this.all[i].src
+        this.bigPictureTitle().innerHTML= this.all[i].title;
+        this.bigPictureClose().focus();
+        this.body().setAttribute("aria-hidden","true");
+        this.bigPicture().setAttribute("aria-hidden","false");
+        this.closeListener()
+        this.lightboxController(i)
+        this.imageResult= i;
+      }
+
+    closeListener(){//If click on the X or Escape pressed, the modal will close
+
+    
+    
+      this.bigPictureClose().addEventListener("click",(e)=>{
+        this.closeLightbox()
+      })
+      document.onkeydown = (evt)=> {
+        evt = evt || window.event;
+        if (evt.keyCode == 27) {  
+          this.closeLightbox()
+        }
+    };
+    } 
+
+    imgListener(i){//Card open the lightbox
+      this.photoContainerImage(i).addEventListener("click",(e)=>{
+      
+            this.openLightbox(i);
+            this.videoInMedia()
+            
+          
+            })
+      let buttonLightbox= document.getElementsByClassName("openLightbox");
+      buttonLightbox[i].addEventListener("click", (e)=>{
+            this.openLightbox(i)
+            this.videoInMedia()
+          })
+    }
+          
+    closeLightbox(){//close lightbox
+      
+      this.bigPicture().style.display="none";
+      this.header().style.opacity="1";
+      this.main().style.opacity="1";
+      this.body().setAttribute("aria-hidden","false");
+      this.bigPicture().setAttribute("aria-hidden","true");
+    
+    }
+    srcTitle(){//Get the title of the media
+      this.bigPictureImg(0).src= "./images/Sample_Photos/"+this.all[this.imageResult].photographerId+"/"+this.all[this.imageResult].src
+      this.bigPictureTitle().innerHTML= this.all[this.imageResult].title
+      this.bigPictureImg(0).alt=this.all[this.imageResult].alt
+    }
+    
+
+    videoInMedia () {//the lightbox will adapt to the format of the media
+
+      if (this.all[this.imageResult].image==undefined){
+        
+        this.bigPictureImg(1).style.display="block";
+        this.bigPictureImg(0).style.display="none";
+        this.bigPictureImg(1).firstElementChild.src= "./images/Sample_Photos/"+this.all[this.imageResult].photographerId+"/"+this.all[this.imageResult].src
+        this.bigPictureImg(1).load();
+
+      }else {
+        this.bigPictureImg(1).style.display="none";
+        this.bigPictureImg(0).style.display="block";
+      }
+          
+    }
+    leftArrow(){
+        
+      if(this.imageResult<=0){
+          this.imageResult += this.all.length -1;
+        }else {
+          this.imageResult --
+        }
+        this.videoInMedia()
+        this.srcTitle()
+    }
+    rightArrow(){
+      if (this.imageResult== this.all.length -1){
+          this.imageResult =0;
+          }else {
+            this.imageResult ++
+        }
+        this.srcTitle()
+        this.videoInMedia()
+    }
+
+    lightboxController() {//Control the change of media in the lightbox
+      let leftArrow= document.getElementsByClassName("big-picture__container__left-arrow");
+      let rightArrow= document.getElementsByClassName("big-picture__container__right-arrow");
+
+        leftArrow[0].parentNode.addEventListener("click",(e)=>{//Pick the precedent media
+          this.leftArrow()
+            
+          })
+          document.addEventListener("keydown",(evt)=>{
+            if (evt.which == 37) {
+            this.leftArrow()
+              }
+            }
+          );
+
+
+          rightArrow[0].parentNode.addEventListener("click",(e)=>{
+            this.rightArrow()
+              
+          })
+          document.addEventListener("keydown",(evt)=>{
+            if (evt.which == 39) {
+            this.rightArrow()
+            }
+          }
+        );
+      }
 }

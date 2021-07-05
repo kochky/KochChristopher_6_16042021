@@ -204,16 +204,27 @@
             width:100%;
             display:flex;
             flex-wrap: wrap;
-            column-gap: 5%;
+            column-gap: 1%;
             row-gap:30px;
-            justify-content:center;
+            justify-content:space-between;
             margin-bottom:100px;
+          
+            @media screen and (max-width:1192px) {
+               justify-content: space-around
+                
+            }
+            @media screen and (max-width:818px) {
+                justify-content: center;
+                
+            }
             &__container {
                 width:350px;
+             
                 &__img {
                     
                     width:350px;
                     height:300px;
+                    object-fit: cover;
                     border-radius: 5px;
                     background-size:cover;
                     cursor: pointer;
@@ -288,4 +299,8 @@
     left: 70%;
     top:25px;
     color:white;
+}
+.fakecard {
+    width:350px;
+    height:350px;
 }

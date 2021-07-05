@@ -59,7 +59,7 @@ function validation (){
         {    inputValueModal()
             textArea[0].value="";
             contactEl[0].style.display= "none";
-            for(var i=0; i< inputs.length -1; i++) {
+            for(let i=0; i< inputs.length -1; i++) {
             inputs[i].value="";
             
             

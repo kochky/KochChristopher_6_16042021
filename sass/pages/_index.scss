@@ -68,8 +68,11 @@
            min-width:350px;
            margin-bottom:75px;
             &__container {
+
+               
                 &__photo {
                    @extend .photo;
+                   
                    
                 } 
             }
