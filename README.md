@@ -1,6 +1,7 @@
 # OPENCLASSROOMS PROJECT 6
 
-Accessible website to display work of freelance photographers.
+Créez un site accessible pour une plateforme de photographes.
+Respect maquette+ page dynamique+fetch fichier JSON+barre filtre+ accessibilité(navigation clavier et lecteur d'écran)
 
 ## For Developers
 
